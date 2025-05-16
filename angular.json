@@ -18,7 +18,7 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
+            "inlineStyleLanguage": "scss",        
             "allowedCommonJsDependencies": [
               "leaflet", "file-saver", "jszip", "compress-json"
             ],
@@ -186,6 +186,7 @@
         "prerender": {
           "builder": "@angular-devkit/build-angular:prerender",
           "options": {
+            "discoverRoutes": false,
             "routesFile": "routes.txt"
           },
           "configurations": {

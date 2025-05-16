@@ -152,7 +152,7 @@ export class RepeatersPageService {
   public loadAllRepeatersDataIfNotExist(): Observable<boolean>  {
     if(this.isAllDataLoaded()) {
       return this.http
-      .get<ApiDataBaseVersion>('./api/v2/test/data')
+      .get<ApiDataBaseVersion>('https://mapy73.pl/api/v2/test/data')
        .pipe( 
          map(() => {
            return true;
@@ -160,7 +160,7 @@ export class RepeatersPageService {
        ) 
     } else {
       return this.http
-      .get<Compressed>('./api/v2/test/huge')
+      .get<Compressed>('https://mapy73.pl/api/v2/test/huge')
         //.pipe(delay(5000))
        .pipe( 
          map(o => {
@@ -181,7 +181,7 @@ export class RepeatersPageService {
   public apiGetRepeaterById(name: string): Observable<RepeaterAllData> {
     if(this.obRepeatersAllData.hasOwnProperty(name)) {
       return this.http
-      .get<ApiDataBaseVersion>('./api/v2/test/data')
+      .get<ApiDataBaseVersion>('https://mapy73.pl/api/v2/test/data')
        .pipe( 
          map(() => {
            return this.obRepeatersAllData[name];
@@ -189,7 +189,7 @@ export class RepeatersPageService {
        ) 
     } else {
       return this.http
-      .get<Compressed>('./api/v2/repeaters/'+name)
+      .get<Compressed>('https://mapy73.pl/api/v2/repeaters/'+name)
         //.pipe(delay(5000))
        .pipe( 
          map(o=> {
@@ -206,7 +206,7 @@ export class RepeatersPageService {
   public getRepDataAndLocByKeys(name: string, band: string, key: number): Observable<[RepeaterData, RepeaterDataLocation]> { 
     if(this.obRepeatersAllData.hasOwnProperty(name)) {
       return this.http
-      .get<ApiDataBaseVersion>('./api/v2/test/data')
+      .get<ApiDataBaseVersion>('https://mapy73.pl/api/v2/test/data')
        .pipe( 
          map(() => {
            const repeaterFound =  this.obRepeatersAllData[name];
@@ -215,7 +215,7 @@ export class RepeatersPageService {
          })
        ) 
     } else {    return this.http
-    .get<Compressed>('./api/v2/repeaters/'+name)
+    .get<Compressed>('https://mapy73.pl/api/v2/repeaters/'+name)
       //.pipe(delay(5000))
       .pipe( 
         map(o => {
@@ -234,7 +234,7 @@ export class RepeatersPageService {
   public getRepAllDataAndBandKeyByKeys(name: string, crossKey: number): Observable<[RepeaterAllData, RepeaterBandKey[]]> {
     if(this.obRepeatersAllData.hasOwnProperty(name)) {
       return this.http
-      .get<ApiDataBaseVersion>('./api/v2/test/data')
+      .get<ApiDataBaseVersion>('https://mapy73.pl/api/v2/test/data')
        .pipe( 
          map(() => {
            const repeaterFound = this.obRepeatersAllData[name];
@@ -247,7 +247,7 @@ export class RepeatersPageService {
        ) 
     } else {
       return this.http
-      .get<Compressed>('./api/v2/repeaters/'+name)
+      .get<Compressed>('https://mapy73.pl/api/v2/repeaters/'+name)
        .pipe( 
          map(o => {
            try {

@@ -21,7 +21,7 @@ export class RepeaterMapService {
   public serverTest(): Observable<void> {
     if(this.mapData.length) {
       return this.http
-      .get<ApiDataBaseVersion>('./api/v2/test/data')
+      .get<ApiDataBaseVersion>('https://mapy73.pl/api/v2/test/data')
        .pipe( 
          map(() => {
            return ;
@@ -29,7 +29,7 @@ export class RepeaterMapService {
        ) 
     } else { 
       return this.http
-      .get<Compressed>('./api/v2/test/random-data')
+      .get<Compressed>('https://mapy73.pl/api/v2/test/random-data')
         //.pipe(delay(5000))
        .pipe( 
          map(o=> {

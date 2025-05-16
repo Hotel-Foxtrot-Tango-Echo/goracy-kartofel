@@ -1,1 +1,4 @@
+/
+/page/site-map
+/page/news
 /repeater/SR6LWS
