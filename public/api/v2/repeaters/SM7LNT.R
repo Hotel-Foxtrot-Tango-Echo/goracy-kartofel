@@ -1,0 +1,1 @@
+[["i","c","x","h","o","a|0|1|2|3|4","SM7LNT/R","se","70cm","a|8","rx","tx","t","s","p","u","d","a|A|B|3|C|D|E|F|G","f","a|I","n|6y.8W","o|J|K","n|70.8W","o|J|M","56203034730","a","5","n|0","a|","","o|H|L|N|O|P|Q|R|S|T","a|U","o|9|V","a|O","q","e","g","a|2|E|Y|Z|a|P|4","o|9|R","a|c","Mörrum","JO76ie","n|u.1mz","n|E.yR","o|b|d|e|f|R|R|g|h","o|X|i","Olle","a|k","o|5|6|7|W|j|l"],"m"]
