@@ -1,3 +1,3 @@
-/#/page/site-map
-/#/page/news
-/#/repeater/SR6LWS
+/page/site-map
+/page/news
+/repeater/SR6LWS
