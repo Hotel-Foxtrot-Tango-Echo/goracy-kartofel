@@ -9,7 +9,7 @@ import { IonicServerModule } from '@ionic/angular-server';
   imports: [
     AppModule,
     ServerModule,
-   // IonicServerModule
+    IonicServerModule
   ],
   bootstrap: [AppComponent],
 })

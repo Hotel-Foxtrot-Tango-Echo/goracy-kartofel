@@ -33,7 +33,7 @@
     "@capacitor/haptics": "7.0.0",
     "@capacitor/keyboard": "7.0.0",
     "@capacitor/status-bar": "7.0.0",
-    "@ionic/angular": "^8.4.3",
+    "@ionic/angular": "^8.5.7",
     "@ionic/angular-server": "^8.5.7",
     "@netlify/angular-runtime": "^2.3.1",
     "@types/file-saver": "^2.0.7",
