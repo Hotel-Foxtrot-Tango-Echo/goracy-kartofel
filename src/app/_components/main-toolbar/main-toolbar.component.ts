@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, Input, PLATFORM_ID } from '@angular/core';
 import { Subscription, merge, of, fromEvent, map } from 'rxjs';
 import { UserSaveService } from 'src/app/shared/services/user.service';
 import { SubSink } from 'subsink';
@@ -26,6 +27,7 @@ export class MainToolbarComponent  {
   constructor(
     private changeDetectorRef: ChangeDetectorRef,   
     private userSaveService: UserSaveService,
+        @Inject(PLATFORM_ID) private platformId: Object,
     
   ) {}  
 
@@ -39,7 +41,10 @@ export class MainToolbarComponent  {
       this.savedPathCount = count
       this.changeDetectorRef.markForCheck();
     }})      
-    this.checkNetworkStatus();
+    if (isPlatformBrowser(this.platformId)) {
+      this.checkNetworkStatus();
+    }
+    
   }
 
   private checkNetworkStatus() {
