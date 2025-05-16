@@ -1,0 +1,107 @@
+<ion-header [translucent]="true">
+  <mapy73pl-main-toolbar></mapy73pl-main-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  @if (loaded) {
+      <ion-grid [fixed]="true" class="rpt-info">
+        <ion-row >
+          <ion-col ><span [class]="'flag fi fi-'+repeaterData.c"></span></ion-col>
+          <ion-col ><h1>{{repeaterData.i}}</h1></ion-col>
+        </ion-row>
+      </ion-grid>
+
+      @for (locHash of locHashs; track locHash) {
+        <ion-grid [fixed]="true" class="rpt-info">
+          @for (repBandKey of repeaterData.h[locHash].x; track repBandKey) {
+            @for (band of returnBands(repBandKey); track band) {
+              <mapy73pl-repeater-info
+              *ngIf="returnRepeaterData(band,repBandKey[band])?.rx && returnRepeaterData(band,repBandKey[band])?.tx"
+                [bandName]="band"
+                [repeaterData]="returnRepeaterData(band,repBandKey[band])"
+                ></mapy73pl-repeater-info>
+            }
+          }            
+          <mapy73pl-repeater-info *ngIf="repeaterData.h[locHash].x.length > 0"
+            [repeaterDataLocation]="repeaterData.h[locHash]"
+            [showLocationTitle]="true"
+            ></mapy73pl-repeater-info>   
+          <div></div>          
+        </ion-grid> 
+      }  
+
+      <ng-content *ngIf="repeaterData.r"> 
+        @for (repeaterBandKey of repeaterData.r; track repeaterBandKey) {
+          <ion-grid  [fixed]="true" class="rpt-info">
+
+          <mapy73pl-repeater-info-cross-band 
+            [repeaterBandKey]="repeaterBandKey"
+            [repeaterAllData]="repeaterData"
+            ></mapy73pl-repeater-info-cross-band>
+          </ion-grid>
+      
+        }
+      </ng-content>
+      
+      <ion-grid [fixed]="true" class="rpt-info">
+        <ion-row  *ngIf="repeaterData.o.length">
+          <ion-col >
+            @if(repeaterData.o.length > 1) {
+              Opiekunowie
+            } @else {
+              Opiekun
+            }
+          </ion-col>
+          <ion-col class="info" >{{repeaterData.o}}</ion-col>
+        </ion-row> 
+      </ion-grid>  
+
+      <ion-grid *ngIf="canShowOnMap" [fixed]="true">
+        <ion-button (click)="showRepeaterOnMap()">
+          <ion-icon slot="start" name="earth-outline"></ion-icon>
+          Pokaż na mapie
+        </ion-button>
+      </ion-grid>
+
+
+  } @else {
+    <ion-grid [fixed]="true" class="rpt-info-loading">
+      <ion-row >
+        <ion-col >        
+          <!-- <ion-thumbnail>
+            <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+          </ion-thumbnail> -->
+       </ion-col>
+        <ion-col >
+          <h1>
+            <ion-skeleton-text [animated]="true" style="width: 80%;"></ion-skeleton-text>
+          </h1>
+        </ion-col>
+      </ion-row>
+      <ion-row >
+        <ion-col ></ion-col>
+        <ion-col >
+            <p>
+              <ion-skeleton-text [animated]="true" style="width: 60%;"></ion-skeleton-text>
+            </p>
+            <p>
+              <ion-skeleton-text [animated]="true" style="width: 30%;"></ion-skeleton-text>
+            </p>
+        </ion-col>
+      </ion-row>     
+      <ion-row >
+        <ion-col ></ion-col>
+        <ion-col >
+            <p>
+              <ion-skeleton-text [animated]="true" style="width: 70%;"></ion-skeleton-text>
+            </p>
+            <p>
+              <ion-skeleton-text [animated]="true" style="width: 90%;"></ion-skeleton-text>
+            </p>
+            <p>
+              <ion-skeleton-text [animated]="true" style="width: 80%;"></ion-skeleton-text>
+            </p>            
+        </ion-col>
+      </ion-row>        
+    </ion-grid>
+    }
+</ion-content>

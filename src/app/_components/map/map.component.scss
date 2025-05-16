@@ -1,0 +1,140 @@
+.map-box {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  .map {
+    height: 100%;
+
+    div {
+      height: 100%;
+    }
+  }
+}
+
+// ::ng-deep.leaflet-popup-tip {
+//   border-radius: 0 0 20% 0 !important;
+// }
+
+// ::ng-deep.map-marker-icon {
+//   .item-marker {
+//     border-radius: 100% 100% 100% 35%;
+//     border: 2px solid #444444;
+//     width: 22px !important;
+//     height: 22px !important;
+//     background-color: #444444;
+//     box-shadow: 0 0px 3px rgba(0, 0, 0, 0.365);
+//     transform: rotate(-45deg);
+//     overflow: hidden;
+
+//     .icon-image {
+//       width: 100%;
+//       height: 100%;
+//       border-radius: 100%;
+//       background-position: center;
+//       background-size: cover;
+//       transform: rotate(38deg);
+//     }
+//   }
+// }
+
+// /* MAP CARD */
+// ::ng-deep.leaflet-container a.leaflet-popup-close-button {
+//   position: absolute;
+//   top: 5px;
+//   right: 5px;
+//   padding: 3px !important;
+//   color: #ff0f0f98;
+//   text-decoration: none;
+//   font-weight: bold;
+//   background: #f2f2f2;
+//   &:hover {
+//     color: #ff0f0f;
+//   }
+// }
+
+// ::ng-deep.leaflet-popup {
+//   bottom: 32px !important;
+//   // left: -180px !important;
+// }
+
+::ng-deep.leaflet-popup-content {
+  width: max-content !important;
+  height: auto !important;
+  font-size: 0.875rem;
+
+  // .map-card {
+  //   .map-card-body {
+  //     padding: 10px;
+
+  //     .top-card {
+  //       display: flex;
+  //       align-items: center;
+
+  //       img {
+  //         width: 100px;
+  //         height: 100px;
+  //         margin-right: 20px;
+  //       }
+
+  //       .content {
+  //         .map-card-title {
+  //           font-weight: bold;
+  //           margin: 0;
+  //         }
+
+  //         .map-card-subtitle {
+  //           font-weight: 400;
+  //           font-size: 14px;
+  //           color: #585858;
+  //           margin: 0;
+  //         }
+
+  //         .map-card-content {
+  //           h4 {
+  //             font-size: 16px;
+  //           }
+
+  //           p {
+  //             font-size: 14px;
+  //           }
+  //         }
+  //       }
+  //     }
+
+  //     .cta-wrapper {
+  //       margin-top: 20px;
+  //       width: 100%;
+  //       display: grid;
+  //       grid-template-columns: repeat(3, 1fr);
+  //       grid-gap: 15px;
+
+  //       .map-card-cta {
+  //         cursor: pointer;
+  //         text-decoration: none;
+  //         border: none;
+  //         padding: 8px 10px;
+  //         font-size: 12px;
+  //         text-align: center;
+  //         margin-bottom: 6px;
+  //         height: 20px;
+  //         display: flex;
+  //         justify-content: center;
+  //         align-items: center;
+  //         border-radius: 2px;
+
+  //         &:hover {
+  //           opacity: 0.6;
+  //         }
+
+  //         i {
+  //           margin-right: 5px;
+  //           font-size: 10px;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+}

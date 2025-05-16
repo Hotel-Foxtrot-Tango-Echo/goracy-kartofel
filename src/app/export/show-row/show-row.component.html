@@ -1,0 +1,33 @@
+<ion-row>
+  <ion-col size="auto">{{nr}}.</ion-col>
+  <ion-col  class="m73-link" (click)="nameClicked.emit()">{{exportList.i}}</ion-col>
+  <ion-col size="auto">
+    <ion-button *ngIf="exportList.a" (click)="mapClicked.emit()">
+      <ion-icon slot="icon-only"   name="earth-outline"></ion-icon>
+    </ion-button>
+    <ion-button *ngIf="!exportList.a" [disabled]="true">
+      <ion-icon slot="icon-only"   name="earth-outline"></ion-icon>
+    </ion-button>    
+  </ion-col>  
+  <ion-col >{{exportList.p}}</ion-col>
+  <ion-col >{{exportList.b}}</ion-col>
+  <ion-col class="m73-type">
+    @for (type of exportList.m; track type) {
+      <mapy73pl-repeater-info-type [type]="type"></mapy73pl-repeater-info-type>
+    }        
+  </ion-col>
+
+  <ion-col >{{exportList.r.toFixed(4)}}&nbsp;MHz</ion-col>
+  <ion-col >{{exportList.t.toFixed(4)}}&nbsp;MHz</ion-col>
+
+
+
+
+  <!-- <ion-col size="auto">
+    <ion-buttons [collapse]="true">
+      <ion-button (click)="removeClicked.emit()">
+        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+      </ion-button>  
+    </ion-buttons> 
+  </ion-col> -->
+</ion-row> 

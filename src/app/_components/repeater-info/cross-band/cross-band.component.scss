@@ -1,0 +1,24 @@
+h2 {
+  font-weight: 600;
+  text-align: center;
+  text-wrap-style: balance;
+}
+
+ion-col {
+  .whitespace-mark:last-child {
+    display: none;
+  }  
+}
+
+.info {
+  white-space: pre-line; 
+}
+
+a {
+  color: #fff;
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 2px 0;
+}

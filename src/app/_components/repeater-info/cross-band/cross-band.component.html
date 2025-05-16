@@ -1,0 +1,93 @@
+<ion-row *ngIf="repeatersBand.length">
+  <ion-col >
+    <h2>Przemiennik 
+      @for (type of repeatersBand[0].t.split(''); track type) {
+        <mapy73pl-repeater-info-type [type]="type"></mapy73pl-repeater-info-type><span class="whitespace-mark">+</span>
+      }  cross-band&nbsp;{{bandToBandName}}      
+    </h2>      
+  </ion-col>
+</ion-row>
+@for (band of bands; track band; let key = $index) {
+  <ion-row *ngIf="repeatersBand[key]?.tx || repeatersBand[key]?.rx" >
+    <ion-col >Częstotliwość ({{band}})</ion-col>
+    <ion-col >
+      <div  *ngIf="key === 0 && repeatersBand[key]?.rx">RX: {{repeatersBand[key]!.rx!.f.toFixed(4)}}&nbsp;MHz 
+        @for (frequencyParm of repeatersBand[key]!.rx!.t; track frequencyParm) {
+          <ng-content *ngFor="let parm of frequencyParm | keyvalue">
+            <mapy73pl-repeater-info-activation [option]="parm.key" [optionData]="parm.value"></mapy73pl-repeater-info-activation><span class="whitespace-mark"> / </span>
+          </ng-content>
+        }       
+      </div>       
+      <div  *ngIf="key !== 0 && repeatersBand[key]?.tx"><strong>TX: {{repeatersBand[key]!.tx!.f.toFixed(4)}}&nbsp;MHz </strong>
+        @for (frequencyParm of repeatersBand[key]!.tx!.t; track frequencyParm) {
+          <ng-content *ngFor="let parm of frequencyParm | keyvalue">
+            <mapy73pl-repeater-info-activation [option]="parm.key" [optionData]="parm.value"></mapy73pl-repeater-info-activation><span class="whitespace-mark"> / </span>
+          </ng-content>
+        }       
+      </div>    
+    </ion-col>
+  </ion-row> 
+}
+@for (band of bands; track band; let key = $index) {
+  <ion-row *ngIf="key === 0 && repeatersBand[key]?.j0" >
+    <ion-col >Domyślna grupa (FM-Poland)</ion-col>
+    <ion-col >
+      @for (group of repeatersBand[key].j0; track group) {
+        <ion-text color="warning">{{group}} </ion-text>
+      }  
+    </ion-col>
+  </ion-row> 
+  <ion-row *ngIf="key === 0 && repeatersBand[key]?.j1" >
+    <ion-col >Monitorowane grupy (FM-Poland)</ion-col>
+    <ion-col >
+      @for (group of repeatersBand[key].j1; track group) {
+        <ion-text  color="success">{{group}} </ion-text>
+      } 
+    </ion-col>
+  </ion-row> 
+  <ion-row *ngIf="key === 0 && repeatersBand[key]?.e1" >
+    <ion-col >Grupy rozmowne na TS1 (DMR)</ion-col>
+    <ion-col >
+      @for (group of repeatersBand[key].e1; track group) {
+        <ion-text color="secondary">{{group}} </ion-text>
+      }  
+    </ion-col>
+  </ion-row> 
+  <ion-row *ngIf="key === 0 && repeatersBand[key]?.e2" >
+    <ion-col >Grupy rozmowne na TS2 (DMR)</ion-col>
+    <ion-col >
+      @for (group of repeatersBand[key].e2; track group) {
+        <ion-text  color="secondary">{{group}} </ion-text>
+      } 
+    </ion-col>
+  </ion-row>   
+}
+
+@for (band of bands; track band; let key = $index) {
+  <ion-row *ngIf="showMoreData && key !== 0 && repeatersBand[key].p > 0">
+    <ion-col >Moc ({{band}}) </ion-col>
+    <ion-col >{{repeatersBand[key].p}} W</ion-col>
+  </ion-row>
+}
+
+@for (band of bands; track band; let key = $index) {
+  <ion-row *ngIf="showMoreData && repeatersBand[key].d.length > 0">
+    <ion-col >Informacje (@if(key===0) {RX} @else {TX} {{band}})</ion-col>
+    <ion-col class="info" >{{repeatersBand[key].d}}</ion-col>
+  </ion-row>      
+}
+
+@for (band of bands; track band; let key = $index) {   
+  <ion-row *ngIf="showMoreData && repeatersBand[key].u.length > 0">
+    <ion-col >Linki ({{band}})</ion-col>
+    <ion-col >
+      @for (url of repeatersBand[key].u; track url) {
+        <a [href]="url" target="_blank" >{{url}}</a>
+     }
+    </ion-col>
+  </ion-row>
+}
+<mapy73pl-repeater-info
+  [repeaterDataLocation]="masterRepDataLocation"
+  [showLocationTitle]="showMoreData"
+  ></mapy73pl-repeater-info>   

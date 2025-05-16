@@ -1,4 +1,1 @@
-/page/news
-/page/privacy-policy
-/page/cookie-info
-/page/site-map
+/repeater/SR6LWS

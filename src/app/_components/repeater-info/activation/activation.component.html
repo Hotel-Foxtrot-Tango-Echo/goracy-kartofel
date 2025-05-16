@@ -1,0 +1,10 @@
+@switch (option) {
+  @case (repeaterActivation.ACT_CARRIER) {nośną}
+  @case (repeaterActivation.ACT_1750) {ton&nbsp;1750Hz}
+  @case (repeaterActivation.ACT_CTCSS) {CTCSS&nbsp;{{optionData}}&nbsp;Hz}
+  @case (repeaterActivation.ACT_DCS) {DCS&nbsp;{{optionData}}}
+  @case (repeaterActivation.ACT_DTMF) {DTMF&nbsp;{{optionData}}}
+  @case (repeaterActivation.ACT_CC) {CC&nbsp;{{optionData}}}
+  @case (repeaterActivation.ACT_UNKNOWN) {b.d.}
+}
+<!-- #{{option}}# -->

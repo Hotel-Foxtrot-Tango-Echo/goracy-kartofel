@@ -1,0 +1,110 @@
+
+<ion-row >
+  <ion-col *ngIf="bandName.length>0">
+    <h2>Przemiennik {{bandName}} 
+      @for (type of repeaterData.t.split(''); track type) {
+        <mapy73pl-repeater-info-type [type]="type"></mapy73pl-repeater-info-type><span class="whitespace-mark">+</span>
+      }        
+    </h2>      
+  </ion-col>
+</ion-row>
+<ion-row *ngIf="repeaterData!.tx &&  repeaterData!.rx" >
+  <ion-col >Częstotliwość ({{bandName}})</ion-col>
+  <ion-col >
+    <div>RX: {{repeaterData.rx.f.toFixed(4)}}&nbsp;MHz 
+      @for (frequencyParm of repeaterData.rx.t; track frequencyParm) {
+        <ng-content *ngFor="let parm of frequencyParm | keyvalue">
+          <mapy73pl-repeater-info-activation [option]="parm.key" [optionData]="parm.value"></mapy73pl-repeater-info-activation><span class="whitespace-mark"> / </span>
+        </ng-content>
+      }       
+    </div>     
+    <div><strong>TX: {{repeaterData.tx.f.toFixed(4)}}&nbsp;MHz </strong>
+      @for (frequencyParm of repeaterData.tx.t; track frequencyParm) {
+        <ng-content *ngFor="let parm of frequencyParm | keyvalue">
+          <mapy73pl-repeater-info-activation [option]="parm.key" [optionData]="parm.value"></mapy73pl-repeater-info-activation><span class="whitespace-mark"> / </span>
+        </ng-content>
+      }       
+    </div>    
+  </ion-col>
+</ion-row> 
+<ion-row *ngIf="repeaterData?.j0" >
+  <ion-col >Domyślna grupa (FM-Poland)</ion-col>
+  <ion-col >
+    @for (group of repeaterData.j0; track group) {
+      <ion-text color="warning">{{group}} </ion-text>
+    }  
+  </ion-col>
+</ion-row> 
+<ion-row *ngIf="repeaterData?.j1" >
+  <ion-col >Monitorowane grupy (FM-Poland)</ion-col>
+  <ion-col >
+    @for (group of repeaterData.j1; track group) {
+      <ion-text  color="success">{{group}} </ion-text>
+    } 
+  </ion-col>
+</ion-row> 
+<ion-row *ngIf="repeaterData?.e1" >
+  <ion-col >Grupy rozmowne na TS1 (DMR)</ion-col>
+  <ion-col >
+    @for (group of repeaterData.e1; track group) {
+      <ion-text color="secondary">{{group}} </ion-text>
+    }  
+  </ion-col>
+</ion-row> 
+<ion-row *ngIf="repeaterData?.e2" >
+  <ion-col >Grupy rozmowne na TS2 (DMR)</ion-col>
+  <ion-col >
+    @for (group of repeaterData.e2; track group) {
+      <ion-text  color="secondary">{{group}} </ion-text>
+    } 
+  </ion-col>
+</ion-row> 
+<ion-row *ngIf="showLocationTitle">
+  <ion-col >
+    <h3>Lokalizacja</h3>      
+  </ion-col>
+</ion-row> 
+<ion-row  *ngIf="repeaterDataLocation.p.length">
+  <ion-col >QTH</ion-col>
+  <ion-col >{{repeaterDataLocation.p}}</ion-col>
+</ion-row> 
+<ion-row  *ngIf="repeaterDataLocation.q.length">
+  <ion-col >QTH lokator</ion-col>
+  <ion-col >{{repeaterDataLocation.q}}</ion-col>
+</ion-row>      
+<ion-row *ngIf="repeaterDataLocation.a">
+  <ion-col >Lokalizacja</ion-col>
+  <ion-col>
+    {{repeaterDataLocation.a}}{{repeaterDataLocation.a>0?'&nbsp;N':'&nbsp;S'}}, {{repeaterDataLocation.o}}{{repeaterDataLocation.o>0?'&nbsp;E':'&nbsp;W'}}
+  </ion-col>
+</ion-row>       
+<ion-row  *ngIf="repeaterDataLocation.e">
+  <ion-col >Wysokość n.p.m.</ion-col>
+  <ion-col >{{repeaterDataLocation.e}}&nbsp;m</ion-col>
+</ion-row>       
+<ion-row  *ngIf="repeaterDataLocation.g">
+  <ion-col >Wysokość nad poziomem gruntu</ion-col>
+  <ion-col >{{repeaterDataLocation.g}}&nbsp;m</ion-col>
+</ion-row> 
+<ion-row *ngIf="showMoreData && repeaterData.p > 0">
+  <ion-col >Moc</ion-col>
+  <ion-col >{{repeaterData.p}}&nbsp;W</ion-col>
+</ion-row>
+<ion-row *ngIf="showMoreData && repeaterData.d.length > 0">
+  <ion-col >Informacje</ion-col>
+  <ion-col class="info" >{{repeaterData.d}}</ion-col>
+</ion-row>      
+<ion-row *ngIf="showMoreData && repeaterData.u.length > 0">
+  <ion-col >Linki</ion-col>
+  <ion-col >
+    @for (url of repeaterData.u; track url) {
+      <a [href]="url" target="_blank" >{{url}}</a>
+   }
+  </ion-col>
+</ion-row>        
+  <!-- <ion-row >
+    <ion-col >Na tej samej częstotliwości</ion-col>
+    <ion-col>(dane w przygotowaniu)</ion-col>
+  </ion-row> -->
+  
+
