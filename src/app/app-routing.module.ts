@@ -3,7 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'przemienniki',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
@@ -18,7 +18,7 @@ const routes: Routes = [
     path: 'export',
     loadChildren: () => import('./export/export.module').then( m => m.ExportPageModule)
   },  
-  {path: '**', redirectTo: ''},
+  {path: '**', redirectTo: 'przemienniki'},
 
 
   // {
@@ -30,7 +30,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules, useHash: false })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules, useHash: true })
   ],
   exports: [RouterModule]
 })
