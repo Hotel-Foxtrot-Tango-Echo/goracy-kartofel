@@ -30,5 +30,6 @@
     "strictInputAccessModifiers": true,
     "strictTemplates": true,
     "strictPropertyInitialization": false,
+    "allowSyntheticDefaultImports": true
   }
 }
