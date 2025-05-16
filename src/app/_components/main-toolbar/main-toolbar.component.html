@@ -1,0 +1,36 @@
+<ion-toolbar [color]="isOnline ? 'light' : 'danger'">
+  <ion-buttons [collapse]="true" slot="start">
+    <ion-back-button ></ion-back-button>
+  </ion-buttons>
+
+  <ion-title *ngIf="isOnline">
+    <mapy73pl-logo class="action" [routerLink]="['/']" routerDirection="root" ></mapy73pl-logo> 
+    <span *ngIf="showInfo" >
+      - spis przemienników krótkofalarskich
+    </span>
+  </ion-title>   
+  <ion-title *ngIf="!isOnline">
+    <span class="action" [routerLink]="['/']" routerDirection="root">off-line Mapy73.PL</span>
+  </ion-title>   
+
+
+  <ion-buttons [collapse]="true" slot="end">
+    <!-- <ion-spinner  *ngIf="loading" name="circular" color="secondary"></ion-spinner> -->
+
+
+    <ng-content *ngIf="savedPathCount">
+      <ion-button [routerLink]="['/export']" routerDirection="root">
+        <ion-icon slot="icon-only" name="cloud-download-outline"></ion-icon>
+      </ion-button>      
+      <ion-badge class="m73-no-action" color="success">{{savedPathCount}}</ion-badge>
+    </ng-content>
+
+
+    <!-- <ion-button (click)="goToNews()">
+      <ion-icon slot="icon-only" name="newspaper-outline"></ion-icon>
+    </ion-button>        -->
+    <ion-button [routerLink]="['/page','site-map']" routerDirection="root" >
+      <ion-icon slot="icon-only" name="information-circle-outline"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>

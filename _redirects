@@ -1,0 +1,22 @@
+# Redirect with a 301
+#/*         /#/              301
+# # Show a custom 404 for this path
+# /blad    /#/  404
+
+# # Rewrite a path
+# /inny-blad /#/    200
+
+
+# # Custom 404 error pages
+# /en/* /en/404.html 404
+# /es/* /es/404.html 404
+
+# # Redirect all spanish visitors to the /es-pages.
+# /   /es           302   Language=es
+# /*  /es/:splat    302   Language=es
+# /*  /es/404.html  404   Language=es
+
+# # Fallback on all other pages to /en.
+# /  /en            302
+# /* /en/:splat     302
+# /* /en/404.html   404

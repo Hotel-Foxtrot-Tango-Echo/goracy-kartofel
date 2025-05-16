@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+  <mapy73pl-main-toolbar></mapy73pl-main-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <h1>{{siteName}}</h1>
+  <ion-list>
+    @for (message of getMessages(); track message) {
+      <ion-item  [detail]="false">
+        <div slot="start" [class]="!message.read ? 'dot dot-unread' : 'dot'"></div>
+        <ion-label class="ion-text-wrap">
+          <h3>
+            {{ message.subject }}
+            <span class="date">
+              <ion-note>{{ message.date }}</ion-note>
+            </span>
+          </h3>
+          <p>
+            {{ message.detalis }}
+          </p>
+        </ion-label>
+      </ion-item>       
+    }
+  </ion-list>
+
+</ion-content>
+
+

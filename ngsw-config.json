@@ -1,0 +1,80 @@
+{
+  "$schema": "./node_modules/@angular/service-worker/config/schema.json",
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "resources": {
+        "files": [
+          "/favicon.ico",
+          "/index.csr.html",
+          "/index.html",
+          "/manifest.webmanifest",
+          "/*.css",
+          "/*.js",
+          "/svg/information-circle-outline",
+          "/svg/chevron-up-outline.svg",
+          "/svg/chevron-down-outline.svg",
+          "/svg/trash-bin.svg",
+          "/svg/save.svg",
+          "/svg/cloud-download-outline.svg",
+          "/svg/list-circle.svg",
+          "/svg/trash-outline.svg",
+          "/svg/earth-outline.svg",
+          "/svg/map-outline.svg",
+          "/svg/walk-outline.svg",
+          "/assets/flags/4x3/pl.svg",
+          "/assets/flags/4x3/us.svg",
+          "/assets/flags/4x3/at.svg",
+          "/assets/flags/4x3/be.svg",
+          "/assets/flags/4x3/bg.svg",
+          "/assets/flags/4x3/by.svg",
+          "/assets/flags/4x3/ch.svg",
+          "/assets/flags/4x3/cz.svg",
+          "/assets/flags/4x3/de.svg",
+          "/assets/flags/4x3/dk.svg",
+          "/assets/flags/4x3/es.svg",
+          "/assets/flags/4x3/fi.svg",
+          "/assets/flags/4x3/fr.svg",
+          "/assets/flags/4x3/hu.svg",
+          "/assets/flags/4x3/is.svg",
+          "/assets/flags/4x3/lt.svg",
+          "/assets/flags/4x3/lv.svg",
+          "/assets/flags/4x3/nl.svg",
+          "/assets/flags/4x3/no.svg",
+          "/assets/flags/4x3/ro.svg",
+          "/assets/flags/4x3/ru.svg",
+          "/assets/flags/4x3/se.svg",
+          "/assets/flags/4x3/si.svg",
+          "/assets/flags/4x3/sk.svg",
+          "/assets/flags/4x3/ua.svg"
+        ]
+      }
+    },
+    {
+      "name": "assets/map",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": [
+          "/assets/map/*.(svg|cur|jpg|jpeg|png|apng|webp|avif|gif|otf|ttf|woff|woff2)"
+        ]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "api",
+      "urls": [
+        "https://mapy73.pl/api/v2/test/*"
+      ],    
+      "cacheConfig": {
+        "maxSize": 3000,
+        "maxAge": "1000d",
+        "timeout": "300u",
+        "strategy": "freshness" 
+      }
+    }
+  ]
+}
