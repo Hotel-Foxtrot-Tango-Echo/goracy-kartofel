@@ -14,10 +14,16 @@ export class DataService {
   public messages: Message[] = [
     {
       subject: 'Co robię teraz?',
-      detalis: 'Obliczanie odległości od przemiennika od zadanego punktu. Nowy filtr - ograniczenie ilosci przemienników odalonych o zadana ilosc km (takie kuleczka powinny sie rysowac na mapie np wszystkie przemienniki w obrebie 50km).',
+      detalis: 'Aktualizacja danych o przemiennikach.',
       date: '',
       read: true
     },
+    {
+      subject: 'QTH Lokator',
+      detalis: 'Na mapie dodano ikone ludka zmierzającego do radia, można go przesuwać wówczas w drugiej zakładce filtrów (też z ikonka ludka) będzie pokazywać się jego pozycja GPS oraz obliczany QTH lokator. Pozycje GPS jak i lokator można też wpsiać z palca w filtrze wówczas ludek się przesunie i pokaże dane miejsce (jeśli byśmy chieli się dowiedzieć gdzie jest jest nasz radiowy lokator)',
+      date: '2025-05-16',
+      read: false
+    },       
     {
       subject: 'Export do OpenGD77',
       detalis: ' Export przemienników do OpenGD77 z dodaniem do stref (dla Polski rozróznienie na okregi SR1,SR2,..,SR9) typy: DMR i FM (dla przemiennikow fmLink i fmPoland dopisano informacje w nazwe, tak by szybko wiedzieć iż naciśniecie PTT na fmLinku uruchomi nadawanie na pozostałych 18 przemiennikach w kraju, a w przypadku fmPoland by wiedzieć iż można przełączyć się na grupy rozmowe i zlinkować sobie np inny przemiennik). Export przemienników DMR wraz z Color Code (CC) i ustawieniami slotów (TS1, TS2) dla zdefiniowanych Talkgroups (TG)',

@@ -138,7 +138,7 @@ export class MapComponent implements AfterViewInit, OnInit, OnChanges {
 
     setTimeout(() => {
       this.map.fitBounds(group.getBounds(),{maxZoom:7});   
-    },20)
+    },200)
    
   }
 }
@@ -174,7 +174,7 @@ function createMarker(repeatersMap: RepeatersMap, isDekstop: boolean) {
     } else if (dateDiff === 1 ) {
       tekst = `już jutro!`
     }
-    leafletMarker.bindPopup(`<div><strong>ŁOŚ</strong> ${tekst} <a target="_blank" href="https://www.youtube.com/watch?v=DsddevXFyek">film</a></div>`)
+    leafletMarker.bindPopup(`<div><strong>ŁOŚ</strong> ${tekst} <a target="_blank" href="https://www.youtube.com/watch?v=C-XFPzW5rTA">film promocyjny</a></div>`)
 
     return leafletMarker;       
   }
