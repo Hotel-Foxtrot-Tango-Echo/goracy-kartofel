@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import {  map, Observable } from 'rxjs';
 import {  Compressed, decompress } from 'compress-json'
 import { ApiDataBaseVersion } from './repeaterPage.service';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -21,7 +22,7 @@ export class RepeaterMapService {
   public serverTest(): Observable<void> {
     if(this.mapData.length) {
       return this.http
-      .get<ApiDataBaseVersion>('https://mapy73.pl/api/v2/test/data')
+      .get<ApiDataBaseVersion>(environment.host+'/api/v2/test/data')
        .pipe( 
          map(() => {
            return ;
@@ -29,7 +30,7 @@ export class RepeaterMapService {
        ) 
     } else { 
       return this.http
-      .get<Compressed>('https://mapy73.pl/api/v2/test/random-data')
+      .get<Compressed>(environment.host+'/api/v2/test/random-data')
         //.pipe(delay(5000))
        .pipe( 
          map(o=> {
