@@ -7,11 +7,11 @@
   <h1>{{siteName}}</h1>
   <ion-list >
     <ion-item [button]="true" [routerLink]="['/']" [routerDirection]="'root'">
-      <ion-icon color="secondary" slot="start" name="list-circle" size="large"></ion-icon>
+      <ion-icon aria-hidden="true" color="secondary" slot="start" name="list-circle" size="large"></ion-icon>
       <ion-label>Mapa przemienników</ion-label>
     </ion-item>
     <ion-item [button]="true" [routerLink]="['/page','news']" >
-      <ion-icon color="danger" slot="start" name="list-circle" size="large"></ion-icon>
+      <ion-icon aria-hidden="true" color="danger" slot="start" name="list-circle" size="large"></ion-icon>
       <ion-label>Aktualności</ion-label>
     </ion-item>    
     <!-- <ion-item [button]="true">
@@ -19,11 +19,11 @@
       <ion-label>Shopping</ion-label>
     </ion-item> -->
     <ion-item [button]="true" [routerLink]="['/page','privacy-policy']" >
-      <ion-icon color="success" slot="start" name="list-circle" size="large"></ion-icon>
+      <ion-icon aria-hidden="true" color="success" slot="start" name="list-circle" size="large"></ion-icon>
       <ion-label>Polityka prywatności</ion-label>
     </ion-item>
     <ion-item [button]="true" [routerLink]="['/page','cookie-info']">
-      <ion-icon color="warning" slot="start" name="list-circle" size="large"></ion-icon>
+      <ion-icon aria-hidden="true" color="warning" slot="start" name="list-circle" size="large"></ion-icon>
       <ion-label>Mechanizmy cookies w serwisie</ion-label>
     </ion-item>
   </ion-list>

@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <mapy73pl-main-toolbar></mapy73pl-main-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+
+
+  
+
+  <ion-grid [fixed]="true">
+    <ion-row  class="ion-justify-content-center">
+      <ion-col size="12" size-md="8" size-lg="4">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Tryb Offline - aktywny</ion-card-title>
+          </ion-card-header>
+        
+          <ion-card-content>
+            <ion-text color="secondary">Strona została najprawdopodobniej poprawnie wczytana przez twoją przeglądarkę. </ion-text>
+            <ion-text >Teraz możliwe jest jej działanie bez internetu.</ion-text>
+            <ion-text color="secondary">Mam nadzieję iż przyda się tam gdzie o internet trudno, np w górach lub na innych radiowych pustkowiach. </ion-text>
+            <ion-text >Pozdrawiam</ion-text><br>
+            <ion-text class="m-r" color="danger"><ion-icon size="large" name="radio-outline"></ion-icon></ion-text>
+            <div class="m-r">
+              <ion-button [routerLink]="['/']"   size="small" color="primary">Ok, idź do mapy</ion-button>         
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid> 
+</ion-content>
+
+

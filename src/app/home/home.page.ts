@@ -44,7 +44,7 @@ export class HomePage implements OnInit,OnDestroy {
   private subSink = new SubSink();
 
   public isDekstop: boolean = false;
-  public filterToUp = false;
+  public filterToUp = true;
 
   public filterDataRptr = defaultFilterDataRptr;
 

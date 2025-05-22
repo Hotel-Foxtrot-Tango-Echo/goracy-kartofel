@@ -9,8 +9,8 @@
   </ion-col>
 </ion-row>
 <ion-row *ngIf="repeaterData!.tx &&  repeaterData!.rx" >
-  <ion-col >Częstotliwość ({{bandName}})</ion-col>
-  <ion-col >
+  <ion-col  size="4" size-sm="6">Częstotliwość ({{bandName}})</ion-col>
+  <ion-col size="8" size-sm="6">
     <div>RX: {{repeaterData.rx.f.toFixed(4)}}&nbsp;MHz 
       @for (frequencyParm of repeaterData.rx.t; track frequencyParm) {
         <ng-content *ngFor="let parm of frequencyParm | keyvalue">
@@ -28,32 +28,32 @@
   </ion-col>
 </ion-row> 
 <ion-row *ngIf="repeaterData?.j0" >
-  <ion-col >Domyślna grupa (FM-Poland)</ion-col>
-  <ion-col >
+  <ion-col  size="4" size-sm="6">Domyślna grupa (FM-Poland)</ion-col>
+  <ion-col size="8" size-sm="6">
     @for (group of repeaterData.j0; track group) {
       <ion-text color="warning">{{group}} </ion-text>
     }  
   </ion-col>
 </ion-row> 
 <ion-row *ngIf="repeaterData?.j1" >
-  <ion-col >Monitorowane grupy (FM-Poland)</ion-col>
-  <ion-col >
+  <ion-col  size="4" size-sm="6">Monitorowane grupy (FM-Poland)</ion-col>
+  <ion-col size="8" size-sm="6">
     @for (group of repeaterData.j1; track group) {
       <ion-text  color="success">{{group}} </ion-text>
     } 
   </ion-col>
 </ion-row> 
 <ion-row *ngIf="repeaterData?.e1" >
-  <ion-col >Grupy rozmowne na TS1 (DMR)</ion-col>
-  <ion-col >
+  <ion-col  size="4" size-sm="6">Grupy rozmowne na TS1 (DMR)</ion-col>
+  <ion-col size="8" size-sm="6">
     @for (group of repeaterData.e1; track group) {
       <ion-text color="secondary">{{group}} </ion-text>
     }  
   </ion-col>
 </ion-row> 
 <ion-row *ngIf="repeaterData?.e2" >
-  <ion-col >Grupy rozmowne na TS2 (DMR)</ion-col>
-  <ion-col >
+  <ion-col  size="4" size-sm="6">Grupy rozmowne na TS2 (DMR)</ion-col>
+  <ion-col size="8" size-sm="6">
     @for (group of repeaterData.e2; track group) {
       <ion-text  color="secondary">{{group}} </ion-text>
     } 
@@ -65,38 +65,38 @@
   </ion-col>
 </ion-row> 
 <ion-row  *ngIf="repeaterDataLocation.p.length">
-  <ion-col >QTH</ion-col>
-  <ion-col >{{repeaterDataLocation.p}}</ion-col>
+  <ion-col  size="4" size-sm="6">QTH</ion-col>
+  <ion-col size="8" size-sm="6">{{repeaterDataLocation.p}}</ion-col>
 </ion-row> 
 <ion-row  *ngIf="repeaterDataLocation.q.length">
-  <ion-col >QTH lokator</ion-col>
-  <ion-col >{{repeaterDataLocation.q}}</ion-col>
+  <ion-col  size="4" size-sm="6">QTH lokator</ion-col>
+  <ion-col size="8" size-sm="6">{{repeaterDataLocation.q}}</ion-col>
 </ion-row>      
 <ion-row *ngIf="repeaterDataLocation.a">
-  <ion-col >Lokalizacja</ion-col>
-  <ion-col>
+  <ion-col  size="4" size-sm="6">Lokalizacja</ion-col>
+  <ion-col size="8" size-sm="6">
     {{repeaterDataLocation.a}}{{repeaterDataLocation.a>0?'&nbsp;N':'&nbsp;S'}}, {{repeaterDataLocation.o}}{{repeaterDataLocation.o>0?'&nbsp;E':'&nbsp;W'}}
   </ion-col>
 </ion-row>       
 <ion-row  *ngIf="repeaterDataLocation.e">
-  <ion-col >Wysokość n.p.m.</ion-col>
-  <ion-col >{{repeaterDataLocation.e}}&nbsp;m</ion-col>
+  <ion-col  size="4" size-sm="6">Wysokość n.p.m.</ion-col>
+  <ion-col size="8" size-sm="6">{{repeaterDataLocation.e}}&nbsp;m</ion-col>
 </ion-row>       
 <ion-row  *ngIf="repeaterDataLocation.g">
-  <ion-col >Wysokość nad poziomem gruntu</ion-col>
-  <ion-col >{{repeaterDataLocation.g}}&nbsp;m</ion-col>
+  <ion-col  size="4" size-sm="6">Wysokość nad poziomem gruntu</ion-col>
+  <ion-col size="8" size-sm="6">{{repeaterDataLocation.g}}&nbsp;m</ion-col>
 </ion-row> 
 <ion-row *ngIf="showMoreData && repeaterData.p > 0">
-  <ion-col >Moc</ion-col>
-  <ion-col >{{repeaterData.p}}&nbsp;W</ion-col>
+  <ion-col  size="4" size-sm="6">Moc</ion-col>
+  <ion-col size="8" size-sm="6">{{repeaterData.p}}&nbsp;W</ion-col>
 </ion-row>
 <ion-row *ngIf="showMoreData && repeaterData.d.length > 0">
-  <ion-col >Informacje</ion-col>
-  <ion-col class="info" >{{repeaterData.d}}</ion-col>
+  <ion-col size="4" size-sm="6">Informacje</ion-col>
+  <ion-col class="info" size="8" size-sm="6">{{repeaterData.d}}</ion-col>
 </ion-row>      
 <ion-row *ngIf="showMoreData && repeaterData.u.length > 0">
-  <ion-col >Linki</ion-col>
-  <ion-col >
+  <ion-col  size="4" size-sm="6">Linki</ion-col>
+  <ion-col size="8" size-sm="6">
     @for (url of repeaterData.u; track url) {
       <a [href]="url" target="_blank" >{{url}}</a>
    }

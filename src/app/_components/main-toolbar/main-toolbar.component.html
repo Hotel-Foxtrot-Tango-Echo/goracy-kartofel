@@ -1,12 +1,15 @@
 <ion-toolbar [color]="isOnline ? 'light' : 'danger'">
   <ion-buttons [collapse]="true" slot="start">
     <ion-back-button ></ion-back-button>
+    <ion-button *ngIf="offlineReady" [routerLink]="['/page','offline']" color="primary" routerDirection="root" aria-label="Tryb offline aktywny">
+      <ion-icon slot="icon-only" name="radio-outline" aria-hidden="true" ></ion-icon>
+    </ion-button> 
   </ion-buttons>
 
   <ion-title *ngIf="isOnline && !isNewVesrion">
     <mapy73pl-logo class="action" [routerLink]="['/']" routerDirection="root" ></mapy73pl-logo> 
     <span *ngIf="showInfo && isDekstop" >
-      - przemienniki krótkofalarskie
+      i przemienniki krótkofalarskie
     </span>
   </ion-title>   
   <ion-title *ngIf="!isOnline">
@@ -24,16 +27,16 @@
     </ng-content>
 
     <ng-content *ngIf="savedPathCount">
-      <ion-button [routerLink]="['/export']" routerDirection="root">
-        <ion-icon slot="icon-only" name="cloud-download-outline"></ion-icon>
+      <ion-button [routerLink]="['/export']" routerDirection="root" aria-label="Export przemiennikow">
+        <ion-icon slot="icon-only" name="cloud-download-outline" aria-hidden="true" ></ion-icon>
       </ion-button>      
       <ion-badge class="m73-no-action" color="success">{{savedPathCount}}</ion-badge>
     </ng-content>
 
   
 
-    <ion-button [routerLink]="['/page','site-map']" routerDirection="root" >
-      <ion-icon slot="icon-only" name="information-circle-outline"></ion-icon>
+    <ion-button [routerLink]="['/page','site-map']" routerDirection="root" aria-label="informacje" >
+      <ion-icon slot="icon-only" name="information-circle-outline" aria-hidden="true"></ion-icon>
     </ion-button>
   </ion-buttons>
 </ion-toolbar>

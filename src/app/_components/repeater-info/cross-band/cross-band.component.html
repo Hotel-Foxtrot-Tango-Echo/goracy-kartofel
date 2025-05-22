@@ -9,8 +9,8 @@
 </ion-row>
 @for (band of bands; track band; let key = $index) {
   <ion-row *ngIf="repeatersBand[key]?.tx || repeatersBand[key]?.rx" >
-    <ion-col >Częstotliwość ({{band}})</ion-col>
-    <ion-col >
+    <ion-col size="4" size-sm="6">Częstotliwość ({{band}})</ion-col>
+    <ion-col size="8" size-sm="6">
       <div  *ngIf="key === 0 && repeatersBand[key]?.rx">RX: {{repeatersBand[key]!.rx!.f.toFixed(4)}}&nbsp;MHz 
         @for (frequencyParm of repeatersBand[key]!.rx!.t; track frequencyParm) {
           <ng-content *ngFor="let parm of frequencyParm | keyvalue">
@@ -30,32 +30,32 @@
 }
 @for (band of bands; track band; let key = $index) {
   <ion-row *ngIf="key === 0 && repeatersBand[key]?.j0" >
-    <ion-col >Domyślna grupa (FM-Poland)</ion-col>
-    <ion-col >
+    <ion-col size="4" size-sm="6">Domyślna grupa (FM-Poland)</ion-col>
+    <ion-col size="8" size-sm="6">
       @for (group of repeatersBand[key].j0; track group) {
         <ion-text color="warning">{{group}} </ion-text>
       }  
     </ion-col>
   </ion-row> 
   <ion-row *ngIf="key === 0 && repeatersBand[key]?.j1" >
-    <ion-col >Monitorowane grupy (FM-Poland)</ion-col>
-    <ion-col >
+    <ion-col size="4" size-sm="6">Monitorowane grupy (FM-Poland)</ion-col>
+    <ion-col size="8" size-sm="6">
       @for (group of repeatersBand[key].j1; track group) {
         <ion-text  color="success">{{group}} </ion-text>
       } 
     </ion-col>
   </ion-row> 
   <ion-row *ngIf="key === 0 && repeatersBand[key]?.e1" >
-    <ion-col >Grupy rozmowne na TS1 (DMR)</ion-col>
-    <ion-col >
+    <ion-col size="4" size-sm="6">Grupy rozmowne na TS1 (DMR)</ion-col>
+    <ion-col size="8" size-sm="6">
       @for (group of repeatersBand[key].e1; track group) {
         <ion-text color="secondary">{{group}} </ion-text>
       }  
     </ion-col>
   </ion-row> 
   <ion-row *ngIf="key === 0 && repeatersBand[key]?.e2" >
-    <ion-col >Grupy rozmowne na TS2 (DMR)</ion-col>
-    <ion-col >
+    <ion-col size="4" size-sm="6">Grupy rozmowne na TS2 (DMR)</ion-col>
+    <ion-col size="8" size-sm="6">
       @for (group of repeatersBand[key].e2; track group) {
         <ion-text  color="secondary">{{group}} </ion-text>
       } 
@@ -65,22 +65,22 @@
 
 @for (band of bands; track band; let key = $index) {
   <ion-row *ngIf="showMoreData && key !== 0 && repeatersBand[key].p > 0">
-    <ion-col >Moc ({{band}}) </ion-col>
-    <ion-col >{{repeatersBand[key].p}} W</ion-col>
+    <ion-col size="4" size-sm="6">Moc ({{band}}) </ion-col>
+    <ion-col size="8" size-sm="6">{{repeatersBand[key].p}} W</ion-col>
   </ion-row>
 }
 
 @for (band of bands; track band; let key = $index) {
   <ion-row *ngIf="showMoreData && repeatersBand[key].d.length > 0">
-    <ion-col >Informacje (@if(key===0) {RX} @else {TX} {{band}})</ion-col>
-    <ion-col class="info" >{{repeatersBand[key].d}}</ion-col>
+    <ion-col size="4" size-sm="6">Informacje (@if(key===0) {RX} @else {TX} {{band}})</ion-col>
+    <ion-col class="info" size="8" size-sm="6">{{repeatersBand[key].d}}</ion-col>
   </ion-row>      
 }
 
 @for (band of bands; track band; let key = $index) {   
   <ion-row *ngIf="showMoreData && repeatersBand[key].u.length > 0">
-    <ion-col >Linki ({{band}})</ion-col>
-    <ion-col >
+    <ion-col size="4" size-sm="6">Linki ({{band}})</ion-col>
+    <ion-col size="8" size-sm="6">
       @for (url of repeatersBand[key].u; track url) {
         <a [href]="url" target="_blank" >{{url}}</a>
      }

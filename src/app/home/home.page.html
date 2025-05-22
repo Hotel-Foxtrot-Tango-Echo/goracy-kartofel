@@ -44,11 +44,11 @@
 
         <ion-button *ngIf="!isSavedLastUsedRptrPatch" fill="outline" color="dark" class="ion-text-wrap btn-more" (click)="addLastUsedRptrPatch()">
           Dodaj do exportu
-          <ion-icon slot="start" name="save"></ion-icon>
+          <ion-icon slot="start" name="save" aria-hidden="true"></ion-icon>
         </ion-button>
         <ion-button *ngIf="isSavedLastUsedRptrPatch" fill="outline" color="dark" class="ion-text-wrap btn-more" (click)="removeLastUsedRptrPatch()">
           Usuń z exportu
-          <ion-icon slot="start" name="trash-bin"></ion-icon>
+          <ion-icon slot="start" name="trash-bin" aria-hidden="true"></ion-icon>
         </ion-button>      
       </div>
     </ng-template>
@@ -67,7 +67,7 @@
   <ion-modal id="filter-data-modal"
   #modal
   [isOpen]="isFilterOpen"
-  [initialBreakpoint]="isDekstop ? 0.88  : 1"
+  [initialBreakpoint]="isDekstop ? 0.88  : 0.2"
   [breakpoints]="isDekstop ? [0.1, 0.5, 0.88, 0.96] : [0.15,1]"
   [backdropDismiss]="false"
   [backdropBreakpoint]="1"
@@ -78,11 +78,11 @@
     <ion-content class="ion-padding">
 
       <ion-segment [value]="segmentValue" (ionChange)="segmentChangeEvt($event)">
-        <ion-segment-button value="filter" content-id="filter">
-          <ion-icon name="map-outline"></ion-icon>
+        <ion-segment-button value="filter" content-id="filter" aria-hidden="Filtry">
+          <ion-icon name="map-outline" aria-hidden="true"></ion-icon>
         </ion-segment-button>
-        <ion-segment-button value="radio" content-id="radio">
-          <ion-icon name="walk-outline"></ion-icon>
+        <ion-segment-button value="radio" content-id="radio" aria-hidden="QTH">
+          <ion-icon name="walk-outline" aria-hidden="true"></ion-icon>
         </ion-segment-button>
       </ion-segment>
       <ion-segment-view>
@@ -90,9 +90,9 @@
           <div class="m-search">
             <ion-searchbar animated="true" [value]="filterDataRptr.text" [debounce]="500" [minlength]="2" [maxlength]="11" (ionInput)="filterDataChangeName($event)" placeholder="Filtruj" ></ion-searchbar>
             @if(filterToUp && !isDekstop) {
-              <ion-icon  class="m-icon-size" name="chevron-up-outline"  size="large" color="dark" (click)="modal.setCurrentBreakpoint(1); filterToUp = !filterToUp"></ion-icon>
+              <ion-icon aria-hidden="true" class="m-icon-size" name="chevron-up-outline"  size="large" color="dark" (click)="modal.setCurrentBreakpoint(1); filterToUp = !filterToUp"></ion-icon>
             } @else if (!isDekstop) {
-              <ion-icon class="m-icon-size" name="chevron-down-outline"  size="large" color="dark" (click)="modal.setCurrentBreakpoint(0.15); filterToUp = !filterToUp"></ion-icon>
+              <ion-icon aria-hidden="true" class="m-icon-size" name="chevron-down-outline"  size="large" color="dark" (click)="modal.setCurrentBreakpoint(0.15); filterToUp = !filterToUp"></ion-icon>
             }
           </div>
           <ion-card class="filter">
@@ -136,11 +136,11 @@
             <ion-card-content>
                 <ion-button *ngIf="savedFiltered < filteredPath.size" fill="outline" color="dark" class="ion-text-wrap btn-more" (click)="addFilteredRptrs() ">
                   Dodaj {{filteredPath.size - savedFiltered}} szt.
-                <ion-icon slot="start" name="save"></ion-icon>
+                <ion-icon slot="start" name="save" aria-hidden="true"></ion-icon>
                 </ion-button>   
                 <ion-button *ngIf="savedFiltered"  fill="outline" color="dark" class="ion-text-wrap btn-more" (click)="removeFilteredRptrs()">
                   Usuń {{savedFiltered}} szt.
-                  <ion-icon slot="start" name="trash-bin"></ion-icon>
+                  <ion-icon slot="start" name="trash-bin" aria-hidden="true"></ion-icon>
                 </ion-button>     
             </ion-card-content>        
           </ion-card>    

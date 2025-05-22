@@ -24,7 +24,8 @@ export class MainToolbarComponent implements OnInit,OnDestroy  {
   networkStatus$: Subscription = Subscription.EMPTY;
   savedPathCount = 0
   isNewVesrion = false;
-  isDekstop: boolean = false;
+  isDekstop = false;
+  offlineReady = false;
 
   private subSink = new SubSink();
 
@@ -50,11 +51,18 @@ export class MainToolbarComponent implements OnInit,OnDestroy  {
       this.isNewVesrion = status
       this.changeDetectorRef.markForCheck();
     }}) 
+    this.subSink.sink = this.userSaveService.getObsOfflineReady().subscribe({next:(status) => {
+      this.offlineReady = status
+      this.changeDetectorRef.markForCheck();
+    }})     
     this.subSink.sink = this.swUpdate.versionUpdates.subscribe({
       next:(versionEvent: VersionEvent) => {
         //console.log(versionEvent)    
         if(versionEvent.type === 'VERSION_READY') {
           this.userSaveService.updateIsNewVersion(true)
+          this.userSaveService.updateOfflineReady(true)
+        } else if (versionEvent.type === 'NO_NEW_VERSION_DETECTED') {
+          this.userSaveService.updateOfflineReady(true)
         }
       }
     })      

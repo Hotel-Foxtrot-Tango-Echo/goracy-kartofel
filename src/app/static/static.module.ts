@@ -18,6 +18,10 @@ const routes: Routes = [
     path: 'site-map',
     loadChildren: () => import('./site-map/site-map.module').then( m => m.SiteMapPageModule)
   },  
+  {
+    path: 'offline',
+    loadChildren: () => import('./offline/offline.module').then( m => m.OfflinePageModule)
+  },  
   {path: '**', redirectTo: ''},
 ];
 

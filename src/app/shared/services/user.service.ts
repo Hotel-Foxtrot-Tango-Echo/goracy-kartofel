@@ -12,6 +12,7 @@ export class UserSaveService {
 
   private savedCount = new BehaviorSubject<number>(0)
   private isNewVesrion = new BehaviorSubject<boolean>(false)
+  private offlineReady = new BehaviorSubject<boolean>(true)
 
   public getSavedPath(): RptrPatch[] {
     return Array.from(this.savedPath, ([key, obj]) => ({ ...obj })).sort((a,b) => (a.i > b.i) ? 1 : ((b.i > a.i) ? -1 : 0))
@@ -25,8 +26,16 @@ export class UserSaveService {
     return this.isNewVesrion.asObservable();
   }
 
+  public getObsOfflineReady(): Observable<boolean> {
+    return this.offlineReady.asObservable();
+  }
+
   public updateIsNewVersion(value: boolean) {
     this.isNewVesrion.next(value)
+  }
+
+  public updateOfflineReady(value: boolean) {
+    this.offlineReady.next(value)
   }
 
   public addPatch(rptrPatch: RptrPatch): void {
