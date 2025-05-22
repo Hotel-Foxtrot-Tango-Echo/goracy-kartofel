@@ -22,7 +22,7 @@ export class MainToolbarComponent implements OnInit,OnDestroy  {
   isOnline: boolean = true;
   networkStatus$: Subscription = Subscription.EMPTY;
   savedPathCount = 0
-  isNewVesrion = true;
+  isNewVesrion = false;
 
   private subSink = new SubSink();
 

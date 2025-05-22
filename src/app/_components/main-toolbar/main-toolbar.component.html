@@ -18,6 +18,11 @@
     <!-- <ion-spinner  *ngIf="loading" name="circular" color="secondary"></ion-spinner> -->
 
 
+    <ng-content *ngIf="isNewVesrion">
+      Nowa wersja!
+      <ion-button (click)="refreshPage()" fill="outline" size="small" color="primary"> Odśwież stronę</ion-button>       
+    </ng-content>
+
     <ng-content *ngIf="savedPathCount">
       <ion-button [routerLink]="['/export']" routerDirection="root">
         <ion-icon slot="icon-only" name="cloud-download-outline"></ion-icon>
@@ -26,10 +31,7 @@
     </ng-content>
 
   
-    <div *ngIf="isNewVesrion">
-      Nowa wersja!
-      <ion-button (click)="refreshPage()" fill="outline" size="small" color="primary"> Odśwież stronę</ion-button>       
-    </div>
+
     <ion-button [routerLink]="['/page','site-map']" routerDirection="root" >
       <ion-icon slot="icon-only" name="information-circle-outline"></ion-icon>
     </ion-button>
