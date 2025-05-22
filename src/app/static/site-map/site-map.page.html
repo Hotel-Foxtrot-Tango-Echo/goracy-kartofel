@@ -30,15 +30,25 @@
 
   <ion-grid [fixed]="true" >
     <ion-row class="ion-align-items-start">
-      <!-- <ion-col size="4"></ion-col> -->
+      <ion-col *ngIf="isNewVesrion" size="auto">
+        <ion-card  >
+          <ion-card-header>
+            <ion-card-title>Aplikacja</ion-card-title>
+            <ion-card-subtitle>wykryto nową wersję</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-button (click)="downoladLast()">Pobież nową wersję i odśwież aplikację</ion-button>
+          </ion-card-content>          
+        </ion-card>
+      </ion-col> 
       <ion-col size="auto">
         <ion-card  style="width: 220px">
           <ion-card-header>
             <ion-card-title>Baza danych z dnia</ion-card-title>
-            <ion-card-subtitle>2025-05-19</ion-card-subtitle>
+            <ion-card-subtitle>2025-05-19a</ion-card-subtitle>
           </ion-card-header>
         </ion-card>
-      </ion-col>
+      </ion-col>     
     </ion-row>
   </ion-grid>
 </ion-content>

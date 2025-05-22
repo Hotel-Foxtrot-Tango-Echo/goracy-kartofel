@@ -77,7 +77,7 @@
   <ng-template>
     <ion-content class="ion-padding">
 
-      <ion-segment>
+      <ion-segment [value]="segmentValue" (ionChange)="segmentChangeEvt($event)">
         <ion-segment-button value="filter" content-id="filter">
           <ion-icon name="map-outline"></ion-icon>
         </ion-segment-button>

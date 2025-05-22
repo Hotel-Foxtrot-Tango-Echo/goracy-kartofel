@@ -38,7 +38,7 @@ export class HomePage implements OnInit,OnDestroy {
   
   moveMarker = defaultMarkerInfo
 
-
+  segmentValue = 'filter'
 
   private lMap: MapLeaf|null = null;
   private subSink = new SubSink();
@@ -229,6 +229,7 @@ export class HomePage implements OnInit,OnDestroy {
   }  
 
   mapMoveMarker(e:LatLng) {
+    this.segmentValue = 'radio'
     this.moveMarker.a = parseFloat((e.lat).toFixed(6))
     this.moveMarker.o = parseFloat((e.lng).toFixed(6))
     this.moveMarker.l = LocatorHelper.posToLocator(e.lat,e.lng)
@@ -352,6 +353,10 @@ export class HomePage implements OnInit,OnDestroy {
 
       this.isModalOpen = true;
      }
+  }
+
+  segmentChangeEvt(event: CustomEvent) {
+    this.segmentValue = event.detail.value
   }
 
   isCountryChecked(country: string):boolean {

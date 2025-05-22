@@ -585,3 +585,4 @@
 /repeater/SR8ALA
 /repeater/SR9DCH
 /repeater/SR9ZEA
+/repeater/SR7LDX

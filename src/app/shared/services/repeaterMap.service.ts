@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FilterDataRptr } from './filter.service';
 import { HttpClient } from '@angular/common/http';
-import {  map, Observable } from 'rxjs';
+import {  delay, map, Observable } from 'rxjs';
 import {  Compressed, decompress } from 'compress-json'
 import { ApiDataBaseVersion } from './repeaterPage.service';
 import { environment } from 'src/environments/environment';
