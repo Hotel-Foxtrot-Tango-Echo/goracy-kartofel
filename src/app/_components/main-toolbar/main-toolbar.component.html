@@ -25,10 +25,11 @@
       <ion-badge class="m73-no-action" color="success">{{savedPathCount}}</ion-badge>
     </ng-content>
 
-
-    <!-- <ion-button (click)="goToNews()">
-      <ion-icon slot="icon-only" name="newspaper-outline"></ion-icon>
-    </ion-button>        -->
+  
+    <div *ngIf="isNewVesrion">
+      Nowa wersja!
+      <ion-button (click)="refreshPage()" fill="outline" size="small" color="primary"> Odśwież stronę</ion-button>       
+    </div>
     <ion-button [routerLink]="['/page','site-map']" routerDirection="root" >
       <ion-icon slot="icon-only" name="information-circle-outline"></ion-icon>
     </ion-button>

@@ -1,5 +1,6 @@
 import { isPlatformBrowser } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, Input, PLATFORM_ID } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, Input, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
+import { SwUpdate, VersionEvent } from '@angular/service-worker';
 import { Subscription, merge, of, fromEvent, map } from 'rxjs';
 import { UserSaveService } from 'src/app/shared/services/user.service';
 import { SubSink } from 'subsink';
@@ -12,23 +13,24 @@ import { SubSink } from 'subsink';
   standalone: false,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MainToolbarComponent  {
+export class MainToolbarComponent implements OnInit,OnDestroy  {
 
-  @Input() showInfo = false
+  @Input() showInfo = true
   // @Output() logoClicked = new EventEmitter<void>();
   // @Output() infoClicked = new EventEmitter<void>();
 
-  isOnline: boolean = false;
+  isOnline: boolean = true;
   networkStatus$: Subscription = Subscription.EMPTY;
   savedPathCount = 0
+  isNewVesrion = true;
 
   private subSink = new SubSink();
 
   constructor(
     private changeDetectorRef: ChangeDetectorRef,   
     private userSaveService: UserSaveService,
-        @Inject(PLATFORM_ID) private platformId: Object,
-    
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private swUpdate: SwUpdate,
   ) {}  
 
   ngOnDestroy():void {
@@ -41,6 +43,18 @@ export class MainToolbarComponent  {
       this.savedPathCount = count
       this.changeDetectorRef.markForCheck();
     }})      
+    this.subSink.sink = this.swUpdate.versionUpdates.subscribe({
+      next:(versionEvent: VersionEvent) => {
+          console.log(versionEvent)    
+          if(versionEvent.type === 'VERSION_READY') {
+            console.log('--nowa gotowa')
+            setTimeout(() => {
+              this.isNewVesrion = true
+              this.changeDetectorRef.markForCheck();    
+            },200)     
+          }
+      }
+    })      
     if (isPlatformBrowser(this.platformId)) {
       this.checkNetworkStatus();
     }
@@ -62,8 +76,7 @@ export class MainToolbarComponent  {
       });
   }  
 
-
-  goToNews() {
-    console.log('go go')
+  refreshPage() {
+    document.location.reload();
   }
 }
