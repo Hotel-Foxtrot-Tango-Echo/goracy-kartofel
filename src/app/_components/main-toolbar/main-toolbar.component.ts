@@ -1,6 +1,7 @@
 import { isPlatformBrowser } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, Input, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
 import { SwUpdate, VersionEvent } from '@angular/service-worker';
+import { Platform } from '@ionic/angular';
 import { Subscription, merge, of, fromEvent, map } from 'rxjs';
 import { UserSaveService } from 'src/app/shared/services/user.service';
 import { SubSink } from 'subsink';
@@ -23,6 +24,7 @@ export class MainToolbarComponent implements OnInit,OnDestroy  {
   networkStatus$: Subscription = Subscription.EMPTY;
   savedPathCount = 0
   isNewVesrion = false;
+  isDekstop: boolean = false;
 
   private subSink = new SubSink();
 
@@ -31,6 +33,7 @@ export class MainToolbarComponent implements OnInit,OnDestroy  {
     private userSaveService: UserSaveService,
     @Inject(PLATFORM_ID) private platformId: Object,
     private swUpdate: SwUpdate,
+    public platform: Platform
   ) {}  
 
   ngOnDestroy():void {
@@ -45,9 +48,9 @@ export class MainToolbarComponent implements OnInit,OnDestroy  {
     }})      
     this.subSink.sink = this.swUpdate.versionUpdates.subscribe({
       next:(versionEvent: VersionEvent) => {
-          console.log(versionEvent)    
+          //console.log(versionEvent)    
           if(versionEvent.type === 'VERSION_READY') {
-            console.log('--nowa gotowa')
+            //console.log('--nowa gotowa')
             setTimeout(() => {
               this.isNewVesrion = true
               this.changeDetectorRef.markForCheck();    
@@ -58,7 +61,8 @@ export class MainToolbarComponent implements OnInit,OnDestroy  {
     if (isPlatformBrowser(this.platformId)) {
       this.checkNetworkStatus();
     }
-    
+
+    this.isDekstop = this.platform.is('desktop')   
   }
 
   private checkNetworkStatus() {

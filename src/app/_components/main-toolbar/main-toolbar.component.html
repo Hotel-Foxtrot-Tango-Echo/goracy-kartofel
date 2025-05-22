@@ -3,10 +3,10 @@
     <ion-back-button ></ion-back-button>
   </ion-buttons>
 
-  <ion-title *ngIf="isOnline">
+  <ion-title *ngIf="isOnline && !isNewVesrion">
     <mapy73pl-logo class="action" [routerLink]="['/']" routerDirection="root" ></mapy73pl-logo> 
-    <span *ngIf="showInfo" >
-      - spis przemienników krótkofalarskich
+    <span *ngIf="showInfo && isDekstop" >
+      - przemienniki krótkofalarskie
     </span>
   </ion-title>   
   <ion-title *ngIf="!isOnline">
