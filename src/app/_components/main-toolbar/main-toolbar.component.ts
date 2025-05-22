@@ -45,16 +45,21 @@ export class MainToolbarComponent implements OnInit,OnDestroy  {
     this.subSink.sink = this.userSaveService.getObsSavedPathCount().subscribe({next:(count) => {
       this.savedPathCount = count
       this.changeDetectorRef.markForCheck();
-    }})      
+    }})   
+    this.subSink.sink = this.userSaveService.getObsIsNewVesrion().subscribe({next:(status) => {
+      this.isNewVesrion = status
+      this.changeDetectorRef.markForCheck();
+    }}) 
     this.subSink.sink = this.swUpdate.versionUpdates.subscribe({
       next:(versionEvent: VersionEvent) => {
           //console.log(versionEvent)    
           if(versionEvent.type === 'VERSION_READY') {
+            this.userSaveService.updateIsNewVersion(true)
             //console.log('--nowa gotowa')
-            setTimeout(() => {
-              this.isNewVesrion = true
-              this.changeDetectorRef.markForCheck();    
-            },200)     
+            // setTimeout(() => {
+            //   this.isNewVesrion = true
+            //   this.changeDetectorRef.markForCheck();    
+            // },200)     
           }
       }
     })      

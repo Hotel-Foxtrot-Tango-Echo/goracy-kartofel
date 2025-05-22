@@ -11,6 +11,7 @@ export class UserSaveService {
   private savedPath: Map<string,RptrPatch> = new Map()
 
   private savedCount = new BehaviorSubject<number>(0)
+  private isNewVesrion = new BehaviorSubject<boolean>(false)
 
   public getSavedPath(): RptrPatch[] {
     return Array.from(this.savedPath, ([key, obj]) => ({ ...obj })).sort((a,b) => (a.i > b.i) ? 1 : ((b.i > a.i) ? -1 : 0))
@@ -18,6 +19,14 @@ export class UserSaveService {
 
   public getObsSavedPathCount(): Observable<number> {
     return this.savedCount.asObservable();
+  }
+
+  public getObsIsNewVesrion(): Observable<boolean> {
+    return this.isNewVesrion.asObservable();
+  }
+
+  public updateIsNewVersion(value: boolean) {
+    this.isNewVesrion.next(value)
   }
 
   public addPatch(rptrPatch: RptrPatch): void {
