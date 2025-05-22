@@ -52,15 +52,10 @@ export class MainToolbarComponent implements OnInit,OnDestroy  {
     }}) 
     this.subSink.sink = this.swUpdate.versionUpdates.subscribe({
       next:(versionEvent: VersionEvent) => {
-          //console.log(versionEvent)    
-          if(versionEvent.type === 'VERSION_READY') {
-            this.userSaveService.updateIsNewVersion(true)
-            //console.log('--nowa gotowa')
-            // setTimeout(() => {
-            //   this.isNewVesrion = true
-            //   this.changeDetectorRef.markForCheck();    
-            // },200)     
-          }
+        //console.log(versionEvent)    
+        if(versionEvent.type === 'VERSION_READY') {
+          this.userSaveService.updateIsNewVersion(true)
+        }
       }
     })      
     if (isPlatformBrowser(this.platformId)) {
