@@ -106,7 +106,7 @@ export class RepeaterPage implements OnInit, OnDestroy{
   private loadRpt(repeaterAllData: RepeaterAllData) {
     this.repeaterData = repeaterAllData
     this.loaded = true;          
-    this.title.setTitle(this.repeaterData.i + TITLE_SEP + TITLE_BASE)
+    //this.title.setTitle(this.repeaterData.i + TITLE_SEP + TITLE_BASE)
     this.locHashs = Object.keys(this.repeaterData.h)
     this.updateMetaDescription();
     this.canShowOnMap = true;//this.repeaterMapService.issetRepeaterOnMap(name)
@@ -118,6 +118,7 @@ export class RepeaterPage implements OnInit, OnDestroy{
     //console.log(this.meta.getTag(`name='description'`))
 
     let des = ''
+    let title = ''
     const bands = Object.keys(this.repeaterData.x)
 
     let rx: {[key:string]: string} = {}
@@ -125,13 +126,19 @@ export class RepeaterPage implements OnInit, OnDestroy{
     let loc: {[key:string]: string} = {}
     let info: {[key:string]: string} = {}
 
-    des += 'Przemiennik '+bands.toString();
-    if('r' in this.repeaterData) {
-      des += ' (cross-band)'
-    }
 
+    let type = ''
     bands.forEach(band => {
       this.repeaterData.x[band].forEach(rep =>{
+        if(!type.length && rep.t.includes('e')) {
+          type = 'DMR'
+        } else if (!type.length && rep.t.includes('a')) {
+          type = 'FM'
+        } else if(!type.length && rep.t.includes('i')) {
+          type = 'FM'
+        } else if(!type.length && rep.t.includes('j')) {
+          type = 'FM'
+        }
         const r = rep?.rx?.f
         if(r){
           rx[r] = ''
@@ -147,20 +154,21 @@ export class RepeaterPage implements OnInit, OnDestroy{
       })
     })
 
-    const aRx = Object.keys(rx).map(i=>` ${i}MHz`)
-    if(aRx.length) {
-      des += '. RX:'+aRx.toString()
-    }
+    title += `${this.repeaterData.i} Przemiennik ${type} ${bands.toString()}`
+    if('r' in this.repeaterData) {
+      title += ' (cross-band)'
+    }    
 
-    const aTx = Object.keys(tx).map(i=>` ${i}MHz`)
-    if(aTx.length) {
-      des += ', TX:'+aTx.toString()
+    const owner = this.repeaterData.o
+    if(owner.length) {
+      des += `Opiekun ${owner.toString()}`
     }
-
+    
+    let AO = ''
     Object.keys(this.repeaterData.h).forEach(hash => {
       let location = '';
       if(this.repeaterData.h[hash].p.length) {
-        location += ` QTH: ${this.repeaterData.h[hash].p}`
+        location += ` ${this.repeaterData.h[hash].p}`
       }
       if(this.repeaterData.h[hash].q.length) {
         location += ` (lokator: ${this.repeaterData.h[hash].q})`
@@ -168,25 +176,43 @@ export class RepeaterPage implements OnInit, OnDestroy{
       if(location.length) {
         loc[location] = ''
       }  
+      if(this.repeaterData.h[hash].a && this.repeaterData.h[hash].o) {
+        AO = ` lokalizacja: ${this.repeaterData.h[hash].a}${this.repeaterData.h[hash].a>0?'N':'S'} ${this.repeaterData.h[hash].o}${this.repeaterData.h[hash].o>0?'E':'W'} `
+      }
 
     })
 
+    //if(AO.length) {
+      des += AO
+    //}
+
     const aLoc = Object.keys(loc)
     if(aLoc) {
-      des += '. '+aLoc.toString()
+      des += ' '+aLoc.toString()
     }
 
     const aInfo = Object.keys(info)
     if(aInfo) {
-      des += '. '+aInfo.toString()
+      des += ' '+aInfo.toString()
     }
+
+    const aRx = Object.keys(rx).map(i=>` ${parseFloat(i).toFixed(5)} MHz`)
+    if(aRx.length) {
+      des += ' RX:'+aRx.toString()
+    }
+
+    const aTx = Object.keys(tx).map(i=>` ${parseFloat(i).toFixed(5)} MHz`)
+    if(aTx.length) {
+      des += ', TX:'+aTx.toString()
+    }    
 
     des = des.replace(/ ,/g, ',').replace(/  /g, ' ').replace(/  /g, ' ').replace(/\n/g, ' ') 
     if(des.length > 160) {
       des = des.slice(0,158)+'..'
     }
-    
-
+// console.log(title)
+// console.log(des)
+    this.title.setTitle(title)
     this.meta.updateTag(
       { name: 'description', content: des},
       `name='description'`
