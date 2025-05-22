@@ -28,36 +28,25 @@ export class SiteMapPage implements OnInit,OnDestroy {
 
   ngOnInit(): void {
     this.subSink.sink = this.swUpdate.versionUpdates.subscribe({
-      next:(ev: VersionEvent) => {
-          console.log(ev)    
-          setTimeout(() => {
-            this.isNewVesrion = true
-            this.changeDetectorRef.markForCheck();    
-          },5000)     
-      },
-      error: (e) => {
-        console.log('error',e)
-      },
+      next:(versionEvent: VersionEvent) => {
+          console.log(versionEvent)    
+          if(versionEvent.type === 'VERSION_READY') {
+            setTimeout(() => {
+              this.isNewVesrion = true
+              this.changeDetectorRef.markForCheck();    
+            },200)     
+          }
+      }
     })  
     this.title.setTitle(this.siteName + TITLE_SEP + TITLE_BASE)
-
   }  
 
   ngOnDestroy():void {
     this.subSink.unsubscribe();
   }
 
-  downoladLast() {
-    console.log('1')
-    this.swUpdate.versionUpdates
-    .pipe(filter((evt): evt is VersionReadyEvent => evt.type === 'VERSION_READY'))
-    .subscribe(evt => {
-      console.log('2- done')
-      //if (promptUser(evt)) {
-        // Reload the page to update to the latest version.
-        document.location.reload();
-      // }
-    });
+  refreshPage() {
+    document.location.reload();
   }
 
 }
