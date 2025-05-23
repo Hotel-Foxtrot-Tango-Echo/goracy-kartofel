@@ -134,11 +134,11 @@ export class MapComponent implements AfterViewInit, OnInit, OnChanges {
 
     setTimeout(() => {
       window.dispatchEvent(new Event('resize')); 
-    },10)   
+    },300)   
 
     setTimeout(() => {
       this.map.fitBounds(group.getBounds(),{maxZoom:7});   
-    },200)
+    },500)
    
   }
 }
