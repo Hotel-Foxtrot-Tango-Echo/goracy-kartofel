@@ -79,12 +79,12 @@
     <ion-content class="ion-padding">
       <div *ngIf="!isDekstop" class="m-minmax">
        @if(filterToUp) {
-        <ion-button fill="outline" size="small" color="dark" class="ion-text-wrap btn-more" (click)="modal.setCurrentBreakpoint(1); filterToUp = !filterToUp">
+        <ion-button size="small" class="ion-text-wrap btn-more" (click)="modal.setCurrentBreakpoint(1); filterToUp = !filterToUp">
           ROZWIŃ
           <ion-icon slot="end" name="chevron-up-outline" aria-hidden="true"></ion-icon>
         </ion-button>  
        } @else {
-        <ion-button fill="outline" size="small" color="dark" class="ion-text-wrap btn-more"  (click)="modal.setCurrentBreakpoint(0.2); filterToUp = !filterToUp">
+        <ion-button size="small" class="ion-text-wrap btn-more"  (click)="modal.setCurrentBreakpoint(0.2); filterToUp = !filterToUp">
           ZWIŃ
           <ion-icon slot="end" name="chevron-down-outline" aria-hidden="true"></ion-icon>
         </ion-button>
@@ -92,12 +92,12 @@
       </div>
       <div *ngIf="isDekstop" class="m-minmax">
         @if(filterToUp) {
-         <ion-button fill="outline" size="small" color="dark" class="ion-text-wrap btn-more" (click)="modal.setCurrentBreakpoint(0.96); filterToUp = !filterToUp">
+         <ion-button size="small" class="ion-text-wrap btn-more" (click)="modal.setCurrentBreakpoint(0.96); filterToUp = !filterToUp">
            ROZWIŃ
            <ion-icon slot="end" name="chevron-up-outline" aria-hidden="true"></ion-icon>
          </ion-button>  
         } @else {
-         <ion-button fill="outline" size="small" color="dark" class="ion-text-wrap btn-more"  (click)="modal.setCurrentBreakpoint(0.1); filterToUp = !filterToUp">
+         <ion-button size="small" class="ion-text-wrap btn-more"  (click)="modal.setCurrentBreakpoint(0.1); filterToUp = !filterToUp">
            ZWIŃ
            <ion-icon slot="end" name="chevron-down-outline" aria-hidden="true"></ion-icon>
          </ion-button>

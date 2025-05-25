@@ -3,10 +3,10 @@
   <ion-col  class="m73-link" (click)="nameClicked.emit()">{{exportList.i}}</ion-col>
   <ion-col size="auto">
     <ion-button *ngIf="exportList.a" (click)="mapClicked.emit()" aria-label="Pokaz na mapie">
-      <ion-icon slot="icon-only"   name="earth-outline" aria-hidden="true"></ion-icon>
+      <ion-icon slot="icon-only"   name="map-outline" aria-hidden="true"></ion-icon>
     </ion-button>
     <ion-button *ngIf="!exportList.a" [disabled]="true" aria-label="Brak lokalizacji">
-      <ion-icon slot="icon-only"   name="earth-outline" aria-hidden="true"></ion-icon>
+      <ion-icon slot="icon-only"   name="map-outline" aria-hidden="true"></ion-icon>
     </ion-button>    
   </ion-col>  
   <ion-col >{{exportList.p}}</ion-col>
