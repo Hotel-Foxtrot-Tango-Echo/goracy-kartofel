@@ -151,14 +151,14 @@ function createMarker(repeatersMap: RepeatersMap, isDekstop: boolean) {
     lng: repeatersMap.o,
   });
 
-  //los
-  if(repeatersMap.a === 51.041297 && repeatersMap.o === 18.666708) {
+  //burzenin
+  if(repeatersMap.a === 51.47064 && repeatersMap.o === 18.85148) {
     if(isDekstop) {
-      leafletMarker.bindTooltip('<strong>Ogólnopolskie Spotkanie Krótkofalowców ŁOŚ</strong>')
+      leafletMarker.bindTooltip('<strong>Zjazd Techniczny Krótkofalowców 2025</strong>')
     }
     leafletMarker.setIcon(
       icon({ //0-none
-          iconUrl: `/assets/map/los.png`,
+          iconUrl: `/assets/map/burzenin.png`,
           iconSize: [26, 39],
           iconAnchor: [13, 39],
           popupAnchor: [23, -20],
@@ -166,7 +166,7 @@ function createMarker(repeatersMap: RepeatersMap, isDekstop: boolean) {
         })
     ); 
     const today:Date = new Date(new Date().toISOString().slice(0,10))
-    const event:Date = new Date('2025-05-23')
+    const event:Date = new Date('2025-09-12')
     const dateDiff = ((event.valueOf()-today.valueOf()) / (1000 * 60 * 60 * 24))
     let tekst = 'właśnie trwa!'
     if(dateDiff > 1 ) {
@@ -174,7 +174,7 @@ function createMarker(repeatersMap: RepeatersMap, isDekstop: boolean) {
     } else if (dateDiff === 1 ) {
       tekst = `już jutro!`
     }
-    leafletMarker.bindPopup(`<div><strong>ŁOŚ</strong> ${tekst} <a target="_blank" href="https://www.youtube.com/watch?v=C-XFPzW5rTA">film promocyjny</a></div>`)
+    leafletMarker.bindPopup(`<div><strong>Burzenin</strong> ${tekst} <a target="_blank" href="https://zjazdtechniczny.pl/najwazniejsze">FAQ</a></div>`)
 
     return leafletMarker;       
   }

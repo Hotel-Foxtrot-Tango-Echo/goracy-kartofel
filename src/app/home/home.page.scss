@@ -17,8 +17,13 @@
   display: flex;
 }
 
-.m-icon-size {
-  margin: 20px 9px;
+// .m-icon-size {
+//   margin: 20px 9px;
+// }
+
+.m-minmax {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .rep-loading {

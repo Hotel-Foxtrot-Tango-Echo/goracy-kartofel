@@ -241,21 +241,21 @@ export class HomePage implements OnInit,OnDestroy {
     this.repeatersFiltered  = this.repeaterMapService.getRepeaterByFilterData(this.filterDataRptr)
     if(this.isFirstLoad) {
       const today:Date = new Date(new Date().toISOString().slice(0,10))
-      const event:Date = new Date('2025-05-23')
+      const event:Date = new Date('2025-09-12')
       const dateDiff = ((event.valueOf()-today.valueOf()) / (1000 * 60 * 60 * 24))
       if(dateDiff > -3) {
         this.repeatersFiltered.push({
-          a: 51.041297, 
-          o: 18.666708,
+          a: 51.47064, 
+          o: 18.85148,
           x: [{
             i: 'ŁOŚ',
             c:'pl',
             s: '4',
             t: 'e',
-            b: "los",
+            b: "burzenin",
             k: 0,
             x: 0,
-            h: "51059096371",
+            h: "51489049148",
             r: -1,
             o: ""
           }]
