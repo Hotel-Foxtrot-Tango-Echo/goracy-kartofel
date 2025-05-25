@@ -8,11 +8,11 @@ export class RepeaterTypeHelper {
     //{id: RepeaterType.ATV, name:'ATV'}, // do wyciecia - nie uzywane
     {id: RepeaterType.ECHOLINK, name:'Echolink'},
     {id: RepeaterType.DMR, name:'DMR'},
-    {id: RepeaterType.APCO_25, name:'APCO-25'},
+    //{id: RepeaterType.APCO_25, name:'APCO-25'}, //do wyciecia tylk 2 przemieniki
     {id: RepeaterType.C4FM_FUSION, name:'C4FM/Fusion'},
     {id: RepeaterType.FM_LINK, name:'FM-Link'},
     {id: RepeaterType.FM_POLAND, name:'FM-Poland'},
-    {id: RepeaterType.TETRA, name:'Tetra'},
+    //{id: RepeaterType.TETRA, name:'Tetra'}, // trza sie temu bardziej przyjzec
     {id: RepeaterType.UNKNOWN, name:'Nieznany'},
 
     

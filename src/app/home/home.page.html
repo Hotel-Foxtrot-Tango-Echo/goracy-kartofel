@@ -42,11 +42,11 @@
         <ion-button (click)="goToRepeaterInfo()" class="ion-text-wrap btn-more">Wiecej informacji</ion-button>
 
 
-        <ion-button *ngIf="!isSavedLastUsedRptrPatch" fill="outline" color="dark" class="ion-text-wrap btn-more" (click)="addLastUsedRptrPatch()">
+        <ion-button *ngIf="!isSavedLastUsedRptrPatch" fill="outline"   class="ion-text-wrap btn-more" (click)="addLastUsedRptrPatch()">
           Dodaj do exportu
           <ion-icon slot="start" name="save" aria-hidden="true"></ion-icon>
         </ion-button>
-        <ion-button *ngIf="isSavedLastUsedRptrPatch" fill="outline" color="dark" class="ion-text-wrap btn-more" (click)="removeLastUsedRptrPatch()">
+        <ion-button *ngIf="isSavedLastUsedRptrPatch" fill="outline"   class="ion-text-wrap btn-more" (click)="removeLastUsedRptrPatch()">
           Usuń z exportu
           <ion-icon slot="start" name="trash-bin" aria-hidden="true"></ion-icon>
         </ion-button>      
@@ -67,8 +67,8 @@
   <ion-modal id="filter-data-modal"
   #modal
   [isOpen]="isFilterOpen"
-  [initialBreakpoint]="isDekstop ? 0.88  : 0.25"
-  [breakpoints]="isDekstop ? [0.1, 0.5, 0.88, 0.96] : [0.2,1]"
+  [initialBreakpoint]="0.25"
+  [breakpoints]="isDekstop ? [0.2, 0.5, 0.8, 0.96] : [0.2,0.8]"
   [backdropDismiss]="false"
   [backdropBreakpoint]="1"
   [expandToScroll]="false"
@@ -77,9 +77,9 @@
 >
   <ng-template>
     <ion-content class="ion-padding">
-      <div *ngIf="!isDekstop" class="m-minmax">
+      <div class="m-minmax">
        @if(filterToUp) {
-        <ion-button size="small" class="ion-text-wrap btn-more" (click)="modal.setCurrentBreakpoint(1); filterToUp = !filterToUp">
+        <ion-button size="small" class="ion-text-wrap btn-more" (click)="modal.setCurrentBreakpoint(0.8); filterToUp = !filterToUp">
           ROZWIŃ
           <ion-icon slot="end" name="chevron-up-outline" aria-hidden="true"></ion-icon>
         </ion-button>  
@@ -90,7 +90,7 @@
         </ion-button>
        }
       </div>
-      <div *ngIf="isDekstop" class="m-minmax">
+      <!-- <div *ngIf="isDekstop" class="m-minmax">
         @if(filterToUp) {
          <ion-button size="small" class="ion-text-wrap btn-more" (click)="modal.setCurrentBreakpoint(0.96); filterToUp = !filterToUp">
            ROZWIŃ
@@ -102,77 +102,74 @@
            <ion-icon slot="end" name="chevron-down-outline" aria-hidden="true"></ion-icon>
          </ion-button>
         }
-       </div>      
+       </div>       -->
       <!-- @if(filterToUp && !isDekstop) {
-        <ion-icon aria-hidden="true" class="m-icon-size" name="chevron-up-outline"  size="large" color="dark" (click)="modal.setCurrentBreakpoint(1); filterToUp = !filterToUp"></ion-icon>
+        <ion-icon aria-hidden="true" class="m-icon-size" name="chevron-up-outline"  size="large"   (click)="modal.setCurrentBreakpoint(1); filterToUp = !filterToUp"></ion-icon>
       } @else if (!isDekstop) {
-        <ion-icon aria-hidden="true" class="m-icon-size" name="chevron-down-outline"  size="large" color="dark" (click)="modal.setCurrentBreakpoint(0.2); filterToUp = !filterToUp"></ion-icon>
+        <ion-icon aria-hidden="true" class="m-icon-size" name="chevron-down-outline"  size="large"   (click)="modal.setCurrentBreakpoint(0.2); filterToUp = !filterToUp"></ion-icon>
       } -->
-      <ion-segment [value]="segmentValue" (ionChange)="segmentChangeEvt($event)">
+      <ion-segment [scrollable]="true" [value]="segmentValue" (ionChange)="segmentChangeEvt($event)">
         <ion-segment-button value="filter" content-id="filter" aria-hidden="Filtry">
-          <ion-icon name="map-outline" aria-hidden="true"></ion-icon>
+          <ion-icon name="filter-outline" aria-hidden="true"></ion-icon>
         </ion-segment-button>
+        <ion-segment-button value="country" content-id="country" aria-hidden="Kraje">
+          <ion-icon name="earth-outline" aria-hidden="true"></ion-icon>
+        </ion-segment-button>        
         <ion-segment-button value="radio" content-id="radio" aria-hidden="QTH">
           <ion-icon name="walk-outline" aria-hidden="true"></ion-icon>
         </ion-segment-button>
+        <ion-segment-button value="export" content-id="export" aria-hidden="Export">
+          <ion-icon name="cloud-download-outline" aria-hidden="true"></ion-icon>
+        </ion-segment-button>        
       </ion-segment>
       <ion-segment-view>
         <ion-segment-content id="filter">
           <div class="m-search">
-            <ion-searchbar animated="true" [value]="filterDataRptr.text" [debounce]="500" [minlength]="2" [maxlength]="11" (ionInput)="filterDataChangeName($event)" placeholder="Filtruj" ></ion-searchbar>
-
+            <!-- <ion-searchbar animated="true" showClearButton="false" [value]="filterDataRptr.text" [debounce]="500" [minlength]="2" [maxlength]="11" (ionInput)="filterDataChangeName($event)" placeholder="Filtruj" ></ion-searchbar> -->
+            <ion-input class="l-input" label="Nazwa" label-placement="floating" fill="outline" 
+            [value]="filterDataRptr.text" [debounce]="500" [minlength]="2" [maxlength]="11" (ionInput)="filterDataChangeName($event)"
+            
+          ></ion-input>
           </div>
           <ion-card class="filter">
-              <div class="f-col1">
-                @for (country of getCountries(); track country) {
-                  <div class="box">
-                    <ion-checkbox [checked]="isCountryChecked(country.id)" labelPlacement="end" [disabled]="loading"  alignment="start" (ionChange)="filterDataChangeCountry(country.id)"><span [class]="'fi fi-'+country.id"></span>&nbsp;{{country.name}}</ion-checkbox>
-                  </div>
-                }
-              </div>
+
               <div>
-                <div [class]="'box box-c box-c-param'">Status</div>
-                @for (status of getStatus(); track status) {
-                  <div [class]="'box box-c box-c-s-'+status.id">
-                    <ion-checkbox [checked]="isStatusChecked(status.id)" [disabled]="loading"  labelPlacement="end" (ionChange)="filterDataChangeStatus(status.id)">{{status.name}}</ion-checkbox>
+                <div [class]="'box box-c box-c-param'">Typ</div>
+                @for (type of getTypes(); track type) {
+                  <div [class]="'box box-c box-c-t-'+type.id">
+                    <ion-checkbox [checked]="isTypeChecked(type.id)" [disabled]="loading"  labelPlacement="end" (ionChange)="filterDataChangeType(type.id)">{{type.name}}</ion-checkbox>
                   </div>
-                }
+                }                   
                 <div [class]="'box box-c box-c-param'">Pasmo</div>
                 @for (band of getBands(); track band) {
                   <div [class]="'box box-c box-c-b-'+band.id">
                     <ion-checkbox [checked]="isBandChecked(band.id)" [disabled]="loading"  labelPlacement="end" (ionChange)="filterDataChangeBand(band.id)">{{band.name}}</ion-checkbox>
                   </div>
                 }               
-                <div [class]="'box box-c box-c-param'">Typ</div>
-                @for (type of getTypes(); track type) {
-                  <div [class]="'box box-c box-c-t-'+type.id">
-                    <ion-checkbox [checked]="isTypeChecked(type.id)" [disabled]="loading"  labelPlacement="end" (ionChange)="filterDataChangeType(type.id)">{{type.name}}</ion-checkbox>
+                <div [class]="'box box-c box-c-param'">Status</div>
+                @for (status of getStatus(); track status) {
+                  <div [class]="'box box-c box-c-s-'+status.id">
+                    <ion-checkbox [checked]="isStatusChecked(status.id)" [disabled]="loading"  labelPlacement="end" (ionChange)="filterDataChangeStatus(status.id)">{{status.name}}</ion-checkbox>
                   </div>
-                }            
+                }
+         
             </div>
 
           </ion-card>
-          <ion-card>
-            <ion-card-header>
-              <ion-card-subtitle>Znaleziono przemienników:</ion-card-subtitle>
-              <ion-card-title>
-                {{repeatersAllCount}}
-              </ion-card-title>
-              <ion-card-subtitle *ngIf="repeatersMapCount">(w tym {{repeatersMapCount}} na mapie)</ion-card-subtitle>
-            </ion-card-header>
-            <ion-card-content>
-                <ion-button *ngIf="savedFiltered < filteredPath.size" fill="outline" color="dark" class="ion-text-wrap btn-more" (click)="addFilteredRptrs() ">
-                  Dodaj {{filteredPath.size - savedFiltered}} szt.
-                <ion-icon slot="start" name="save" aria-hidden="true"></ion-icon>
-                </ion-button>   
-                <ion-button *ngIf="savedFiltered"  fill="outline" color="dark" class="ion-text-wrap btn-more" (click)="removeFilteredRptrs()">
-                  Usuń {{savedFiltered}} szt.
-                  <ion-icon slot="start" name="trash-bin" aria-hidden="true"></ion-icon>
-                </ion-button>     
-            </ion-card-content>        
-          </ion-card>    
+  
 
         </ion-segment-content>
+        <ion-segment-content id="country">
+          <ion-card class="filter">
+            <div class="f-col1">
+              @for (country of getCountries(); track country) {
+                <div class="box">
+                  <ion-checkbox [checked]="isCountryChecked(country.id)" labelPlacement="end" [disabled]="loading"  alignment="start" (ionChange)="filterDataChangeCountry(country.id)"><span [class]="'fi fi-'+country.id"></span>&nbsp;{{country.name}}</ion-checkbox>
+                </div>
+              }
+            </div>
+          </ion-card>
+        </ion-segment-content>  
         <ion-segment-content id="radio">
           <ion-input class="l-input" label="latitude" label-placement="floating" fill="outline" 
             [value]="moveMarker.a" [maxlength]="11" (ionFocus)="dataFromUser=true" (ionBlur)="dataFromUser=false"
@@ -186,7 +183,35 @@
             [value]="moveMarker.l" [maxlength]="6" (ionFocus)="dataFromUser=true" (ionBlur)="dataFromUser=false"
             (ionInput)="inputLocator($event)"
           ></ion-input>          
-        </ion-segment-content>        
+        </ion-segment-content>  
+        <ion-segment-content id="export">
+          <!-- <ion-card>
+            <ion-card-header>
+              <ion-card-subtitle>Znaleziono przemienników:</ion-card-subtitle>
+              <ion-card-title>
+                {{repeatersAllCount}}
+              </ion-card-title>
+              <ion-card-subtitle *ngIf="repeatersMapCount">(w tym {{repeatersMapCount}} na mapie)</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+                
+            </ion-card-content>        
+          </ion-card>    -->
+          <h2>Znaleziono <strong>{{repeatersAllCount}} szt.</strong></h2>
+          <p *ngIf="repeatersMapCount">(w tym {{repeatersMapCount}} na mapie)</p>
+          <ion-button *ngIf="savedFiltered < filteredPath.size" fill="outline"   class="ion-text-wrap btn-more" (click)="addFilteredRptrs() ">
+            Dodaj {{filteredPath.size - savedFiltered}} szt.
+          <ion-icon slot="start" name="save" aria-hidden="true"></ion-icon>
+          </ion-button>   
+          <ion-button *ngIf="savedFiltered"  fill="outline"   class="ion-text-wrap btn-more" (click)="removeFilteredRptrs()">
+            Usuń {{savedFiltered}} szt.
+            <ion-icon slot="start" name="trash-bin" aria-hidden="true"></ion-icon>
+          </ion-button>     
+          <ion-button *ngIf="savedFiltered"   [routerLink]="['/export']" routerDirection="root" class="ion-text-wrap btn-more">
+            Export
+            <ion-icon slot="start" name="cloud-download-outline" aria-hidden="true"></ion-icon>
+          </ion-button>         
+        </ion-segment-content>                  
       </ion-segment-view>
 
 

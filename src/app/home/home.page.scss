@@ -6,7 +6,7 @@
 
 .filter {
   display: flex;
-  padding: 15px;
+  padding: 0px;
 }
 
 .f-col1 {
@@ -40,13 +40,13 @@
 
 ion-modal#filter-data-modal{
   --width: fit-content;
-  left: calc(-100vw + 290px);
-  --min-width: 290px;
+  left: calc(-100vw + 170px);
+  --min-width: 170px;
   --border-radius: 6px;
   --box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
   @media screen and (max-width: 500px) {
-    left: calc(-100vw + 250px);
-    --min-width: 250px;
+    left: calc(-100vw + 130px);
+    --min-width: 130px;
 
     & ion-card,ion-searchbar {
       padding: 0;
