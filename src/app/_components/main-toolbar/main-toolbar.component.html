@@ -1,7 +1,7 @@
-<ion-toolbar [color]="isOnline ? 'light' : 'danger'">
+<ion-toolbar [color]="isOnline ? 'primary' : 'danger'">
   <ion-buttons [collapse]="true" slot="start">
     <ion-back-button ></ion-back-button>
-    <ion-button *ngIf="offlineReady && isOnline" [routerLink]="['/page','offline']" color="primary" routerDirection="root" aria-label="Tryb offline aktywny">
+    <ion-button *ngIf="offlineReady && isOnline" [routerLink]="['/page','offline']"  routerDirection="root" aria-label="Tryb offline aktywny">
       <ion-icon slot="icon-only" name="radio-outline" aria-hidden="true" ></ion-icon>
     </ion-button> 
   </ion-buttons>
@@ -11,16 +11,18 @@
     <span *ngIf="showInfo && isDekstop" >
       @if (repCount > 1 ) {
         i <strong>{{repCount}}</strong> przemienniki krótkofalarskie
-      } 
-      @if (repCount === 1 ) {
-        i przemiennik krótkofalarski
       } @else {
-        i przemienniki krótkofalarskie
+        @if (repCount === 1 ) {
+          i przemiennik krótkofalarski
+        } @else {
+          i przemienniki krótkofalarskie
+        }
       }
+
     </span>
   </ion-title>   
   <ion-title *ngIf="!isOnline">
-    <span class="action" [routerLink]="['/']" routerDirection="root">Offline Mapy73</span>
+    <span class="action" [routerLink]="['/']" routerDirection="root">Offline Mapy73pl</span>
   </ion-title>   
 
 
@@ -30,7 +32,7 @@
 
     <ng-content *ngIf="isNewVesrion">
       Nowa wersja!
-      <ion-button (click)="refreshPage()" fill="outline" size="small" color="primary"> Odśwież stronę</ion-button>       
+      <ion-button (click)="refreshPage()" fill="outline" size="small" color="light"> Odśwież stronę</ion-button>       
     </ng-content>
 
     <ng-content *ngIf="savedPathCount">
