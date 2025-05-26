@@ -19,7 +19,7 @@ import { SubSink } from 'subsink';
 export class RepeaterPage implements OnInit, OnDestroy{
   public repeaterData = defalutRepeaterAllData
   public locHashs: string[] = []
-  public canShowOnMap = false;
+  public canShowOnMap = true;
 
   public loaded = false;
 
@@ -109,7 +109,7 @@ export class RepeaterPage implements OnInit, OnDestroy{
     //this.title.setTitle(this.repeaterData.i + TITLE_SEP + TITLE_BASE)
     this.locHashs = Object.keys(this.repeaterData.h)
     this.updateMetaDescription();
-    this.canShowOnMap = true;//this.repeaterMapService.issetRepeaterOnMap(name)
+   //this.canShowOnMap = true;//this.repeaterMapService.issetRepeaterOnMap(name)
 
     this.changeDetectorRef.markForCheck();
   }

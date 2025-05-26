@@ -46,7 +46,7 @@ export class NewsPage implements OnInit {
 
   private updateMetaDescription() {
     //console.log(this.meta.getTag(`name='description'`))
-    let des = 'Po 15 latach działania strona przemienniki net została zaorana i zakopana głęboko pod ziemią. Strasznie mi szkoda pracy jej autorów, lecz rozumiem kwestie życia prywatnego. Osobiście coś niecoś umiem programować, więc postanowiłem nie dopuścić do utraty tych danych, z których sam często kożystałem.'
+    let des = 'Export przemienników do OpenGD77 z dodaniem do stref (dla Polski rozróznienie na okregi SR1,SR2,..,SR9) typy: DMR i FM (dla przemiennikow fmLink i fmPoland do..'
 
     this.meta.updateTag(
       { name: 'description', content: des },

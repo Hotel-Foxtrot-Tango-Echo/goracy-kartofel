@@ -106,3 +106,33 @@ ion-checkbox::part(container) {
 :root {
   --ion-color-secondary: #6cc1ff;
 }
+
+ion-checkbox {
+  --checkbox-background-checked: var(--ion-color-secondary);
+}
+
+ion-checkbox::part(container) {
+  border: 1px solid var(--ion-color-secondary);
+}
+
+ion-button[ion-fab] {
+  overflow: visible;
+  position: relative;
+  right: 160px;
+  width: 200px;
+  // ion-label {
+  //     position: absolute;
+  //     top: 0;
+  //     right: 40px;
+
+  //     color: white;
+  //     background-color: rgba(0,0,0,0.7);
+  //     line-height: 24px;
+  //     padding: 4px 8px;
+  //     border-radius: 4px;
+      
+  // }
+
+   
+  contain: layout;
+}

@@ -123,7 +123,7 @@ export class HomePage implements OnInit,OnDestroy {
     
     setTimeout(() => {
       this.repeatersPageService.loadAllRepeatersDataIfNotExist().subscribe()  
-    },5000)         
+    },2000)         
     
     this.isDekstop = this.platform.is('desktop')
 
@@ -131,11 +131,11 @@ export class HomePage implements OnInit,OnDestroy {
 
 
   // ngAfterViewInit(): void {
-  //   if(this.isFirstLoad && document.hidden === false){
-  //     console.log('aftef wiev')
-  //     this.updateRepeaterData()
-  //     this.isFirstLoad = false
-  //   }
+  //   // if(this.isFirstLoad && document.hidden === false){
+  //   //   console.log('aftef wiev')
+  //   //   this.updateRepeaterData()
+  //   //   this.isFirstLoad = false
+  //   // }
   // }
 
   ionViewWillEnter() {
@@ -143,6 +143,9 @@ export class HomePage implements OnInit,OnDestroy {
     this.isFilterOpen = true;
     this.updateMetaDescription();
     this.changeDetectorRef.markForCheck();
+    setTimeout(() => {
+      window.dispatchEvent(new Event('resize')); 
+    },300)   
   }
 
   addLastUsedRptrPatch() {
