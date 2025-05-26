@@ -16,7 +16,8 @@ import { SubSink } from 'subsink';
 })
 export class MainToolbarComponent implements OnInit,OnDestroy  {
 
-  @Input() showInfo = true
+  @Input() showInfo = false
+  @Input() repCount = 0
   // @Output() logoClicked = new EventEmitter<void>();
   // @Output() infoClicked = new EventEmitter<void>();
 
@@ -26,6 +27,7 @@ export class MainToolbarComponent implements OnInit,OnDestroy  {
   isNewVesrion = false;
   isDekstop = false;
   offlineReady = false;
+
 
   private subSink = new SubSink();
 

@@ -19,10 +19,16 @@ export class DataService {
       read: true
     },
     {
+      subject: 'Lepsza wersja mobile',
+      detalis: 'Z ukłonem dla posiadaczy telefonów komórkowych, przystosowano wygląd strony dla użądzeń z mniejszym ekranem. Opcje exportu przemienników do zewnetrznych programów przeniesono w prawy dolny róg ekranu (trzeba kliknąc takie kułeczko by dodać/usunąć hurtowo wyfiltrowane pzemienniki)',
+      date: '2025-05-26',
+      read: false
+    },          
+    {
       subject: 'QTH Lokator',
       detalis: 'Na mapie dodano ikone ludka zmierzającego do radia, można go przesuwać wówczas w drugiej zakładce filtrów (też z ikonka ludka) będzie pokazywać się jego pozycja GPS oraz obliczany QTH lokator. Pozycje GPS jak i lokator można też wpsiać z palca w filtrze wówczas ludek się przesunie i pokaże dane miejsce (jeśli byśmy chieli się dowiedzieć gdzie jest jest nasz radiowy lokator)',
       date: '2025-05-16',
-      read: false
+      read: true
     },       
     {
       subject: 'Export do OpenGD77',
