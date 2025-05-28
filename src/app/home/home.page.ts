@@ -107,25 +107,19 @@ export class HomePage implements OnInit,OnDestroy {
       this.isSavedLastUsedRptrPatch = this.userSaveService.isExist(this.lastUsedRptrPatch)
     }})   
   
-    // this.subSink.sink = this.repeaterMapService.serverTest().subscribe({
-    //   next:() => {
-    //       this.testPassed = true
-    //       if(this.isFirstLoad && document.hidden === false){
-    //         this.updateRepeaterData()
-    //         this.isFirstLoad = false
-    //       }        
-    //   },
-    //   error: (e) => {
-    //     console.log('error',e)
-    //   },
-    // })  
+    this.subSink.sink = this.repeaterMapService.serverTest().subscribe({
+      next:() => {
+          this.testPassed = true
+          if(this.isFirstLoad && document.hidden === false){
+            this.updateRepeaterData()
+            this.isFirstLoad = false
+          }        
+      },
+      error: (e) => {
+        console.log('error',e)
+      },
+    })  
 
-
-
-
-    setTimeout(() => {
-      this.repeaterMapService.serverTest().subscribe()  
-    },2000) 
     setTimeout(() => {
       this.repeatersPageService.loadAllRepeatersDataIfNotExist().subscribe()  
     },3000)         
@@ -145,15 +139,7 @@ export class HomePage implements OnInit,OnDestroy {
 
   ionViewWillEnter() {
     this.title.setTitle('Przemienniki krótkofalarskie ' + TITLE_SEP + TITLE_BASE)
-    this.isFilterOpen = true;
-
-
-    //test na wartosci google
-    this.isFirstLoad = false
-    this.testPassed = true
-    this.initPlRepeaterData()
-
-    
+    this.isFilterOpen = true;   
 
     this.updateMetaDescription();
     this.changeDetectorRef.markForCheck();
@@ -170,6 +156,16 @@ export class HomePage implements OnInit,OnDestroy {
   removeLastUsedRptrPatch() {
     this.userSaveService.removePatch(this.lastUsedRptrPatch)
     this.savedFiltered = this.userSaveService.getCountOfSaved(this.filteredPath)
+  }
+
+  addFilteredRptrsAndGoToExport() { 
+    this.userSaveService.addPatchs(this.filteredPath)
+    this.savedFiltered = this.userSaveService.getCountOfSaved(this.filteredPath)
+    this.isFilterOpen = false;
+    this.changeDetectorRef.markForCheck();    
+    setTimeout(() => {
+      this.route.navigate(['export']);
+    },200)       
   }
 
   addFilteredRptrs() { 
@@ -252,11 +248,15 @@ export class HomePage implements OnInit,OnDestroy {
     this.moveMarker.l = LocatorHelper.posToLocator(e.lat,e.lng)
   }
 
-  private initPlRepeaterData() {
-    //console.log('init-pl-data')
+  refreshPage() {
+    location.reload();
+  }
+
+  updateRepeaterData() {
     this.loading = true;
 
-    this.repeatersFiltered  = this.repeaterMapService.getRepeaterInitPlByFilterData(this.filterDataRptr)
+    this.repeatersFiltered  = this.repeaterMapService.getRepeaterByFilterData(this.filterDataRptr)
+    if(this.isFirstLoad) {
       const today:Date = new Date(new Date().toISOString().slice(0,10))
       const event:Date = new Date('2025-09-12')
       const dateDiff = ((event.valueOf()-today.valueOf()) / (1000 * 60 * 60 * 24))
@@ -265,7 +265,7 @@ export class HomePage implements OnInit,OnDestroy {
           a: 51.47064, 
           o: 18.85148,
           x: [{
-            i: 'ŁOŚ',
+            i: 'ZTK',
             c:'pl',
             s: '4',
             t: 'e',
@@ -277,66 +277,9 @@ export class HomePage implements OnInit,OnDestroy {
             o: ""
           }]
         })
-      
+      }
 
     }    
-    const repeatersMap = this.repeatersFiltered.filter(rptr => rptr.a !== 0)
-    this.repeatersAllCount = this.repeatersFiltered.map(o => o.x.length).reduce((a, b) => a + b, 0)
-    this.repeatersMapCount = repeatersMap.map(o => o.x.length).reduce((a, b) => a + b, 0)
-    this.mapComponent.updateMarkers(repeatersMap);
-
-    this.filteredPath = new Map()
-    this.repeatersFiltered.forEach(hashRptr => {
-      hashRptr.x.forEach(rptr => {
-        const rptrPatch: RptrPatch = {
-          i: rptr.i,
-          b: rptr.b,
-          k: rptr.k,
-          r: rptr.r
-        }
-        this.filteredPath.set(JSON.stringify(rptrPatch),rptrPatch)
-      })
-    })
-
-    this.savedFiltered = this.userSaveService.getCountOfSaved(this.filteredPath)
-
-
-
-    setTimeout(() => {
-      this.loading = false;
-      this.changeDetectorRef.markForCheck();
-    },0)
-  }
-
-  updateRepeaterData() {
-    console.log('u-data')
-    this.loading = true;
-
-    this.repeatersFiltered  = this.repeaterMapService.getRepeaterByFilterData(this.filterDataRptr)
-    // if(this.isFirstLoad) {
-    //   const today:Date = new Date(new Date().toISOString().slice(0,10))
-    //   const event:Date = new Date('2025-09-12')
-    //   const dateDiff = ((event.valueOf()-today.valueOf()) / (1000 * 60 * 60 * 24))
-    //   if(dateDiff > -3) {
-    //     this.repeatersFiltered.push({
-    //       a: 51.47064, 
-    //       o: 18.85148,
-    //       x: [{
-    //         i: 'ŁOŚ',
-    //         c:'pl',
-    //         s: '4',
-    //         t: 'e',
-    //         b: "burzenin",
-    //         k: 0,
-    //         x: 0,
-    //         h: "51489049148",
-    //         r: -1,
-    //         o: ""
-    //       }]
-    //     })
-    //   }
-
-    // }    
     const repeatersMap = this.repeatersFiltered.filter(rptr => rptr.a !== 0)
     this.repeatersAllCount = this.repeatersFiltered.map(o => o.x.length).reduce((a, b) => a + b, 0)
     this.repeatersMapCount = repeatersMap.map(o => o.x.length).reduce((a, b) => a + b, 0)

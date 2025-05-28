@@ -1,7 +1,7 @@
 <ion-toolbar [color]="isOnline ? 'primary' : 'danger'">
   <ion-buttons [collapse]="true" slot="start">
     <ion-back-button ></ion-back-button>
-    <ion-button *ngIf="offlineReady && isOnline" [routerLink]="['/page','offline']"  routerDirection="root" aria-label="Tryb offline aktywny">
+    <ion-button *ngIf="showInfo && offlineReady && isOnline" [routerLink]="['/page','offline']"  routerDirection="root" aria-label="Tryb offline aktywny">
       <ion-icon slot="icon-only" name="radio-outline" aria-hidden="true" ></ion-icon>
     </ion-button> 
   </ion-buttons>

@@ -164,9 +164,11 @@
                 }
          
             </div>
-
+            <ion-button [disabled]="!filteredPath.size" color="primary" (click)="addFilteredRptrsAndGoToExport()" >
+              Exportuj znalezione
+            </ion-button>
           </div>
-  
+
 
         </ion-segment-content>
         <ion-segment-content id="country">
@@ -233,7 +235,10 @@
         <ion-icon slot="start" name="trash-bin" aria-hidden="true"></ion-icon>
         Usuń {{savedFiltered}} szt.
       </ion-button>            
-
+      <ion-button  color="warning"  (click)="refreshPage()" routerDirection="root"  ion-fab >
+        <ion-icon slot="start" name="refresh-outline" aria-hidden="true"></ion-icon>
+        Zacznij od nowa
+      </ion-button> 
     </ion-fab-list>
   </ion-fab>
 </ion-content>

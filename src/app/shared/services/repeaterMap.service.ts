@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { FilterDataRptr } from './filter.service';
 import { HttpClient } from '@angular/common/http';
-import {  delay, map, Observable } from 'rxjs';
+import {  map, Observable } from 'rxjs';
 import {  Compressed, decompress } from 'compress-json'
 import { ApiDataBaseVersion } from './repeaterPage.service';
 import { environment } from 'src/environments/environment';
-import { pldata } from './pldata';
 
 
 @Injectable({
@@ -48,86 +47,6 @@ export class RepeaterMapService {
     }
  
   }  
-
-  public getRepeaterInitPlByFilterData(filterDataRptr: FilterDataRptr): RepeatersMap[] {
-    // console.log('filtr',filterDataRptr)
-
-    if(!filterDataRptr.country.length) {
-      return []
-    }    
-
-    let tmpRepeatersMap: MapData[] = pldata[1]
-    if(filterDataRptr.text) {
-      // console.log('t',tmpRepeatersMap.length)
-
-      const regex = /".*"/g;
-      const found = filterDataRptr.text.match(regex);
-      if(found?.length) {
-        const name = found[0].slice(1,-1);
-        tmpRepeatersMap = tmpRepeatersMap.filter(o => o.i === name)
-        // console.log(name,tmpRepeatersMap)
-        // console.log('a',tmpRepeatersMap.length)
-
-      } else {
-        const filterText = filterDataRptr.text
-        tmpRepeatersMap = tmpRepeatersMap.filter(o => o.i.includes(filterText))
-        // console.log('b',tmpRepeatersMap.length)
-
-      }
-    }    
-
-    tmpRepeatersMap = tmpRepeatersMap.filter(o => filterDataRptr.country.includes(o.c))
-    //  console.log('1',tmpRepeatersMap.length)
-
-    tmpRepeatersMap = tmpRepeatersMap.filter(o => filterDataRptr.status.includes(o.s))
-    // console.log('2',tmpRepeatersMap.length)
-
-    tmpRepeatersMap = tmpRepeatersMap.filter(o =>  {
-      const aTypes = o.t.split('');
-      for (let i = 0; i < aTypes.length; i++) {
-        if (filterDataRptr.type.includes(aTypes[i])) {
-          return true;
-        }
-      }
-      return false
-    })
-    //console.log('3',tmpRepeatersMap.length)
-
-
-
-    // tmpRepeatersMap = tmpRepeatersMap.filter(o =>  {
-    //   const aBands = o.b.split('');
-    //   for (let i = 0; i < aBands.length; i++) {
-    //     if (filterDataRptr.band.includes(aBands[i])) {
-    //       return true;
-    //     }
-    //   }
-    //   return false
-    // })
-    tmpRepeatersMap = tmpRepeatersMap.filter(o => filterDataRptr.band.includes(o.b))
-    //console.log('4',tmpRepeatersMap.length)
-
-
-    let tmpObj: { [key: string]: RepeatersMap; } = {}
-    tmpRepeatersMap.forEach(rep => {
-      if (!(rep.h in tmpObj)) {
-        tmpObj[rep.h] = {...pldata[0][rep.h],x:[]}
-      }
-      tmpObj[rep.h].x.push(rep)
-    })
-
-    // let mapFast = new Map<string, RepeatersMap>();
-    // tmpRepeatersMap.forEach(rep => {
-    //   if (!mapFast.has(rep.h)) {
-    //     mapFast.set(rep.h,{...this.mapHash[rep.h],x:[]})
-    //   }
-    // })
-
-    //console.log(Object.values(tmpObj))
-
-    return Object.values(tmpObj)
-      
-  }
 
   public getRepeaterByFilterData(filterDataRptr: FilterDataRptr): RepeatersMap[] {
     // console.log('filtr',filterDataRptr)

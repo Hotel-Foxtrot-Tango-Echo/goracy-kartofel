@@ -59,7 +59,7 @@
         <ion-button *ngIf="canShowOnMap" fill="clear" (click)="showRepeaterOnMap()">
           Pokaż przemiennik
         </ion-button>
-        <ion-button [routerLink]="['/']"  routerDirection="root">
+        <ion-button (click)="showAllRepeaterOnMap()">
           <ion-icon slot="start" name="map-outline" aria-hidden="true"></ion-icon>
           Pokaż inne przemienniki
         </ion-button>

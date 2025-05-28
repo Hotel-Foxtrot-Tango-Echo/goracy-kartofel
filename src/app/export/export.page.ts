@@ -76,9 +76,9 @@ export class ExportPage implements OnInit {
      setTimeout(() => {
       this.route.navigate(['/']);
     },20)    
-    setTimeout(() => {
-      window.dispatchEvent(new Event('resize')); 
-    },300)      
+    // setTimeout(() => {
+    //   window.dispatchEvent(new Event('resize')); 
+    // },300)      
   }  
 
   createCSV() {

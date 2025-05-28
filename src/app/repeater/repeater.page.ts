@@ -2,8 +2,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component,OnDestroy,OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
-import { TITLE_BASE, TITLE_SEP } from '../shared/const';
-import { FilterService } from '../shared/services/filter.service';
+import { defaultFilterDataRptr, FilterService } from '../shared/services/filter.service';
 import { defalutRepeaterAllData, RepeaterAllData, RepeaterBandKey, RepeaterData, RepeatersPageService } from '../shared/services/repeaterPage.service';
 import { SubSink } from 'subsink';
 
@@ -79,18 +78,29 @@ export class RepeaterPage implements OnInit, OnDestroy{
      setTimeout(() => {
       this.route.navigate(['/']);
     },20)    
-    setTimeout(() => {
-      window.dispatchEvent(new Event('resize')); 
-    },300)      
+    // setTimeout(() => {
+    //   window.dispatchEvent(new Event('resize')); 
+    // },300)      
+  }
+
+  showAllRepeaterOnMap() {
+    //this.repeaterMapService.getRepeaterByFilterData(this.filterDataRptr)
+    this.filterService.setInitFilterDataRptr()
+     setTimeout(() => {
+      this.route.navigate(['/']);
+    },20)    
+    // setTimeout(() => {
+    //   window.dispatchEvent(new Event('resize')); 
+    // },300)      
   }
 
   goToHome() {
     setTimeout(() => {
       this.route.navigate(['/']);
     },20)    
-    setTimeout(() => {
-      window.dispatchEvent(new Event('resize')); 
-    },300)  
+    // setTimeout(() => {
+    //   window.dispatchEvent(new Event('resize')); 
+    // },300)  
   }
 
   returnBands(repBandKey: RepeaterBandKey): string[] {

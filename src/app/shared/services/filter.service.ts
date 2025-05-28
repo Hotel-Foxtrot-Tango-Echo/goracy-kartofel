@@ -35,6 +35,10 @@ export class FilterService {
   //     band: oRepeater.b.split(''),
   // })
 
+  public setInitFilterDataRptr() {
+    this.lastFilterDataRptr.next(defaultFilterDataRptr)
+  }
+
     public setLastFilterDataRptToRepeater(rep: RepeaterAllData) {
 
       let types: {[keys:string]: string} = {}

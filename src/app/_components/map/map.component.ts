@@ -131,14 +131,17 @@ export class MapComponent implements AfterViewInit, OnInit, OnChanges {
 
 
     //this.changeDetectorRef.markForCheck(); 
+    setTimeout(() => {
+      this.map.fitBounds(group.getBounds(),{maxZoom:7});   
+    },20)
 
     setTimeout(() => {
       window.dispatchEvent(new Event('resize')); 
     },300)   
 
-    setTimeout(() => {
-      this.map.fitBounds(group.getBounds(),{maxZoom:7});   
-    },500)
+    // setTimeout(() => {
+    //   this.map.fitBounds(group.getBounds(),{maxZoom:7});   
+    // },500)
    
   }
 }
