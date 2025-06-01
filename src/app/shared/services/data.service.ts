@@ -19,10 +19,16 @@ export class DataService {
       read: true
     },
     {
+      subject: 'QTH ',
+      detalis: 'Poprawiono QTH lokator przemienników, poprzednie z bazy przemienniki.net bywały błednie uzupełnione.',
+      date: '2025-06-02',
+      read: false
+    },      
+    {
       subject: 'przemienniki.net 2.0',
       detalis: 'Polski Związek Krótkofalowców wchłonął przemienniki.net. Cieszę się że przez pół roku Mapy73pl mogły bezpłatnie dla wszystkich załatać nagłą utratę danych o przemiennikach. Ja ze swej strony muszę przemyśleć tego czarnego łabędzia, na pewno nie chcę być konkurencją do pierwowzoru, który nagle zniknął lecz bardzie jego uzupełnieniem. O ile społeczność krótkofalarska pozwoli traktowałbym przemienniki.net jako bazę danych dla przemienników FM, jeśli nie pozwoli to pójdę w stronę przemienników które weryfikuje automatycznie (FMlink, fmPoland, DMR). Nie mniej jednak chciałbym by była jakaś alternatywa jeśli by strona przemienniki.net nagle przestała działać, na razie sporadycznie występują niedostępności strony HTTP404. Mapy73pl działają już bez internetu i ten stan rzeczy chcę utrzymać, co pewno da się też zrobić z przemiennikami.net ale rozumiem że przez kolejny rok strona będzie jeszcze przywracana do normalności (PZK ma fundusze więc myślę że jakaś agencja UX może zrobić audyt, ale nie śmiem niczego narzucać i tak podziwiam uruchomienie strony). Podsumowując trzymam kciuki za całą ekipę z przemienniki.net, cieszę się że krótkofalowcy zjednoczyli się pod sztandarem PZK (i mam nadzieję że chociaż w naszym środowisku poradzimy sobie z polaryzacją społeczeństwa). Mogę się tylko domyśleć przez ile problemów pokonali administratorzy i programiści by ożywić przemienniki.net, Mapy73pl w tym czasie troszkę wyewoluowały z bazą danych i o ile można by było łatwo dodać do tabel grupy rozmowne fmPoland, czy Color Code i TG przemienników DMR o tyle są trzy przypadki specyficznych przemienników których w oryginalnej bazie nie da się ogarnąć, moderatorzy zwrócą wam na to uwagę, dlatego zbytnio nie widzę opcji wrzucenia interfejsu użytkownika z map73pl do przemienników.net (zbyt duże rozbieżności w bazie, aby nie powiedzieć iż zupełnie inna struktura danych), dlatego myślę że Mapy73pl zostaną alternatywą dla przemenników.net gdy strona nagle przestanie działać, lub ktoś nie będzie miał dostępu do internetu. Reasumując świetna robota, trzymam za was panowie kciuki (nie pokłócie się tylko w tym dużym gronie i dowieźcie temat do końca nawet jak zamię to kolejne 2 lata, z mojej strony szacunek i podziw dla was)',
       date: '2025-05-28',
-      read: false
+      read: true
     }, 
     {
       subject: 'Lepsza wersja mobile',
