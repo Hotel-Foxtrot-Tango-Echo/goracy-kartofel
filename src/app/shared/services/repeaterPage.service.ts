@@ -5,6 +5,7 @@ import { Compressed, decompress } from 'compress-json';
 import { RptrPatch } from './user.service';
 import { ExportList } from '../helper/export.helper';
 import { environment } from 'src/environments/environment';
+import { LocatorHelper } from '../helper/locator.helper';
 
 @Injectable({
   providedIn: 'root'
@@ -59,7 +60,7 @@ export class RepeatersPageService {
               p: repeaterFound.h[mainRepData.h].p, // p: 'Warszawa Ursus', miejsce
               a: repeaterFound.h[mainRepData.h].a,// a: 52.194374, latitude
               o: repeaterFound.h[mainRepData.h].o,// o: 20.886109 longitute,
-              q: repeaterFound.h[mainRepData.h].q, // locator
+              q: repeaterFound.h[mainRepData.h].a !== 0 ? LocatorHelper.posToLocator(repeaterFound.h[mainRepData.h].a,repeaterFound.h[mainRepData.h].o) : '', // locator
               h: JSON.stringify(o),
               f: this.getColorCodebyRepeaterData(mainRepData),
               e1: mainRepData?.e1 ? mainRepData?.e1 : [],
@@ -88,7 +89,7 @@ export class RepeatersPageService {
             p: repeaterFound.h[repData.h].p, // p: 'Warszawa Ursus', miejsce
             a: repeaterFound.h[repData.h].a,// a: 52.194374, latitude
             o: repeaterFound.h[repData.h].o,// o: 20.886109 longitute,
-            q: repeaterFound.h[repData.h].q, // locator
+            q: repeaterFound.h[repData.h].a !== 0 ? LocatorHelper.posToLocator(repeaterFound.h[repData.h].a,repeaterFound.h[repData.h].o): '', // locator
             h: JSON.stringify(o),
             f: this.getColorCodebyRepeaterData(repData),
             e1: repData?.e1 ? repData?.e1 : [],
@@ -311,7 +312,6 @@ interface RepeaterDataHash {
 export const defalutRepeaterDataLocation: RepeaterDataLocation = {
   x: [],
   p: '',
-  q: '',
   e: 0,
   g: 0,
   a: 0,
@@ -321,7 +321,6 @@ export const defalutRepeaterDataLocation: RepeaterDataLocation = {
 export interface RepeaterDataLocation {
   x: RepeaterBandKey[]; // pozycja w x [{'2m': 0'},{'2m': 2'},{'70cm':0}]
   p: string; // p: 'Warszawa Ursus', miejsce
-  q: string; // q: 'KO02ke', lokator
   e: number; // e: 107, na pozioem moza
   g: number;// g: 0, nad pozioem grutu
   a: number;// a: 52.194374, latitude

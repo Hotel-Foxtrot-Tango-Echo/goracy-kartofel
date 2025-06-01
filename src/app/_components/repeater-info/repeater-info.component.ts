@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { LocatorHelper } from 'src/app/shared/helper/locator.helper';
 import { defalutRepeaterDataLocation, defaultRepeaterData} from 'src/app/shared/services/repeaterPage.service';
 
 @Component({
@@ -17,5 +18,12 @@ export class RepeaterInfoComponent  {
   @Input() showMoreData = true
   @Input() showLocationTitle = false
 
+  qthLocator = ''
+  
+  ngOnInit() {
+    if(this.repeaterDataLocation.a != 0) {
+      this.qthLocator = LocatorHelper.posToLocator(this.repeaterDataLocation.a,this.repeaterDataLocation.o)
+    }
+  }
 }
 

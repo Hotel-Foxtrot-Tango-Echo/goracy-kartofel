@@ -2,9 +2,10 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component,OnDestroy,OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
-import { defaultFilterDataRptr, FilterService } from '../shared/services/filter.service';
+import { FilterService } from '../shared/services/filter.service';
 import { defalutRepeaterAllData, RepeaterAllData, RepeaterBandKey, RepeaterData, RepeatersPageService } from '../shared/services/repeaterPage.service';
 import { SubSink } from 'subsink';
+import { LocatorHelper } from '../shared/helper/locator.helper';
 
 
 @Component({
@@ -180,8 +181,8 @@ export class RepeaterPage implements OnInit, OnDestroy{
       if(this.repeaterData.h[hash].p.length) {
         location += ` ${this.repeaterData.h[hash].p}`
       }
-      if(this.repeaterData.h[hash].q.length) {
-        location += ` (lokator: ${this.repeaterData.h[hash].q})`
+      if(this.repeaterData.h[hash].a !== 0) {
+        location += ` (QTH lokator: ${LocatorHelper.posToLocator(this.repeaterData.h[hash].a,this.repeaterData.h[hash].o)})`
       }    
       if(location.length) {
         loc[location] = ''

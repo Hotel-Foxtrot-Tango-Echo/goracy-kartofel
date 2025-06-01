@@ -68,9 +68,9 @@
   <ion-col  size="4" size-sm="6">QTH</ion-col>
   <ion-col size="8" size-sm="6">{{repeaterDataLocation.p}}</ion-col>
 </ion-row> 
-<ion-row  *ngIf="repeaterDataLocation.q.length">
+<ion-row  *ngIf="qthLocator.length">
   <ion-col  size="4" size-sm="6">QTH lokator</ion-col>
-  <ion-col size="8" size-sm="6">{{repeaterDataLocation.q}}</ion-col>
+  <ion-col size="8" size-sm="6">{{qthLocator}}</ion-col>
 </ion-row>      
 <ion-row *ngIf="repeaterDataLocation.a">
   <ion-col  size="4" size-sm="6">Lokalizacja</ion-col>
