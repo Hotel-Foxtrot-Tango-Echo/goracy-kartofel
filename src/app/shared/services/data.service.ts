@@ -20,7 +20,7 @@ export class DataService {
     },
     {
       subject: 'QTH ',
-      detalis: 'Poprawiono QTH lokator przemienników, poprzednie z bazy przemienniki.net bywały błednie uzupełnione.',
+      detalis: 'Poprawiono QTH lokatory przemienników',
       date: '2025-06-02',
       read: false
     },      
