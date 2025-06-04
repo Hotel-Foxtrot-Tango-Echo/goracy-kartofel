@@ -14,7 +14,7 @@ export class DataService {
   public messages: Message[] = [
     {
       subject: 'Co robię teraz?',
-      detalis: 'Aktualizacja danych o przemiennikach.',
+      detalis: 'Obliczanie odległość i azymutu dla wszystkich przemienników',
       date: '',
       read: true
     },
