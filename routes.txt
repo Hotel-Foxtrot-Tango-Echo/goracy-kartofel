@@ -586,3 +586,4 @@
 /repeater/SR9DCH
 /repeater/SR9ZEA
 /repeater/SR7LDX
+/repeater/SR9NKU
