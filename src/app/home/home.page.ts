@@ -36,7 +36,7 @@ export class HomePage implements OnInit,OnDestroy {
   repeatersMapCount = 0;
   repeatersAllCount = 0
   
-  moveMarker = defaultMarkerInfo
+  moveMarker = {...defaultMarkerInfo}
 
   segmentValue = 'filter'
 
@@ -246,6 +246,11 @@ export class HomePage implements OnInit,OnDestroy {
     this.moveMarker.a = parseFloat((e.lat).toFixed(6))
     this.moveMarker.o = parseFloat((e.lng).toFixed(6))
     this.moveMarker.l = LocatorHelper.posToLocator(e.lat,e.lng)
+  }
+
+  showMapRadio() {
+    this.isModalOpen = false
+    this.mapComponent.showRadio()
   }
 
   refreshPage() {

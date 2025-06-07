@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { defaultMarkerInfo } from 'src/app/shared/helper/locator.helper';
 import { defalutRepeaterAllData, defalutRepeaterDataLocation, RepeaterBandKey, RepeaterData } from 'src/app/shared/services/repeaterPage.service';
 // import { RepeaterStatusHelper } from 'src/app/shared/helper/filter/status.helper';
 
@@ -20,6 +21,9 @@ export class RepeaterInfoCrossBandsComponent implements OnInit  {
   @Input() repeaterAllData = defalutRepeaterAllData
   @Input() showMoreData = true;
   
+  @Input() showDistance = false
+  @Input() moveMarker = {...defaultMarkerInfo}
+  @Output() needShowRadio = new EventEmitter<void>();
   
   ngOnInit() {
     //console.log(this.repeaterBandKey)

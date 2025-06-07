@@ -14,15 +14,21 @@ export class DataService {
   public messages: Message[] = [
     {
       subject: 'Co robię teraz?',
-      detalis: 'Obliczanie odległość i azymutu dla wszystkich przemienników',
+      detalis: 'Pobieranie lokalizacji bezpośrednio z GPS telefonu, jeśli jesteśmy na wyjeździe i niedokońca znamy dokładnie swoją pozycję.',
       date: '',
       read: true
     },
     {
+      subject: 'Co robię teraz?',
+      detalis: 'Dodano odległość i azymutu od przemienników. Twoja odległość obliczana jest od ikony ludka, którą można przesówać lub wpisać rędznie swoją pozycję GPS lub lokator w rozwijanym menu po lewej stronie.',
+      date: '2025-06-09',
+      read: false
+    },    
+    {
       subject: 'QTH ',
       detalis: 'Poprawiono QTH lokatory przemienników',
       date: '2025-06-02',
-      read: false
+      read: true
     },      
     {
       subject: 'przemienniki.net 2.0',

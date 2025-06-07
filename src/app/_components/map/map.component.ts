@@ -102,6 +102,10 @@ export class MapComponent implements AfterViewInit, OnInit, OnChanges {
     // },100)
   }
 
+  showRadio() {
+    this.map.fitBounds(new LatLngBounds([this.moveMarker.getLatLng()]),{maxZoom:8});   
+  }
+
   removeMarkers() {
     this.map.eachLayer((layer) => {
       // Ignore tile layer

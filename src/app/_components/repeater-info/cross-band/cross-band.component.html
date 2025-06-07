@@ -90,4 +90,7 @@
 <mapy73pl-repeater-info
   [repeaterDataLocation]="masterRepDataLocation"
   [showLocationTitle]="showMoreData"
+  [showDistance]="showDistance"
+  [moveMarker]="moveMarker"
+  (needShowRadio)="needShowRadio.emit()"  
   ></mapy73pl-repeater-info>   

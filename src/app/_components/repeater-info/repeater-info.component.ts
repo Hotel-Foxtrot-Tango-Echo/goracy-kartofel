@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { LocatorHelper } from 'src/app/shared/helper/locator.helper';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { defaultMarkerInfo, LocatorHelper } from 'src/app/shared/helper/locator.helper';
 import { defalutRepeaterDataLocation, defaultRepeaterData} from 'src/app/shared/services/repeaterPage.service';
 
 @Component({
@@ -14,16 +14,26 @@ export class RepeaterInfoComponent  {
   @Input() repeaterDataLocation = defalutRepeaterDataLocation;
   @Input() bandName = ''
   @Input() repeaterData = defaultRepeaterData;
-
   @Input() showMoreData = true
   @Input() showLocationTitle = false
 
+  @Input() showDistance = false
+  @Input() moveMarker = {...defaultMarkerInfo}
+  @Output() needShowRadio = new EventEmitter<void>();
+
   qthLocator = ''
+
+  distanceKm = -1
+  distanceDeg = -1
   
   ngOnInit() {
     if(this.repeaterDataLocation.a != 0) {
       this.qthLocator = LocatorHelper.posToLocator(this.repeaterDataLocation.a,this.repeaterDataLocation.o)
-    }
+      const arrKmDeg = LocatorHelper.distanceKmAndDeg(this.moveMarker.l,this.qthLocator)
+      this.distanceKm = arrKmDeg[0]
+      this.distanceDeg = arrKmDeg[1]
+    } 
   }
+
 }
 

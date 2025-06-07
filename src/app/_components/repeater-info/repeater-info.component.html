@@ -77,7 +77,7 @@
   <ion-col size="8" size-sm="6">
     {{repeaterDataLocation.a}}{{repeaterDataLocation.a>0?'&nbsp;N':'&nbsp;S'}}, {{repeaterDataLocation.o}}{{repeaterDataLocation.o>0?'&nbsp;E':'&nbsp;W'}}
   </ion-col>
-</ion-row>       
+</ion-row>
 <ion-row  *ngIf="repeaterDataLocation.e">
   <ion-col  size="4" size-sm="6">Wysokość n.p.m.</ion-col>
   <ion-col size="8" size-sm="6">{{repeaterDataLocation.e}}&nbsp;m</ion-col>
@@ -93,7 +93,19 @@
 <ion-row *ngIf="showMoreData && repeaterData.d.length > 0">
   <ion-col size="4" size-sm="6">Informacje</ion-col>
   <ion-col class="info" size="8" size-sm="6">{{repeaterData.d}}</ion-col>
-</ion-row>      
+</ion-row>     
+<ion-row *ngIf="showDistance && repeaterDataLocation.a">
+  <ion-col  size="4" size-sm="6"><span class="as-link" (click)="needShowRadio.emit()">Twója</span> odległość</ion-col>
+  <ion-col size="8" size-sm="6">
+    {{distanceKm < 5 ? 'mniej niż 5' : distanceKm}} km
+  </ion-col>
+</ion-row>       
+<ion-row *ngIf="showDistance && distanceKm > 0">
+  <ion-col  size="4" size-sm="6"><span class="as-link" (click)="needShowRadio.emit()">Twój</span> kierunek</ion-col>
+  <ion-col size="8" size-sm="6">
+    {{distanceDeg}}°
+  </ion-col>
+</ion-row> 
 <ion-row *ngIf="showMoreData && repeaterData.u.length > 0">
   <ion-col  size="4" size-sm="6">Linki</ion-col>
   <ion-col size="8" size-sm="6">

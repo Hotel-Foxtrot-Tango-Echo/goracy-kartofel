@@ -25,6 +25,9 @@
                 [repeaterBandKey]="repeaterBandKey"
                 [repeaterAllData]="repeaterAllData"
                 [showMoreData]="false"
+                [showDistance]="true"
+                [moveMarker]="moveMarker"
+                (needShowRadio)="showMapRadio()"                
                 ></mapy73pl-repeater-info-cross-band>
             } @else {
             <mapy73pl-repeater-info
@@ -32,6 +35,9 @@
               [bandName]="lastUsedRptrPatch.b"
               [repeaterData]="showRepData"
               [showMoreData]="false"
+              [showDistance]="true"
+              [moveMarker]="moveMarker"
+              (needShowRadio)="showMapRadio()"
               ></mapy73pl-repeater-info>  
             }
           </ion-grid>
