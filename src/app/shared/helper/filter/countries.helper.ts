@@ -19,6 +19,7 @@ export class CountryHelper {
     {id:'is',name:'Islandia'},
     {id:'lt',name:'Litwa'},
     {id:'lv',name:'Łotwa'},
+    {id:'ee',name:'Estonia'},
     {id:'nl',name:'Holandia'},
     {id:'no',name:'Norwegia'},
     {id:'ro',name:'Rumunia'},
