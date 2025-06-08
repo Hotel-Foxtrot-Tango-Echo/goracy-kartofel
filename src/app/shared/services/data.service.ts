@@ -19,13 +19,13 @@ export class DataService {
       read: true
     },
     {
-      subject: 'Co robię teraz?',
+      subject: 'Obliczanie odległości',
       detalis: 'Dodano odległość i azymutu od przemienników. Twoja odległość obliczana jest od ikony ludka, którą można przesówać lub wpisać rędznie swoją pozycję GPS lub lokator w rozwijanym menu po lewej stronie.',
       date: '2025-06-09',
       read: false
     },    
     {
-      subject: 'QTH ',
+      subject: 'QTH',
       detalis: 'Poprawiono QTH lokatory przemienników',
       date: '2025-06-02',
       read: true
