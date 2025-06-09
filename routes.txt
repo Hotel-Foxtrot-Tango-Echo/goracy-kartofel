@@ -1,5 +1,8 @@
 /page/site-map
 /page/news
+/page/offline
+/page/cookie-info
+/page/privacy-policy
 /repeater/SR9P
 /repeater/SR5U
 /repeater/SR5PL
