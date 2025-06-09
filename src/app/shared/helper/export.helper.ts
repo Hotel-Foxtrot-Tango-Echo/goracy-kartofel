@@ -8,7 +8,7 @@ export class ExportHelper {
   static getCsvTexFromExportList(exportsList: ExportList[]): string {
     let text = "Lp.,Nazwa,Pasmo,Rx,Rx CTCSS,Rx DCS,Tx,QTH,QTH lokator,Latitude,Longitute,Informacje\n"
     exportsList.forEach((o,k) => {
-      text += `${k + 1},${o.i},${o.b},${o.r.toFixed(6)},${o.z},${o.d},${o.t.toFixed(6)},${o.p.replace(/,/g, ' ')},${o.q},${o.a?o.a.toFixed(8):''},${o.o?o.o.toFixed(8):''},https://mapy73.pl/#/repeater/${o.i.replace(/\/R/, '.R')}\n`
+      text += `${k + 1},${o.i},${o.b},${o.r.toFixed(6)},${o.z},${o.d},${o.t.toFixed(6)},${o.p.replace(/,/g, ' ')},${o.q},${o.a?o.a.toFixed(8):''},${o.o?o.o.toFixed(8):''},https://mapy73.pl/repeater/${o.i.replace(/\/R/, '.R')}\n`
     })
     return text;
   }
