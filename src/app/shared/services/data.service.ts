@@ -14,15 +14,21 @@ export class DataService {
   public messages: Message[] = [
     {
       subject: 'Co robię teraz?',
-      detalis: 'Pobieranie lokalizacji bezpośrednio z GPS telefonu, jeśli jesteśmy na wyjeździe i niedokońca znamy dokładnie swoją pozycję.',
+      detalis: 'Poprawiam błedy na stronie, przepraszam za pewne niedociągnięcia.',
       date: '',
       read: true
     },
     {
+      subject: 'Twoja lokalizacja',
+      detalis: 'W rozwijanym menu po lewej stronie dodano przycisk ZNAJDŹ MNIE po jego kliknięciu używana przeglądarka poprosi cie o zgodę na sprawdzenie twojej lokalizacji i jeśli ją wyrazisz ludek z mapy przesunie się tak by pokazać twoją szacowaną pozycję, a dane w zakładce wypełnią się twoim lokatorem i pozycją GPS. Mam nadzieję że zaoszczędzi to czas niektórym, lub pomoże odnaleźć się w nowym terenie czy w podróży.',
+      date: '2025-06-11',
+      read: false
+    },       
+    {
       subject: 'Obliczanie odległości',
       detalis: 'Dodano odległość i azymutu od przemienników. Twoja odległość obliczana jest od ikony ludka, którą można przesówać lub wpisać rędznie swoją pozycję GPS lub lokator w rozwijanym menu po lewej stronie.',
       date: '2025-06-09',
-      read: false
+      read: true
     },    
     {
       subject: 'QTH',

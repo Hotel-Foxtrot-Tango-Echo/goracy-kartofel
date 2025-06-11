@@ -43,6 +43,9 @@ export class HomePage implements OnInit,OnDestroy {
   private lMap: MapLeaf|null = null;
   private subSink = new SubSink();
 
+  canGeolocation = false
+  geolocationIssueText = ''
+
   public isDekstop: boolean = false;
   public filterToUp = true;
 
@@ -126,6 +129,10 @@ export class HomePage implements OnInit,OnDestroy {
     
     this.isDekstop = this.platform.is('desktop')
 
+    if(navigator.geolocation) {
+      this.canGeolocation = true
+    }
+
   }
 
 
@@ -146,6 +153,32 @@ export class HomePage implements OnInit,OnDestroy {
     setTimeout(() => {
       window.dispatchEvent(new Event('resize')); 
     },300)   
+  }
+
+  findMe() {
+    navigator.geolocation.getCurrentPosition(
+      (location) => {
+        const lat = parseFloat((location.coords.latitude).toFixed(8))
+        const lon = parseFloat((location.coords.longitude).toFixed(8))
+        
+        if(LocatorHelper.isValidA(lat) && LocatorHelper.isValidO(lon)) {
+          this.dataFromUser = true
+          this.moveMarker.a = lat
+          this.moveMarker.o = lon
+          this.moveMarker.l = LocatorHelper.posToLocator(this.moveMarker.a,this.moveMarker.o)       
+          this.changeDetectorRef.markForCheck();
+          setTimeout(() => {
+            this.dataFromUser = false
+          },0)   
+        } 
+      },
+      (e) => {
+        this.canGeolocation = false;
+        this.geolocationIssueText = e.message
+        this.changeDetectorRef.markForCheck();
+      },
+      {enableHighAccuracy: false}
+    )
   }
 
   addLastUsedRptrPatch() {

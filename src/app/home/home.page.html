@@ -201,7 +201,13 @@
           <ion-input class="l-input" label="longitude" label-placement="floating" fill="outline" 
             [value]="moveMarker.o" [maxlength]="12" (ionFocus)="dataFromUser=true" (ionBlur)="dataFromUser=false"
             (ionInput)="inputLongitude($event)" 
-          ></ion-input>       
+          ></ion-input> 
+          
+          <ion-button *ngIf="!geolocationIssueText.length" [disabled]="!canGeolocation" color="primary" fill="outline" size="small" (click)="findMe()" >
+            Znajdź mnie
+          </ion-button>    
+          <br>   
+          <ion-text color="danger" *ngIf="geolocationIssueText.length">{{geolocationIssueText}}</ion-text>
         </ion-segment-content>  
         <!-- <ion-segment-content id="export">
           <h2>Znaleziono <strong>{{repeatersAllCount}} szt.</strong></h2>
