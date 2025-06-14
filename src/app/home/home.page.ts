@@ -162,18 +162,14 @@ export class HomePage implements OnInit,OnDestroy {
         const lon = parseFloat((location.coords.longitude).toFixed(8))
         
         if(LocatorHelper.isValidA(lat) && LocatorHelper.isValidO(lon)) {
-
-          setTimeout(() => {
-            this.dataFromUser = true
-            this.moveMarker.a = lat
-            this.moveMarker.o = lon
-            this.moveMarker.l = LocatorHelper.posToLocator(this.moveMarker.a,this.moveMarker.o)       
-            this.changeDetectorRef.markForCheck();
-          },20)            
+          this.dataFromUser = true
+          this.moveMarker.a = lat
+          this.moveMarker.o = lon
+          this.moveMarker.l = LocatorHelper.posToLocator(this.moveMarker.a,this.moveMarker.o)       
+          this.changeDetectorRef.markForCheck();
           setTimeout(() => {
             this.dataFromUser = false
-            this.changeDetectorRef.markForCheck();
-          },200)   
+          },0)   
         } 
       },
       (e) => {
@@ -287,15 +283,10 @@ export class HomePage implements OnInit,OnDestroy {
   }  
 
   mapMoveMarker(e:LatLng) {
-
-    setTimeout(() => {
-      this.dataFromUser = false
-      this.segmentValue = 'radio'
-      this.moveMarker.a = parseFloat((e.lat).toFixed(6))
-      this.moveMarker.o = parseFloat((e.lng).toFixed(6))
-      this.moveMarker.l = LocatorHelper.posToLocator(e.lat,e.lng)
-      this.changeDetectorRef.markForCheck();
-    },20)      
+    this.segmentValue = 'radio'
+    this.moveMarker.a = parseFloat((e.lat).toFixed(6))
+    this.moveMarker.o = parseFloat((e.lng).toFixed(6))
+    this.moveMarker.l = LocatorHelper.posToLocator(e.lat,e.lng)
   }
 
   showMapRadio() {
