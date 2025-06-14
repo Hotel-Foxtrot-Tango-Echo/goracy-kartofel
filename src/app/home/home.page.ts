@@ -163,12 +163,13 @@ export class HomePage implements OnInit,OnDestroy {
         
         if(LocatorHelper.isValidA(lat) && LocatorHelper.isValidO(lon)) {
           this.dataFromUser = true
+          this.moveMarker.a = lat
+          this.moveMarker.o = lon
+          this.moveMarker.l = LocatorHelper.posToLocator(this.moveMarker.a,this.moveMarker.o)       
+          this.changeDetectorRef.markForCheck();
           setTimeout(() => {
-            this.moveMarker.a = lat
-            this.moveMarker.o = lon
-            this.moveMarker.l = LocatorHelper.posToLocator(this.moveMarker.a,this.moveMarker.o)       
-            this.changeDetectorRef.markForCheck();            
             this.dataFromUser = false
+            this.changeDetectorRef.markForCheck();
           },0)   
         } 
       },
