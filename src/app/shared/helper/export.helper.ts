@@ -255,7 +255,7 @@ export class ExportHelper {
         isDMR = true;
       } else if(o.m.includes('i')){ //FM_LINK ='i',
         bSkipImport = false
-        nameSuffix = ' fmLink'
+        nameSuffix = ' FMlink'
       } else if( o.m.includes('j')){ //FM_POLAND ='j'
         bSkipImport = false
         nameSuffix = ' fmPoland'

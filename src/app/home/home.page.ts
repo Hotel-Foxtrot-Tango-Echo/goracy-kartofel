@@ -163,11 +163,11 @@ export class HomePage implements OnInit,OnDestroy {
         
         if(LocatorHelper.isValidA(lat) && LocatorHelper.isValidO(lon)) {
           this.dataFromUser = true
-          this.moveMarker.a = lat
-          this.moveMarker.o = lon
-          this.moveMarker.l = LocatorHelper.posToLocator(this.moveMarker.a,this.moveMarker.o)       
-          this.changeDetectorRef.markForCheck();
           setTimeout(() => {
+            this.moveMarker.a = lat
+            this.moveMarker.o = lon
+            this.moveMarker.l = LocatorHelper.posToLocator(this.moveMarker.a,this.moveMarker.o)       
+            this.changeDetectorRef.markForCheck();            
             this.dataFromUser = false
           },0)   
         } 
@@ -210,6 +210,14 @@ export class HomePage implements OnInit,OnDestroy {
     this.userSaveService.removePatchs(this.filteredPath)
     this.savedFiltered = this.userSaveService.getCountOfSaved(this.filteredPath)
   }
+
+  goToExport() {
+    this.isFilterOpen = false;
+    this.changeDetectorRef.markForCheck();    
+    setTimeout(() => {
+      this.route.navigate(['export']);
+    },20)    
+  }  
 
   goToSiteMap() {
     this.isFilterOpen = false;

@@ -235,7 +235,7 @@
       <ion-icon name="chevron-up-circle"></ion-icon>
     </ion-fab-button>
     <ion-fab-list side="top">
-      <ion-button [disabled]="!savedFiltered" [routerLink]="['/export']" ion-fab >
+      <ion-button [disabled]="!savedFiltered" (click)="goToExport()" ion-fab >
         <ion-icon slot="start" size="large" name="cloud-download-outline"></ion-icon>
         Exportuj
       </ion-button>      
