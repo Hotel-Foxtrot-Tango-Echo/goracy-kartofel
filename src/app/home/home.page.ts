@@ -287,10 +287,15 @@ export class HomePage implements OnInit,OnDestroy {
   }  
 
   mapMoveMarker(e:LatLng) {
-    this.segmentValue = 'radio'
-    this.moveMarker.a = parseFloat((e.lat).toFixed(6))
-    this.moveMarker.o = parseFloat((e.lng).toFixed(6))
-    this.moveMarker.l = LocatorHelper.posToLocator(e.lat,e.lng)
+
+    setTimeout(() => {
+      this.dataFromUser = false
+      this.segmentValue = 'radio'
+      this.moveMarker.a = parseFloat((e.lat).toFixed(6))
+      this.moveMarker.o = parseFloat((e.lng).toFixed(6))
+      this.moveMarker.l = LocatorHelper.posToLocator(e.lat,e.lng)
+      this.changeDetectorRef.markForCheck();
+    },20)      
   }
 
   showMapRadio() {
