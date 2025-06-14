@@ -170,7 +170,7 @@ export class HomePage implements OnInit,OnDestroy {
           setTimeout(() => {
             this.dataFromUser = false
             this.changeDetectorRef.markForCheck();
-          },0)   
+          },20)   
         } 
       },
       (e) => {
