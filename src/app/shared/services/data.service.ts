@@ -14,15 +14,27 @@ export class DataService {
   public messages: Message[] = [
     {
       subject: 'Co robię teraz?',
-      detalis: 'Poprawiam błedy na stronie, przepraszam za pewne niedociągnięcia.',
+      detalis: 'Ograniczenie wyświetlanych/exportowanych przemienników do zadanego promienia, np 50km od wskazanej pozycji.',
       date: '',
       read: true
     },
     {
+      subject: 'DMR na wakacjach',
+      detalis: 'Niedługo wakacje, jeśli ktoś by chciał szybko połączyć się z krajem dodano okresowo przemienniki DMR dla takich krajów jak: Chorwacja, Malta, Grecja, Cypr, Hiszpania, Portugalia, Węgry, Rumunia, Mołdawia, Macedonia, Tajlandia, Katar, Zjednoczone Emiraty Arabskie, Peru, Nowa Zelandia, Republika Południowej Afryki (RPA) i Austrię (jak by ktoś z Australią pomylił). Niestety w Albanii, Egipcie, Tunezji, Malediwach, Maroko, Haiti, na Dominikanie, Kubie i w Japonii przemienników DMR nie znalazłem, a to szkoda.',
+      date: '2025-06-19',
+      read: false
+    },       
+    {
+      subject: '2 nowe kontynety',
+      detalis: 'W ramach testów bazy danych dodano wszystkie przemienniki DMR z Antarktydy i Australii, jezcze tylko 5 kontynetów i wszystkei przemienniki DMR z naszego układu słonecznego będą wyświetlane.',
+      date: '2025-06-19',
+      read: true
+    },      
+    {
       subject: 'Twoja lokalizacja',
       detalis: 'W rozwijanym menu po lewej stronie dodano przycisk ZNAJDŹ MNIE po jego kliknięciu używana przeglądarka poprosi cie o zgodę na sprawdzenie twojej lokalizacji i jeśli ją wyrazisz ludek z mapy przesunie się tak by pokazać twoją szacowaną pozycję, a dane w zakładce wypełnią się twoim lokatorem i pozycją GPS. Mam nadzieję że zaoszczędzi to czas niektórym, lub pomoże odnaleźć się w nowym terenie czy w podróży.',
       date: '2025-06-11',
-      read: false
+      read: true
     },       
     {
       subject: 'Obliczanie odległości',
