@@ -37,7 +37,7 @@ export class RepeatersPageService {
           if('r' in repeaterFound && repeaterFound['r']?.length) {
             repBandKey = repeaterFound['r'][o.r]
           }
-        //  console.log(repeaterFound, repBandKey)
+          // console.log(repeaterFound, repBandKey)
          const mainBand = Object.keys(repBandKey[0])[0]
          const mainBandKey = repBandKey[0][mainBand]
          const mainRepData = repeaterFound.x[mainBand][mainBandKey]
@@ -73,6 +73,8 @@ export class RepeatersPageService {
 
         } else {
           const repeaterFound =  this.obRepeatersAllData[o.i];
+          // console.log(repeaterFound,)
+          // console.log(repeaterFound.x,o.b,o.k)
           const repData = repeaterFound.x[o.b][o.k]
           //return [repData, repeaterFound.h[repData.h]]      
 
