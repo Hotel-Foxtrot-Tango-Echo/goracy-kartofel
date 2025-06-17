@@ -10,6 +10,7 @@ export class CountryHelper {
     {id:'bg',name:'Bułgaria'},
     {id:'hr',name:'Chorwacja'},
     {id:'cz',name:'Czechy'},
+    {id:'cy',name:'Cypr'},
     {id:'dk',name:'Dania'},
     {id:'ee',name:'Estonia'},    
     {id:'fi',name:'Finlandia'},
