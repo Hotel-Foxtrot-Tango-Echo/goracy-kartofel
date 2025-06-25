@@ -5,6 +5,7 @@ import {  map, Observable } from 'rxjs';
 import {  Compressed, decompress } from 'compress-json'
 import { ApiDataBaseVersion } from './repeaterPage.service';
 import { environment } from 'src/environments/environment';
+import { LocatorHelper } from '../helper/locator.helper';
 
 
 @Injectable({
@@ -106,6 +107,10 @@ export class RepeaterMapService {
     tmpRepeatersMap = tmpRepeatersMap.filter(o => filterDataRptr.band.includes(o.b))
     //console.log('4',tmpRepeatersMap.length)
 
+    if(filterDataRptr.range.isRangeActive) {
+      tmpRepeatersMap = tmpRepeatersMap.filter(o => LocatorHelper.distanceKm(filterDataRptr.range.radioLocator,o.l) <= filterDataRptr.range.rangeMax)
+    }
+
 
     let tmpObj: { [key: string]: RepeatersMap; } = {}
     tmpRepeatersMap.forEach(rep => {
@@ -164,5 +169,6 @@ export interface MapData {
   h: string; //hash
   r: number; //id cross -1 no cross
   o: string; // cross text
+  l: string; //locator
 }
 

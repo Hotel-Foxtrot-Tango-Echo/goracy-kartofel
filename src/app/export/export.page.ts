@@ -71,10 +71,10 @@ export class ExportPage implements OnInit {
   // }
 
   showRepeaterOnMap(exportList: ExportList) {
-    console.log(exportList)
+    //console.log(exportList)
     this.filterService.setLastFilterDataRptToRepeaterExport(exportList)
      setTimeout(() => {
-      this.route.navigate(['/']);
+      this.route.navigate(['/przemienniki']);
     },20)    
     // setTimeout(() => {
     //   window.dispatchEvent(new Event('resize')); 

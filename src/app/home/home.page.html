@@ -208,6 +208,16 @@
           </ion-button>    
           <br>   
           <ion-text color="danger" *ngIf="geolocationIssueText.length">{{geolocationIssueText}}</ion-text>
+          <br>
+          <ion-checkbox [checked]="filterDataRptr.range.isRangeActive" [disabled]="loading"  labelPlacement="end" (ionChange)="filterDataChangeRange($event)">
+            ogranicz<br *ngIf="!isDekstop">
+            do {{filterDataRptr.range.rangeMax}} km
+          </ion-checkbox>
+          <ion-range class="range" aria-label="przemienniki w odległości" [disabled]="loading"  [value]="filterDataRptr.range.rangeMax" [min]="10" [max]="300" [pin]="true" (ionChange)="radioRangeChange($event)"></ion-range>
+
+          <ion-button *ngIf="filterDataRptr.range.isRangeActive" [disabled]="!filteredPath.size" color="primary" (click)="addFilteredRptrsAndGoToExport()" >
+            Exportuj znalezione
+          </ion-button>
         </ion-segment-content>  
         <!-- <ion-segment-content id="export">
           <h2>Znaleziono <strong>{{repeatersAllCount}} szt.</strong></h2>

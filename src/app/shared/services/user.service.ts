@@ -43,6 +43,11 @@ export class UserSaveService {
     this.savedCount.next(this.savedPath.size)
   }
 
+  public removeExistAndAddPatchs(rptrPatchs: Map<string,RptrPatch>): void {
+    this.savedPath = new Map()
+    this.addPatchs(rptrPatchs)
+  }
+
   public addPatchs(rptrPatchs: Map<string,RptrPatch>): void {
     rptrPatchs.forEach(rptrPatch => {
       this.savedPath.set(JSON.stringify(rptrPatch),rptrPatch)

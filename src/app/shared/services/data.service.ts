@@ -14,15 +14,21 @@ export class DataService {
   public messages: Message[] = [
     {
       subject: 'Co robię teraz?',
-      detalis: 'Ograniczenie wyświetlanych/exportowanych przemienników do zadanego promienia, np 50km od wskazanej pozycji.',
+      detalis: 'Zmieniam wygląd strony',
       date: '',
       read: true
     },
     {
+      subject: 'Przemienniki w zasięgu',
+      detalis: 'Ograniczenie filtrowanych przemienników do zadanego promienia, np 100km od wskazanej pozycji. W rozwijanym menu po lewej stronie dodano opcje "ogranicz do ..km" po jej zaznaczeniu zmiejszymy obszar fitrowania do zadanego promienia, maksymalną odległośc od przemiennika ustawiamy suwakiem poniżej.',
+      date: '2025-06-25',
+      read: false
+    },      
+    {
       subject: 'DMR na wakacjach',
       detalis: 'Niedługo wakacje, jeśli ktoś by chciał szybko połączyć się z krajem dodano okresowo przemienniki DMR dla takich krajów jak: Chorwacja, Malta, Grecja, Cypr, Hiszpania, Portugalia, Węgry, Rumunia, Mołdawia, Macedonia, Tajlandia, Katar, Zjednoczone Emiraty Arabskie, Peru, Nowa Zelandia, Republika Południowej Afryki (RPA) i Austrię (jak by ktoś z Australią pomylił). Niestety w Albanii, Egipcie, Tunezji, Malediwach, Maroko, Haiti, na Dominikanie, Kubie i w Japonii przemienników DMR nie znalazłem, a to szkoda.',
       date: '2025-06-19',
-      read: false
+      read: true
     },       
     {
       subject: '2 nowe kontynety',

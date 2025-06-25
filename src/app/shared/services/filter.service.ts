@@ -7,6 +7,7 @@ import { RepeaterBandHelper, RptrBand } from '../helper/filter/band.helper';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { RepeaterAllData } from './repeaterPage.service';
 import { ExportList } from '../helper/export.helper';
+import { defaultMarkerInfo } from '../helper/locator.helper';
 
 
 
@@ -57,6 +58,7 @@ export class FilterService {
         status: ['1','2','3','4','5','6'],
         type: [...Object.keys(types)],
         band: [...bands],
+        range: {...defaultRadioRange}
     })
   }
 
@@ -69,6 +71,7 @@ export class FilterService {
       status: ['1','2','3','4','5','6'],
       type: [...exportList.m],
       band: [exportList.b],
+      range: {...defaultRadioRange}
   })
 }  
 
@@ -106,12 +109,19 @@ export class FilterService {
   }  
 }
 
+const defaultRadioRange: RadioRange = {
+  isRangeActive: false,
+  rangeMax: 100,
+  radioLocator: defaultMarkerInfo.l
+}
+
 export const defaultFilterDataRptr: FilterDataRptr = {
   text: null,
   country: ['pl'],
   status: ['4','5','3','2','1'],
   type: ['a','e','i','j'],
   band: ['2m','70cm','23cm'],
+  range: {...defaultRadioRange}
 }
 
 export interface FilterDataRptr {
@@ -120,6 +130,13 @@ export interface FilterDataRptr {
   status: string[];  //RepeaterStatus
   type: string[];  //RepeaterType
   band: string[]; //RepeaterBand
+  range: RadioRange;
+}
+
+interface RadioRange {
+  isRangeActive: boolean;
+  rangeMax: number;
+  radioLocator: string;
 }
 
 // WORKING = '1',		1	 - 	4

@@ -1,16 +1,21 @@
 <ion-toolbar [color]="isOnline ? 'primary' : 'danger'">
-  <ion-buttons [collapse]="true" slot="start">
+  <!-- <ion-buttons [collapse]="true" slot="start">
     <ion-back-button ></ion-back-button>
     <ion-button *ngIf="showInfo && offlineReady && isOnline" [routerLink]="['/page','offline']"  routerDirection="root" aria-label="Tryb offline aktywny">
       <ion-icon slot="icon-only" name="radio-outline" aria-hidden="true" ></ion-icon>
     </ion-button> 
-  </ion-buttons>
+  </ion-buttons> -->
 
-  <ion-title *ngIf="isOnline && !isNewVesrion">
-    <mapy73pl-logo class="action" [routerLink]="['/']" routerDirection="root" ></mapy73pl-logo> 
+  <!-- <ion-title *ngIf="isOnline && !isNewVesrion">
+    <mapy73pl-logo *ngIf="isDekstop" class="action" [routerLink]="['/']" routerDirection="root" ></mapy73pl-logo> 
     <span *ngIf="showInfo && isDekstop" >
       @if (repCount > 1 ) {
-        i <strong>{{repCount}}</strong> przemienniki krótkofalarskie
+        
+        @if (repCount > 4 ) {
+          i <strong>{{repCount}}</strong> przemienników krótkofalarskich
+        } @else {
+          i <strong>{{repCount}}</strong> przemienniki krótkofalarskie
+        }        
       } @else {
         @if (repCount === 1 ) {
           i przemiennik krótkofalarski
@@ -18,13 +23,80 @@
           i przemienniki krótkofalarskie
         }
       }
-
+    </span>
+    <span *ngIf="showInfo && !isDekstop" >
+      @if (repCount > 1 ) {
+        
+        @if (repCount > 4 ) {
+          <strong>{{repCount}}</strong> przemienników
+        } @else {
+          <strong>{{repCount}}</strong> przemienniki
+        }        
+      } @else {
+        @if (repCount === 1 ) {
+          przemiennik
+        } @else {
+          
+        }
+      }
     </span>
   </ion-title>   
   <ion-title *ngIf="!isOnline">
     <span class="action" [routerLink]="['/']" routerDirection="root">Offline Mapy73pl</span>
-  </ion-title>   
+  </ion-title>    -->
 
+  <ng-content *ngIf="isDekstop">
+    <ion-buttons [collapse]="true" slot="start">
+      <ion-back-button ></ion-back-button>
+      <ion-button *ngIf="showInfo && offlineReady && isOnline" [routerLink]="['/page','offline']"  routerDirection="root" aria-label="Tryb offline aktywny">
+        <ion-icon slot="icon-only" name="radio-outline" aria-hidden="true" ></ion-icon>
+      </ion-button> 
+    </ion-buttons>  
+    <ion-title >
+      <span *ngIf="!isOnline" class="action" [routerLink]="['/']" routerDirection="root">(Offline) </span>
+      <span class="action" [routerLink]="['/']" routerDirection="root">Mapy73pl</span>
+      <span *ngIf="showInfo" >
+        @if (repCount > 1 ) {
+          @if (repCount > 4 ) {
+            i <strong>{{repCount}}</strong> przemienników krótkofalarskich
+          } @else {
+            i <strong>{{repCount}}</strong> przemienniki krótkofalarskie
+          }        
+        } @else {
+          @if (repCount === 1 ) {
+            i przemiennik krótkofalarski
+          } @else {
+            i przemienniki krótkofalarskie
+          }
+        }
+      </span>
+    </ion-title>  
+  </ng-content>
+ 
+  <ion-buttons *ngIf="!isNewVesrion && !isDekstop" slot="start">
+    <ion-back-button [text]="''"></ion-back-button>
+    <ion-button *ngIf="showInfo && offlineReady && isOnline" [routerLink]="['/page','offline']"  routerDirection="root" aria-label="Tryb offline aktywny">
+      <ion-icon slot="icon-only" name="radio-outline" aria-hidden="true" ></ion-icon>
+    </ion-button>     
+    <span *ngIf="!isOnline" class="action" [routerLink]="['/']" routerDirection="root">(Offline)&nbsp;</span>
+    <span *ngIf="!showInfo" class="action" [routerLink]="['/']" routerDirection="root">Mapy73pl</span>
+    <span *ngIf="showInfo" >
+      @if (repCount > 1 ) {
+        
+        @if (repCount > 4 ) {
+          <strong>{{repCount}}</strong> przemienników
+        } @else {
+          <strong>{{repCount}}</strong> przemienniki
+        }        
+      } @else {
+        @if (repCount === 1 ) {
+          1 przemiennik
+        } @else {
+          Mapy73pl
+        }
+      }
+    </span>
+  </ion-buttons>  
 
   <ion-buttons [collapse]="true" slot="end">
     <!-- <ion-spinner  *ngIf="loading" name="circular" color="secondary"></ion-spinner> -->

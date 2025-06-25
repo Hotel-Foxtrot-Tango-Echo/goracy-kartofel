@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { IonModal, ModalController, Platform} from '@ionic/angular';
+import { CheckboxCustomEvent, IonModal, ModalController, Platform, RangeCustomEvent} from '@ionic/angular';
 
 
 import { LatLng, Map as MapLeaf,  } from 'leaflet';
@@ -49,7 +49,7 @@ export class HomePage implements OnInit,OnDestroy {
   public isDekstop: boolean = false;
   public filterToUp = true;
 
-  public filterDataRptr = defaultFilterDataRptr;
+  public filterDataRptr = {...defaultFilterDataRptr};
 
   public isFilterOpen = true;
   public isModalOpen = false;
@@ -100,6 +100,7 @@ export class HomePage implements OnInit,OnDestroy {
   }
 
   ngOnInit(): void {
+    //console.log('init')
     this.subSink.sink = this.filterService.getObsLastFilterDataRptr().subscribe({next:(lastFilterDataRptr: FilterDataRptr) => {
       this.filterDataRptr = {...lastFilterDataRptr}
       if(this.mapComponent) {
@@ -145,6 +146,13 @@ export class HomePage implements OnInit,OnDestroy {
   // }
 
   ionViewWillEnter() {
+    //console.log('enter')
+    this.segmentValue = 'filter'
+    
+    if(LocatorHelper.isValidLocator(this.moveMarker.l)) {
+      this.filterDataRptr.range.radioLocator = this.moveMarker.l
+    }
+
     this.title.setTitle('Przemienniki krótkofalarskie ' + TITLE_SEP + TITLE_BASE)
     this.isFilterOpen = true;   
 
@@ -166,6 +174,7 @@ export class HomePage implements OnInit,OnDestroy {
           this.moveMarker.a = lat
           this.moveMarker.o = lon
           this.moveMarker.l = LocatorHelper.posToLocator(this.moveMarker.a,this.moveMarker.o)       
+          this.updateFilterLocator(this.moveMarker.l)
           this.changeDetectorRef.markForCheck();
           setTimeout(() => {
             this.dataFromUser = false
@@ -181,6 +190,14 @@ export class HomePage implements OnInit,OnDestroy {
     )
   }
 
+
+  radioRangeChange(event: RangeCustomEvent) {
+    this.filterDataRptr.range.rangeMax = (Number)(event.detail.value)
+    if(this.filterDataRptr.range.isRangeActive) {
+      this.updateRepeaterData()
+    }
+  }
+
   addLastUsedRptrPatch() {
     this.userSaveService.addPatch(this.lastUsedRptrPatch)
     this.savedFiltered = this.userSaveService.getCountOfSaved(this.filteredPath)
@@ -192,7 +209,7 @@ export class HomePage implements OnInit,OnDestroy {
   }
 
   addFilteredRptrsAndGoToExport() { 
-    this.userSaveService.addPatchs(this.filteredPath)
+    this.userSaveService.removeExistAndAddPatchs(this.filteredPath)
     this.savedFiltered = this.userSaveService.getCountOfSaved(this.filteredPath)
     this.isFilterOpen = false;
     this.changeDetectorRef.markForCheck();    
@@ -262,6 +279,7 @@ export class HomePage implements OnInit,OnDestroy {
     if(LocatorHelper.isValidA(lat)) {
       this.moveMarker.a = lat
       this.moveMarker.l = LocatorHelper.posToLocator(this.moveMarker.a,this.moveMarker.o)         
+      this.updateFilterLocator(this.moveMarker.l)
     } 
   }
 
@@ -269,7 +287,8 @@ export class HomePage implements OnInit,OnDestroy {
     const lon = (Number)(e.detail.value)
     if(LocatorHelper.isValidO(lon)) {
       this.moveMarker.o = lon
-      this.moveMarker.l = LocatorHelper.posToLocator(this.moveMarker.a,this.moveMarker.o)      
+      this.moveMarker.l = LocatorHelper.posToLocator(this.moveMarker.a,this.moveMarker.o)     
+      this.updateFilterLocator(this.moveMarker.l)
     }
   }
 
@@ -279,6 +298,7 @@ export class HomePage implements OnInit,OnDestroy {
       const pos = LocatorHelper.locatorToPos(loc)
       this.moveMarker.a = parseFloat((pos[0]).toFixed(6))
       this.moveMarker.o = parseFloat((pos[1]).toFixed(6))
+      this.updateFilterLocator(loc)
     }
   }  
 
@@ -287,6 +307,14 @@ export class HomePage implements OnInit,OnDestroy {
     this.moveMarker.a = parseFloat((e.lat).toFixed(6))
     this.moveMarker.o = parseFloat((e.lng).toFixed(6))
     this.moveMarker.l = LocatorHelper.posToLocator(e.lat,e.lng)
+    this.filterDataRptr = {...this.filterDataRptr, range: {...this.filterDataRptr.range, isRangeActive: false, radioLocator: this.moveMarker.l}}
+  }
+
+  updateFilterLocator(locator: string) {
+    this.filterDataRptr.range.radioLocator = locator
+    if(this.filterDataRptr.range.isRangeActive) {
+      this.updateRepeaterData()
+    }
   }
 
   showMapRadio() {
@@ -320,7 +348,8 @@ export class HomePage implements OnInit,OnDestroy {
             x: 0,
             h: "51489049148",
             r: -1,
-            o: ""
+            o: "",
+            l: ""
           }]
         })
       }
@@ -484,6 +513,11 @@ export class HomePage implements OnInit,OnDestroy {
     }
    this.updateRepeaterData()
   }
+
+  filterDataChangeRange(event: CheckboxCustomEvent) {
+    this.filterDataRptr = {...this.filterDataRptr, range: {...this.filterDataRptr.range, isRangeActive: event.detail.checked}}
+    this.updateRepeaterData()
+  }  
   
   private updateMetaDescription() {
    // console.log(this.meta.getTag(`name='description'`))
