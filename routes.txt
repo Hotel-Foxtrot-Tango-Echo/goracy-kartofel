@@ -2186,3 +2186,5 @@
 /repeater/VK4RBX
 /repeater/VK4RDB
 /repeater/VK6RLM
+/repeater/YL3RQY
+/repeater/ES8DMR
