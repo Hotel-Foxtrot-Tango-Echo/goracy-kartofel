@@ -2188,3 +2188,17 @@
 /repeater/VK6RLM
 /repeater/YL3RQY
 /repeater/ES8DMR
+/repeater/SW1N
+/repeater/PI1UTR
+/repeater/ED1YBQ
+/repeater/ED5ZAJ
+/repeater/ED7ZAC
+/repeater/OE7XCJ
+/repeater/LZ0DPZ
+/repeater/LZ0BLG
+/repeater/LZ0PLC
+/repeater/S55VCE
+/repeater/Z35UOH
+/repeater/VK3RAH
+/repeater/ZS0JPL
+/repeater/ZS6WDL
