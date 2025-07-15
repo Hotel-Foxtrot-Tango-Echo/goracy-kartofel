@@ -9,6 +9,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
+import {provideClientHydration} from '@angular/platform-browser';
+
+
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, 
@@ -19,8 +22,9 @@ import { ServiceWorkerModule } from '@angular/service-worker';
   registrationStrategy: 'registerWhenStable:30000'
 })
 ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, provideHttpClient(withFetch()) 
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, provideHttpClient(withFetch()),
   //  provideClientHydration(withEventReplay()),
+  provideClientHydration()
   ],
   bootstrap: [AppComponent],
 })
