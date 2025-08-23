@@ -160,9 +160,10 @@ function createMarker(repeatersMap: RepeatersMap, isDekstop: boolean) {
 
   //burzenin
   if(repeatersMap.a === 51.47064 && repeatersMap.o === 18.85148) {
-    if(isDekstop) {
-      leafletMarker.bindTooltip('<strong>Zjazd Techniczny Krótkofalowców 2025</strong>')
-    }
+    const today:Date = new Date(new Date().toISOString().slice(0,10))
+    const event:Date = new Date('2025-09-12')
+    const dateDiff = ((event.valueOf()-today.valueOf()) / (1000 * 60 * 60 * 24))  
+    
     leafletMarker.setIcon(
       icon({ //0-none
           iconUrl: `/assets/map/burzenin.png`,
@@ -172,16 +173,18 @@ function createMarker(repeatersMap: RepeatersMap, isDekstop: boolean) {
           shadowSize: [0, 0]
         })
     ); 
-    const today:Date = new Date(new Date().toISOString().slice(0,10))
-    const event:Date = new Date('2025-09-12')
-    const dateDiff = ((event.valueOf()-today.valueOf()) / (1000 * 60 * 60 * 24))
+
     let tekst = 'właśnie trwa!'
     if(dateDiff > 1 ) {
       tekst = `za ${dateDiff} dni`
     } else if (dateDiff === 1 ) {
       tekst = `już jutro!`
+    } 
+
+    if(isDekstop) {
+      leafletMarker.bindTooltip('<strong>Burzenin</strong> ' + tekst)
     }
-    leafletMarker.bindPopup(`<div><strong>Burzenin</strong> ${tekst} <a target="_blank" href="https://zjazdtechniczny.pl/najwazniejsze">FAQ</a></div>`)
+    leafletMarker.bindPopup(`<div><strong>Zjazd Techniczny Krótkofalowców</strong> <a target="_blank" href="https://tickets.hackerspace-krk.pl/burzenin2025/">35zł</a> bilet wstępu</div>`)
 
     return leafletMarker;       
   }
