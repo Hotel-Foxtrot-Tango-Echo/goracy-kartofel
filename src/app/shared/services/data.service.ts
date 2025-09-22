@@ -14,7 +14,7 @@ export class DataService {
   public messages: Message[] = [
     {
       subject: 'Co robię teraz?',
-      detalis: 'Odpoczywam sobie miesiąc',
+      detalis: 'Zmieniam wygląd strony',
       date: '',
       read: true
     },
