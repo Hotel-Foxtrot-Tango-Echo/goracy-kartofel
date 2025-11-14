@@ -1,5 +1,3 @@
-/
-/przemienniki
 /page/site-map
 /page/news
 /page/offline
@@ -426,7 +424,6 @@
 /repeater/DB0SL
 /repeater/DB0EL
 /repeater/SR9DKA
-/repeater/SR5ZQ
 /repeater/DB0ZU
 /repeater/SR1CH
 /repeater/SR7ULD
@@ -2208,3 +2205,19 @@
 /repeater/OK0BPT
 /repeater/ES3DMR
 /repeater/SR9RS
+/repeater/LY0RKD
+/repeater/KE9CPD.R
+/repeater/LY0RKK
+/repeater/ES3DMRA
+/repeater/SR1B
+/repeater/LX0BER
+/repeater/TF3DMR
+/repeater/SR4ROBI
+/repeater/OM0ODC
+/repeater/SR6T
+/repeater/SR7USI
+/repeater/SR8GDM
+/repeater/OK0ZN
+/repeater/YL3RKT
+/repeater/SR5ZQ
+/repeater/SR8NA
