@@ -4,7 +4,7 @@
 
 <ion-content [fullscreen]="true" class="ion-paddi2ng">
 
-  <ion-grid [fixed]="true" >
+  <ion-grid [fixed]="true" class="ov-hidden" >
     <div class="flex-center">
       <ion-img
         src="/assets/przemienniki-mapa.jpeg"
@@ -16,6 +16,41 @@
       <div>&nbsp;&nbsp;&nbsp; najbliższy przemiennik</div>
       
      </ion-text>
+    </div>
+    <div class="ul">
+      <ion-card class="li" *ngFor="let rpt of fmLink">
+        <ion-card-header>
+          <ion-card-title>{{rpt.s}}</ion-card-title>
+          <ion-card-subtitle>FM-Link</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <div>
+           Wysokość {{rpt.h}} m n.p.m.<br>
+           TX: {{rpt.t}} MHz
+          </div>
+          <ion-button [routerLink]="['/repeater',rpt.n]" fill="outline" class="btn-fmLink">{{rpt.n}}</ion-button>
+        </ion-card-content>
+      </ion-card>   
+
+      <!-- <ion-card class="li">
+        <ion-card-header>
+          <ion-card-title>aaa</ion-card-title>
+          <ion-card-subtitle>FM-Link</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <div>
+           Wysokość 1015 m n.p.m.<br>
+           TX: 439.2875 MHz
+          </div>
+          <ion-button [routerLink]="['/repeater','SR']" fill="outline" class="btn-fmLink">SR6</ion-button>
+        </ion-card-content>
+      </ion-card>    -->
+      
+      
+
+
+
+
     </div>
 
     
