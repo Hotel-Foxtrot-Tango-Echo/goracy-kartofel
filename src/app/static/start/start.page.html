@@ -1,5 +1,23 @@
 <ion-header [translucent]="true">
-  <!-- <mapy73pl-main-toolbar></mapy73pl-main-toolbar> -->aaaa
+  <mapy73pl-main-toolbar></mapy73pl-main-toolbar>
 </ion-header>
 
-www
+<ion-content [fullscreen]="true" class="ion-paddi2ng">
+
+  <ion-grid [fixed]="true" >
+    <div class="flex-center">
+      <ion-img
+        src="/assets/przemienniki-mapa.jpeg"
+        alt="Przemienniki na mapie Polski"
+        class="img-map"
+      ></ion-img>
+     <ion-text class="biger-on-screen" color="primary">
+      <div class="flex-center"><ion-button [routerLink]="['/przemienniki']" class="ion-text-wrap">Znajdź</ion-button> na mapie </div>
+      <div>&nbsp;&nbsp;&nbsp; najbliższy przemiennik</div>
+      
+     </ion-text>
+    </div>
+
+    
+  </ion-grid>
+</ion-content>
