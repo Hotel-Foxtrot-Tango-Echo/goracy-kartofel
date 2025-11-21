@@ -18,16 +18,17 @@ const routes: Routes = [
     path: 'export',
     loadChildren: () => import('./export/export.module').then( m => m.ExportPageModule)
   },  
-  // {
-  //   path: '',
-  //   redirectTo: 'przemienniki',
-  //   pathMatch: 'full'
-  // },
+    {path: '**', redirectTo: 'przemienniki'},
+
   {
     path: '',
-    loadChildren: () => import('./static/start/start.module').then( m => m.StartPageModule)
+    redirectTo: 'przemienniki',
+    pathMatch: 'full'
   },
-  {path: '**', redirectTo: 'przemienniki'},
+  // {
+  //   path: '',
+  //   loadChildren: () => import('./static/start/start.module').then( m => m.StartPageModule)
+  // },
 
   // {
   //   path: '',
