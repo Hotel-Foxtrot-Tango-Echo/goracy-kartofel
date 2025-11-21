@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
-const staticFmPoland = require("./fmpoland.json");
-const staticPlDMR = require("./pl-dmr.json");
+// const staticFmPoland = require("./fmpoland.json");
+// const staticPlDMR = require("./pl-dmr.json");
 
 @Component({
   selector: 'app-start',
