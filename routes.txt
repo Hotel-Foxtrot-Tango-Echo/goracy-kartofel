@@ -1,4 +1,3 @@
-/
 /page/site-map
 /page/news
 /page/offline

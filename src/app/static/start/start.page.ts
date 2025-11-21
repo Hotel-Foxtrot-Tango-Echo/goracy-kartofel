@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 const staticFmPoland = require("./fmpoland.json");
 const staticPlDMR = require("./pl-dmr.json");
@@ -9,7 +9,7 @@ const staticPlDMR = require("./pl-dmr.json");
   styleUrls: ['./start.page.scss'],
   standalone: false,
 })
-export class StartPage implements OnInit {
+export class StartPage {
 
   fmLink: OneFmLink[] = [
     {n: 'SR3J', s: 'RTCN Jemiołów', h: 160+185, t: 439.5000},
@@ -32,13 +32,9 @@ export class StartPage implements OnInit {
     {n: 'SR4SU', s: 'Jeleniewo', h: 248, t: 438.8000},
    ]
 
-  fmPoland:OneInfo[] = staticFmPoland
-  plDMR:OneInfo[]  = staticPlDMR
+  fmPoland:OneInfo[] = []//staticFmPoland
+  plDMR:OneInfo[]  = []//staticPlDMR
 
-  constructor() { }
-
-  ngOnInit() {
-  }
 
 }
 
