@@ -31,39 +31,41 @@
           <ion-button [routerLink]="['/repeater',rpt.n]" fill="outline" class="btn-fmLink">{{rpt.n}}</ion-button>
         </ion-card-content>
       </ion-card>   
-
-      <!-- <ion-card class="li">
-        <ion-card-header>
-          <ion-card-title>aaa</ion-card-title>
-          <ion-card-subtitle>FM-Link</ion-card-subtitle>
-        </ion-card-header>
-        <ion-card-content>
-          <div>
-           Wysokość 1015 m n.p.m.<br>
-           TX: 439.2875 MHz
-          </div>
-          <ion-button [routerLink]="['/repeater','SR']" fill="outline" class="btn-fmLink">SR6</ion-button>
-        </ion-card-content>
-      </ion-card>    -->
-      
-      
-
-
-
-
     </div>
 
+  <ion-row>
+    <ion-col>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>fmPoland</ion-card-title>
+          <ion-card-subtitle>najnowsze przemienniki</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <div *ngFor="let rpt of fmPoland"><a [routerLink]="['/repeater',rpt.i]">{{rpt.i}}</a> {{rpt.p}}<span *ngIf="rpt.x">, {{rpt.x.toFixed(4)}} MHz</span></div>
+        </ion-card-content>
+      </ion-card>  
 
-    <ion-row class="ion-align-items-start">
-      <ion-col size="auto">
-        <ion-card  style="width: 330px">
+      <div class="box-db-update-info">
+        <ion-card  style="width: 330px" >
           <ion-card-header>
             <ion-card-title>Aktualizacja bazy przemienników</ion-card-title>
             <ion-card-subtitle>2025-11-14 (DMR i fmPoland)</ion-card-subtitle>
           </ion-card-header>
-        </ion-card>
-      </ion-col>     
-    </ion-row>    
-    
+        </ion-card>          
+      </div>
+      
+    </ion-col>
+    <ion-col>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Przemienniki DMR</ion-card-title>
+          <ion-card-subtitle>w Polsce</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <div *ngFor="let rpt of plDMR"><a [routerLink]="['/repeater',rpt.i]">{{rpt.i}}</a> {{rpt.p}}<span *ngIf="rpt.x">, {{rpt.x.toFixed(4)}} MHz</span></div>
+        </ion-card-content>
+      </ion-card>        
+    </ion-col>
+  </ion-row>    
   </ion-grid>
 </ion-content>

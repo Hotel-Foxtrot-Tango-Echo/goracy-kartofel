@@ -77,7 +77,7 @@ export class RepeaterPage implements OnInit, OnDestroy{
   showRepeaterOnMap() {
     this.filterService.setLastFilterDataRptToRepeater(this.repeaterData)
      setTimeout(() => {
-      this.route.navigate(['/']);
+      this.route.navigate(['/przemienniki']);
     },20)    
     // setTimeout(() => {
     //   window.dispatchEvent(new Event('resize')); 
@@ -88,7 +88,7 @@ export class RepeaterPage implements OnInit, OnDestroy{
     //this.repeaterMapService.getRepeaterByFilterData(this.filterDataRptr)
     this.filterService.setInitFilterDataRptr()
      setTimeout(() => {
-      this.route.navigate(['/']);
+      this.route.navigate(['/przemienniki']);
     },20)    
     // setTimeout(() => {
     //   window.dispatchEvent(new Event('resize')); 
