@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
-// const staticFmPoland = require("./fmpoland.json");
-// const staticPlDMR = require("./pl-dmr.json");
+ const staticFmPoland = require("./fmpoland.json");
+ const staticPlDMR = require("./pl-dmr.json");
 
 @Component({
   selector: 'app-start',
@@ -32,8 +32,8 @@ export class StartPage {
     {n: 'SR4SU', s: 'Jeleniewo', h: 248, t: 438.8000},
    ]
 
-  fmPoland:OneInfo[] = []//staticFmPoland
-  plDMR:OneInfo[]  = []//staticPlDMR
+  fmPoland:OneInfo[] = staticFmPoland
+  plDMR:OneInfo[]  = staticPlDMR
 
 
 }
