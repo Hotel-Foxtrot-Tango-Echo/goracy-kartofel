@@ -1,0 +1,4 @@
+[submodule "submodules/repeters"]
+	path = submodules/repeters
+	url = https://github.com/Hotel-Foxtrot-Tango-Echo/przemienniki-mapy73pl
+  ignore = all
