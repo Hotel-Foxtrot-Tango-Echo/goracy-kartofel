@@ -1,0 +1,13 @@
+#!/bin/bash
+cd scripts
+node refresh-all-repeaters
+node yaml-to-json
+
+cd update-rpts-frontend
+node json-to-cmp-big-one
+node json-to-cmp-huge
+node json-to-cmp-repPage
+
+cd ../../
+rm all-repeaters-tmp.json
+rm all-repeaters.yaml
