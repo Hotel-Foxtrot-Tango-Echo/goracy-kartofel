@@ -72,6 +72,9 @@ Thumbs.db
 # Local Netlify folder
 .netlify
 
+# external database of repeaters
+/submodules/repeters
+
 # rpts updates db
 all-repeaters.yaml
 all-repeaters-tmp.json
