@@ -39,6 +39,26 @@ Kod źródłowy pierwszej wersji strony [mapy73.pl](https://mapy73.pl/) - (niebi
  * dla wszysktich poprzednich zgłaszających zmiany i moderatorów serwisu przemienniki.net dzięki którym powstała dość spora baza danych i na początku 2025 można było analizować ogrom przypadków i mieć dość solidny punkt startowy.
  * dla wszystkich którzy ciągle dbają o poprawność danych na bierząco zgłaszając błedy [na stronach przemienników](https://mapy73.pl/repeaters-list/pl/) dbając by cała społeczność radiowa miała aktulane dane.
 
+# 0. Przygotowania środowiska
+
+## 0.1 Instalacja
+
+## 0.2 Aktualizacja przemienników
+
+Aktualna baza przemienników rozwijana jest w [osobnym repozytorium](https://github.com/Krusz-Beton/przemienniki-mapy73pl)  na podstawie wysyłanych zgłoszeń radioamatorów przez strone mapy73.pl (opcja `zgłość błąd` na stronie każdego przmeinnika)
+
+1. Zaktualizuj repozytorium gita z bazą przemienników (już repozytorium skonfigurowane w tym projekcie jako sumoduł w pliku `.gitmodules`)
+```bash
+git submodule update --remote 
+```
+po wykonaniu tej komedy w katalogu `submodules/repeters` pojawi sie najnowsza baza przemienników
+
+2. Zaktualizuj przemienniki na stronie (uruchom przygotowany skrypt)
+```bash
+. skrypt-update-rpts
+```
+po wykoaniu tej komedy katalog `public/api/v2` zostanie zaktualizowany statycznymi plikami (wymuszony cache często odwiedzanych plików, dzięki temu backend nie jest potrzebny na serwerze a i wyświetlanie pojedyczych przemienników trwa szybciej)
+
 # 1. Jak uruchomić kod źródłowy
 
 ## 1.1 Na lokalnej maszynie
