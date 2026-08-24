@@ -43,7 +43,51 @@ Kod źródłowy pierwszej wersji strony [mapy73.pl](https://mapy73.pl/) - (niebi
 
 ## 0.1 Instalacja
 
-## 0.2 Aktualizacja przemienników
+1. Zainstaluj [Node.js](https://nodejs.org/en/download)
+
+2. Zainstaluj [Git](https://git-scm.com/install/linux)
+
+3. Skonuj te repozytorium
+```bash
+git clone https://github.com/Hotel-Foxtrot-Tango-Echo/goracy-kartofel.git
+```
+4. Wejdz do katalogu i zainstaluj zależności projketu
+```bash
+cd goracy-kartofel
+```
+```bash
+npm i
+```
+
+5. Zainstaluj globalnie [Ionic CLI](https://ionicframework.com/docs/cli)
+```bash
+npm install -g @ionic/cli
+```
+# 1. Jak uruchomić kod źródłowy
+
+## 1.1 Na lokalnej maszynie
+
+Wejdz do katalogu i uruchom serwer
+```bash
+cd goracy-kartofel
+```
+```bash
+ionic s
+```
+Strona pojawi się na lokalnej maszynie pod adresem: http://localhost:8100
+
+# 2. Jak opublikować
+
+## 2.1 Na hostingu
+
+## 2.2. W sklepie Play Google dla Andorida
+
+## 2.2. W sklepie Apple dla iOS
+
+# 9. Dodatek
+
+
+## 9.1 Aktualizacja przemienników
 
 Aktualna baza przemienników rozwijana jest w [osobnym repozytorium](https://github.com/Krusz-Beton/przemienniki-mapy73pl)  na podstawie wysyłanych zgłoszeń radioamatorów przez strone mapy73.pl (opcja `zgłość błąd` na stronie każdego przmeinnika)
 
@@ -58,17 +102,3 @@ po wykonaniu tej komedy w katalogu `submodules/repeters` pojawi sie najnowsza ba
 . skrypt-update-rpts
 ```
 po wykoaniu tej komedy katalog `public/api/v2` zostanie zaktualizowany statycznymi plikami (wymuszony cache często odwiedzanych plików, dzięki temu backend nie jest potrzebny na serwerze a i wyświetlanie pojedyczych przemienników trwa szybciej)
-
-# 1. Jak uruchomić kod źródłowy
-
-## 1.1 Na lokalnej maszynie
-
-# 2. Jak opublikować
-
-## 2.1 Na hostingu
-
-## 2.2. W sklepie Play Google dla Andorida
-
-## 2.2. W sklepie Apple dla iOS
-
-
