@@ -82,7 +82,77 @@ Strona pojawi się na lokalnej maszynie pod adresem: http://localhost:8100
 
 ## 2.2. W sklepie Play Google dla Andorida
 
+Użyte biloteki mają możliwośc wydania strony w formie aplikacji dla systemu Andorid, jakby ktoś potrzebował taką fizyczną aplikację którą można kliknąć na telefonie bo ta wersja na hostingu kilkana w przeglądarce (z trybem offline) to dla niego za mało.
+
+1. Zainstaluj [Android Sudio](https://developer.android.com/studio)
+
+2. W zmienych systemowych wskaz link do Andorid studio dla Capacitora
+```bash
+export CAPACITOR_ANDROID_STUDIO_PATH="/usr/local/android-studio/bin/studio.sh"
+```
+
+3. Do capacitor dodaj srodowisko dla Andorida
+```bash
+ionic cap add android
+```
+
+4. Zbuduj stronę
+```bash
+ionic build --prod
+```
+
+5. Zchyronizuj moduły Capacitora
+```bash
+npx cap sync android
+
+```
+
+6. Zaktualizuj zbudowaną stronę w środowisku Angulara
+```bash
+npx cap copy android
+```
+
+7. Uruchom projekt w Andorid Sudio
+```bash
+npx cap open android
+```
+
+8. Zbuduj apliakcje
+
+W Android Sudio wybierz kolejno `Build` > `Generate Signed App Bundle or APK..`
+* w oknie dialogowym wybierz `Andorid App Bundle`
+
+<img src="docs/images/220.png" width="830" alt="Andrid Sudio build">
+
+Efekt kompilacji pojawi sie w katalogu `android/app/relase` finalny plik `.aab` nadaje się bezpośredio do publikacji w Sklepie Google
+
+Jeśli nie chesz publikować aplikacji w Sklepie Google a od razu wgac do swojego Andoida. 
+* w oknie dialogowym wybierz `APK`
+
+pojawi się plik `.apk` który można wgrać bezpośrednio do telefonu pomijając Sklep Google.
+
 ## 2.2. W sklepie Apple dla iOS
+
+
+Podobne kroki jak publikowanie [dla Andorida](#22-w-sklepie-play-google-dla-andorida) zmieniajac komendy z koncowką andorid na ios:
+
+np dajmy na to komęde 
+```bash
+ionic cap add android
+```
+zamien na
+```bash
+ionic cap add ios
+```
+
+Ale że średno mnie stać na jakieś urządzeniez z makiem i nic z tych sprzętów nie mam więc nie będe udawał że się na tym znam, więc znalazłem dla was oficialne linki z instrukcjami 
+* [doc1 Ionic iOS Deploy](https://ionicframework.com/docs/deployment/app-store) 
+* [doc2 Ionic iOS Build](https://ionicframework.com/docs/angular/your-first-app/deploying-mobile)
+
+Powodzenia!
+
+
+
 
 # 9. Dodatek
 

@@ -1,5 +1,7 @@
 {
   "name": "mapy",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }
