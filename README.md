@@ -80,6 +80,24 @@ Strona pojawi się na lokalnej maszynie pod adresem: http://localhost:8100
 
 ## 2.1 Na hostingu
 
+1. zaktulizuj plik `src/app/environments/environment.prod.ts` podajac w hoscie nazwe domeny pod którą strona bedzie hostowana
+```javascript
+export const environment = {
+  production: true,
+  host: 'https://mapy73.pl'
+};
+```
+
+1. Zbuduj stronę
+```bash
+npm run prerender
+```
+Gotowa strona dla hostingu bedzie w katalgu `dist/app/browser` wystarczy skopiować pliki lub tą komendą zbudować strone na hostingu
+
+Jesli chesz przyspieszyc ladowanie podstron mozesz je wskazac w pliku `routes.txt`. Postrona zostanie zapisana jako gotowy plik na dysku (np. jako plik index.html w folderze /repeater/SR6LWS). Dzięki temu serwer wysyła użytkownikowi gotowy, zrobiony wcześniej plik i możemy zyskać na czasie wczytywania strony (taki cache frontendu)
+
+Jeśli będziesz kożystał z darmowego hostingu [Netlify](https://www.netlify.com) w katalogu `public` przygotowane są pliki pod ten hosting, odpowiednio: `_headers`,  `_redirects` i `404.html`. Jeśli bedziesz chiał by Netlify samo budowało strone po stronie serera przygotowany jest plik `netlify.toml` i dodany pakiet `@netlify/angular-runtime` 
+
 ## 2.2. W sklepie Play Google dla Andorida
 
 Użyte biloteki mają możliwośc wydania strony w formie aplikacji dla systemu Andorid, jakby ktoś potrzebował taką fizyczną aplikację którą można kliknąć na telefonie bo ta wersja na hostingu kilkana w przeglądarce (z trybem offline) to dla niego za mało.
