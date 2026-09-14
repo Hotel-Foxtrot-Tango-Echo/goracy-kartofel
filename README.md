@@ -190,3 +190,15 @@ po wykonaniu tej komedy w katalogu `submodules/repeters` pojawi sie najnowsza ba
 . skrypt-update-rpts
 ```
 po wykoaniu tej komedy katalog `public/api/v2` zostanie zaktualizowany statycznymi plikami (wymuszony cache często odwiedzanych plików, dzięki temu backend nie jest potrzebny na serwerze a i wyświetlanie pojedyczych przemienników trwa szybciej)
+
+
+## Licencja
+
+Kod źródłowy tego projektu jest udostępniany na licencji [GNU AGPLv3](LICENSE). 
+
+Projekt został stworzony i rozpowszechniony jako oprogramowanie Open Source, aby nie powstrzymywać rozwoju ludzkości. Kod może być wykorzystywany również w celach komercyjnych, jednak pamiętaj, że jeśli z niego korzystasz, modyfikujesz go lub rozbudowujesz, masz bezwzględny obowiązek udostępnić swój kod źródłowy innym na tych samych zasadach. Wspólnie twórzmy otwartą technologię dla radioamatorów (ale najlepiej za darmo, by każdy miał równy dostęp do wiedzy).
+
+
+<p align="right">
+  Autor: <a href="https://github.com/LukaszSarzynski">Łukasz Sarzyński</a>
+</p>
