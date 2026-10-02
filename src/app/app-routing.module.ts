@@ -11,6 +11,14 @@ const routes: Routes = [
     loadChildren: () => import('./type/type.module').then( m => m.TypePageModule)
   },  
   {
+    path: 'repeaters-map-create/:type/:country',
+    loadChildren: () => import('./map-create/map-create.module').then( m => m.MapCreatePageModule)
+  },  
+  {
+    path: 'repeaters-end',
+    loadChildren: () => import('./end/end.module').then( m => m.EndPageModule)
+  },  
+  {
     path: 'mapa-przemiennikow',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },

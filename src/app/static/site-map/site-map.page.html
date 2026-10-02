@@ -7,21 +7,18 @@
   <ion-grid [fixed]="true" >
     <h1>{{siteName}}</h1>
     <ion-list >
-      <ion-item [button]="true" [routerLink]="['/przemienniki']" [routerDirection]="'root'">
+      <ion-item [button]="true" (click)="showAllRepeaterOnMap()" [routerDirection]="'root'">
         <ion-icon aria-hidden="true" color="secondary" slot="start" name="list-circle" size="large"></ion-icon>
         <ion-label>Mapa przemienników</ion-label>
       </ion-item>
-      <!-- <ion-item [button]="true">
-        <ion-icon color="tertiary" slot="start" name="list-circle" size="large"></ion-icon>
-        <ion-label>Shopping</ion-label>
-      </ion-item> -->
+
     </ion-list>
     <ion-list>
       <ion-item [button]="true" [routerLink]="['/page','news']" >
         <ion-icon aria-hidden="true" color="danger" slot="start" name="list-circle" size="large"></ion-icon>
         <ion-label>Aktualności</ion-label>
-      </ion-item>          
-    </ion-list>
+      </ion-item>         
+    </ion-list>    
 
 
   </ion-grid>

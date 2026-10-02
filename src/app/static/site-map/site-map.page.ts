@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { TITLE_SEP, TITLE_BASE } from 'src/app/shared/const';
+import { FilterService } from 'src/app/shared/services/filter.service';
 
 
 @Component({
@@ -16,10 +18,18 @@ export class SiteMapPage implements OnInit {
  
   constructor(
         private title: Title,
+    private filterService: FilterService,
+    private route: Router,        
   ) { }
 
   ngOnInit(): void {
     this.title.setTitle(this.siteName + TITLE_SEP + TITLE_BASE)
   }  
 
+  showAllRepeaterOnMap() {
+    this.filterService.setInitFilterDataRptr()
+     setTimeout(() => {
+      this.route.navigate(['/mapa-przemiennikow']);
+    },20)       
+  }    
 }
