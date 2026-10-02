@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <mapy73pl-main-toolbar></mapy73pl-main-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+    <ion-grid [fixed]="true" class="ov-hidden" >
+      <ion-card class="card-inside-center">
+        <ion-card-header>
+          <ion-card-title><h1>{{hTitle}}</h1></ion-card-title>
+          @if (!rptEnd.length) {
+            <ion-card-subtitle>Brak danych na dzień {{dateToday.toISOString().split('T')[0]}}</ion-card-subtitle>
+          } @else {
+            <ion-card-subtitle>Na dzień {{dateToday.toISOString().split('T')[0]}}</ion-card-subtitle>
+          }       
+        </ion-card-header>
+        <ion-card-content>
+        @if (rptEnd.length) {
+          <div *ngFor="let rpt of rptEnd">
+            <a [routerLink]="repeaterLink(rpt.i)">{{rpt.i}}</a>
+            {{rpt.d}} pozostało <strong>{{rpt.c}} dni</strong> 
+          </div>    
+        } 
+        </ion-card-content>
+      </ion-card>        
+      <div class="end-page-margin">&nbsp;</div>
+    </ion-grid>    
+
+</ion-content>
