@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import { Component,Inject, PLATFORM_ID } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs';
+
+import { isPlatformBrowser } from '@angular/common';
+declare const gtag: Function;
+const gTagId = 'GOOGLE-TAG'
 
 @Component({
   selector: 'mapy73pl',
@@ -7,6 +13,30 @@ import { Component } from '@angular/core';
   standalone: false,
 })
 export class AppComponent {
+  constructor(
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object,
 
+  ) {
+    if (isPlatformBrowser(this.platformId)) {
+      this.addGAScript();
+      this.router.events.pipe(
+          filter(event => event instanceof NavigationEnd)
+      ).subscribe((event: NavigationEnd) => {
+          gtag('event', 'page_view', {
+              page_path: event.urlAfterRedirects
+          })
+      })
+    }
+      
+  }
+
+  addGAScript() {
+    let gtagScript: HTMLScriptElement = document.createElement('script');
+    gtagScript.async = true;
+    gtagScript.src = `https://www.googletagmanager.com/gtag/js?id=${gTagId}`;
+    document.head.prepend(gtagScript);
+    gtag('config', gTagId);
+  }  
 }
 
