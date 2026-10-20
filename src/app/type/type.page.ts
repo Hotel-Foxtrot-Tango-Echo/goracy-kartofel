@@ -66,6 +66,18 @@ export class TypePage implements OnInit {
         this.hTitleSufix = this.dmrCountryName[idAllowedKey]
         isPathAllowed = true
       }
+    } else if(this.typeFromUrl === 'fm') {
+      if(this.countryFromUrl === 'pl') {
+        this.hTitle = 'Przemienniki'
+        this.hTitleSufix = 'FM w Polsce'
+        isPathAllowed = true
+      }
+    } else if(this.typeFromUrl === 'fm-link') {
+      if(this.countryFromUrl === 'all') {
+        this.hTitle = 'Wszystkie przemienniki'
+        this.hTitleSufix = 'FM link'
+        isPathAllowed = true
+      }
     }
 
     if(!isPathAllowed) {
@@ -79,6 +91,10 @@ export class TypePage implements OnInit {
             this.repeters = this.repeatersPageService.getAllFmPoland()
           } else if(this.typeFromUrl === 'dmr') {
             this.repeters = this.repeatersPageService.getDMR(this.countryFromUrl)
+          } else if(this.typeFromUrl === 'fm') {
+            this.repeters = this.repeatersPageService.getFM('pl')
+          } else if(this.typeFromUrl === 'fm-link') {
+            this.repeters = this.repeatersPageService.getAllFmLink()
           } 
 
           this.loaded = true

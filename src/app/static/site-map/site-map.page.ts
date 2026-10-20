@@ -3,6 +3,9 @@ import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { TITLE_SEP, TITLE_BASE } from 'src/app/shared/const';
 import { FilterService } from 'src/app/shared/services/filter.service';
+import { dmrLink } from 'src/app/start-page/start-page.page';
+
+const staticDmr = require("../../type/dmr-allowed.json");
 
 
 @Component({
@@ -15,7 +18,8 @@ import { FilterService } from 'src/app/shared/services/filter.service';
 export class SiteMapPage implements OnInit {
 
   siteName = 'Mapa strony'
- 
+  dmrLink: dmrLink[] = staticDmr
+
   constructor(
         private title: Title,
     private filterService: FilterService,
@@ -23,13 +27,17 @@ export class SiteMapPage implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.title.setTitle(this.siteName + TITLE_SEP + TITLE_BASE)
+    //this.title.setTitle(this.siteName + TITLE_SEP + TITLE_BASE)
   }  
+
+  ionViewWillEnter() {
+    this.title.setTitle(this.siteName + TITLE_SEP + TITLE_BASE)
+  }
 
   showAllRepeaterOnMap() {
     this.filterService.setInitFilterDataRptr()
      setTimeout(() => {
-      this.route.navigate(['/mapa-przemiennikow']);
+      this.route.navigate(['/mapa-przemiennikow']); 
     },20)       
   }    
 }

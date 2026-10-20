@@ -58,6 +58,8 @@
         </ion-row> 
       </ion-grid>   
 
+      
+
       <ion-grid class="m73-flex-between" [fixed]="true">
         <ion-button *ngIf="canShowOnMap" fill="clear" (click)="showRepeaterOnMap()">
           Pokaż przemiennik
@@ -85,6 +87,24 @@
           [i]="repeaterData.i"
         ></m73pl-repeater-notice>
       </ion-grid>          
+
+      <ion-grid [fixed]="true" class="rpt-info">
+        <ion-row *ngIf="repeaterData.n && repeaterData.n.length">
+          <ion-col >
+            <h3>Przemienniki w pobliżu</h3>      
+          </ion-col>
+        </ion-row>   
+        <ion-row *ngIf="repeaterData.n && repeaterData.n.length">
+          <ion-col>
+            <div class="near-repeters">
+              <div *ngFor="let nearRpt of repeaterData.n" class="near-rpt">
+                <ion-text class="near-rpt-distance" color="light" *ngIf="nearRpt.m">({{nearRpt.m}} km):</ion-text>
+                <a [routerLink]="repeaterLink(nearRpt.i)"><span [class]="'near-rpt-flag fi fi-'+nearRpt.c"></span>{{nearRpt.i}}</a>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>                
+      </ion-grid>        
       <div class="end-page-margin">&nbsp;</div>      
 
   } @else {

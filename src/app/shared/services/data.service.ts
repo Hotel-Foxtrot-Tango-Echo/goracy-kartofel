@@ -14,15 +14,21 @@ export class DataService {
   public messages: Message[] = [
     {
       subject: 'Co robię teraz?',
-      detalis: 'Dodawanie dat pozwoleń na urządzenia bezobsługowe w Polsce',
+      detalis: 'Wyszukiwarkę',
       date: '',
       read: true
     },
     {
+      subject: 'Wygasające przemienniki',
+      detalis: 'Dodano stronę na której można zobaczyć zbliżające się końce pozwoleń na stacje bezobsługowe wydawane przez UKE. Dodano też inforamcję na niektórych przemiennikach do kiedy pozwolenie jest ważne, dostępne pod przyciskiem `więcej informacji`.',
+      date: '2025-12-03',
+      read: false
+    },     
+    {
       subject: 'Lista przemienników DMR i FM Poland',
       detalis: 'Dla przemienników FM Poland i DMR (wybrane kraje) dodano lisę oraz możliwość zobaczenia ich odrazu na mapie',
       date: '2025-12-01',
-      read: false
+      read: true
     },        
     {
       subject: 'Statusy przemienników i testy zgłaszania błędów',

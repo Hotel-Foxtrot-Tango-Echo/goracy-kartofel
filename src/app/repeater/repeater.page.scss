@@ -8,6 +8,35 @@ line-height: 1.2;
 
 h1{ font-weight: 600;}
 
+.near-repeters {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.near-rpt {
+  margin: 5px 10px 5px 0;
+  display: flex;
+  align-items: center;  
+}
+
+.near-rpt-flag {
+  margin: 0 5px 0 2px;
+}
+
+.near-rpt-distance {
+  font-size: 0.8rem;
+}
+
+a {
+  color: #fff;
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 2px 0;
+}
+
 // .info {
 //   white-space: pre-line; 
 // }
