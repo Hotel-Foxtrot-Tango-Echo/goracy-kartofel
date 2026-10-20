@@ -123,6 +123,10 @@ export class RepeaterPage implements OnInit, OnDestroy{
     return this.repeaterData.x[band][key]
   }
 
+  repeaterLink(i: string) {
+    return  this.route.createUrlTree(['/repeater',i.replace(/\/R/, '.R')]);
+  }    
+
   private loadRpt(repeaterAllData: RepeaterAllData) {
     this.repeaterData = repeaterAllData
     this.loaded = true;          
@@ -136,7 +140,6 @@ export class RepeaterPage implements OnInit, OnDestroy{
 
   private updateMetaDescription() {
     //console.log(this.meta.getTag(`name='description'`))
-
     let des = ''
     let title = ''
     const bands = Object.keys(this.repeaterData.x)
