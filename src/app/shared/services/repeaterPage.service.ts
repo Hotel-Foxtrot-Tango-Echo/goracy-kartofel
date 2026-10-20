@@ -107,32 +107,22 @@ export class RepeatersPageService {
   }
 
   getAllFmPoland(): OneInfo[] {
-    let found: OneInfo[] = []
-    const aKeys = Object.keys(this.obRepeatersAllData)
-    aKeys.forEach(rptKey => {
-      const rpt = this.obRepeatersAllData[rptKey]
-      const aBands = Object.keys(rpt.x)
-      aBands.forEach(band => {
-        rpt.x[band].forEach(option => {
-          if(option.t.includes(RepeaterType.FM_POLAND)) {
-            const rptInfo: OneInfo = {
-              ...defaultOneInfo,
-              i: rpt.i,
-              x: option?.tx?.f ? option?.tx?.f : 0,
-              s: option.s,
-              p: rpt.h[option.h].p
-            }
-
-            found.push(rptInfo)
-          }
-        })
-      })
-    })
-
-    return this.sortOneInfo(found)
+    return this.foundTypeAllContires(RepeaterType.FM_POLAND)
   }
 
+  getAllFmLink(): OneInfo[] {
+    return this.foundTypeAllContires(RepeaterType.FM_LINK)
+  }  
+
   getDMR(country: string): OneInfo[] {
+    return this.foundTypeAndCountry(RepeaterType.DMR, country)
+  }  
+
+  getFM(country: string): OneInfo[] {
+    return this.foundTypeAndCountry(RepeaterType.FM, country)
+  }    
+
+  private foundTypeAndCountry(type: RepeaterType, country: string): OneInfo[] {
     let found: OneInfo[] = []
     const aKeys = Object.keys(this.obRepeatersAllData)
     aKeys.forEach(rptKey => {
@@ -140,23 +130,49 @@ export class RepeatersPageService {
       const aBands = Object.keys(rpt.x)
       aBands.forEach(band => {
         rpt.x[band].forEach(option => {
-          if(rpt.c === country && option.t.includes(RepeaterType.DMR)) {
-            const rptInfo: OneInfo = {
-              ...defaultOneInfo,
-              i: rpt.i,
-              x: option?.tx?.f ? option?.tx?.f : 0,
-              s: option.s,
-              p: rpt.h[option.h].p
+          if(rpt.c === country && option.t.includes(type)) {
+            if(option.h  !== '0') {
+              const rptInfo: OneInfo = {
+                ...defaultOneInfo,
+                i: rpt.i,
+                x: option?.tx?.f ? option?.tx?.f : 0,
+                s: option.s,
+                p: rpt.h[option.h].p
+              }
+              found.push(rptInfo)
             }
-
-            found.push(rptInfo)
           }
         })
       })
     })
-
     return this.sortOneInfo(found)
   }  
+  
+  private foundTypeAllContires(type: RepeaterType): OneInfo[] {
+    let found: OneInfo[] = []
+    const aKeys = Object.keys(this.obRepeatersAllData)
+    aKeys.forEach(rptKey => {
+      const rpt = this.obRepeatersAllData[rptKey]
+      const aBands = Object.keys(rpt.x)
+      aBands.forEach(band => {
+        rpt.x[band].forEach(option => {
+          if(option.t.includes(type)) {
+            if(option.h  !== '0') {
+              const rptInfo: OneInfo = {
+                ...defaultOneInfo,
+                i: rpt.i,
+                x: option?.tx?.f ? option?.tx?.f : 0,
+                s: option.s,
+                p: rpt.h[option.h].p
+              }
+              found.push(rptInfo)
+            }
+          }
+        })
+      })
+    })
+    return this.sortOneInfo(found)
+  }   
 
   private sortOneInfo(array: OneInfo[]) {
     return array.sort((a,b) => (a.i < b.i) ? 1 : ((b.i < a.i) ? -1 : 0))
@@ -348,6 +364,7 @@ export const defalutRepeaterAllData: RepeaterAllData = {
   i: repeterIdNoData,
   c: '',
   o: [],
+  n: [],
   h: {},
   x: {},
 }
@@ -359,6 +376,7 @@ export interface RepeaterAllData {
   i: string; //name
   c: string; //Country
   o: string[]; // operators
+  n: NearRpt[] //near rpts
   h: RepeaterDataHash,
   x: RepeaterBand,
   r?: RepeaterBandKey[][]
@@ -369,6 +387,12 @@ export interface RepeatUkeParm {
   u: string; //url do strony uke
   l: string; //licencja
   d: string; //data konca lincencji
+}
+
+export interface NearRpt {
+  i: string; //name
+  c: string; //Country
+  m: number; //distance
 }
 
 interface RepeaterDataHash {
