@@ -22,6 +22,10 @@ const routes: Routes = [
     path: 'offline',
     loadChildren: () => import('./offline/offline.module').then( m => m.OfflinePageModule)
   },  
+  {
+    path: 'tips-and-tricks',
+    loadChildren: () => import('./tips-and-tricks/tips-and-tricks.module').then( m => m.TipsAndTricksPageModule)
+  },    
   {path: '**', redirectTo: ''},
 ];
 

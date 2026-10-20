@@ -1,0 +1,88 @@
+<ion-header [translucent]="true">
+  <mapy73pl-main-toolbar></mapy73pl-main-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-grid [fixed]="true">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          <h1>{{siteName}}</h1>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Dla zainteresowanych umieszczeniem linku do przemiennika lub kategorii z pewnością nie będzie problemu skopiować
+        adres
+        strony, więc na tej stronie podam rzeczy które nie są tak oczywiste na pierwszy rzut oka, a może komuś się przydadzą.
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          <h2>Link do generowania mapy</h2>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Jeśli chcecie zamieścić na swojej stronie lub podać komuś link do mapy zawierającej tylko dane typy
+        przemienników, to przygotowane i udostępnione są dla was takie adresy:
+        <br><br>
+        <h2>dla FM Poland</h2>
+        <ul>
+          <li><code>http://mapy73.pl/repeaters-map-create/fm-poland/pl</code></li>
+          <li><code>http://mapy73.pl/repeaters-map-create/fm-poland/us</code></li>
+        </ul>
+        <h2>dla DMR</h2>
+        <ul>
+          <li *ngFor="let rpt of dmrLink"><code>http://mapy73.pl/repeaters-map-create/dmr/{{rpt.c}}</code></li>
+        </ul>        
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          <h2>Historia zmian</h2>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Backup bazy danych umieszczony jest publicznie w formie tekstowej na GitHubie: <code>https://github.com/Krusz-Beton/przemienniki-mapy73pl/</code>
+        <br><br>
+        Można prześledzić historię zmian całego repozytorium np. ściągając je na swój komputer lub tu i teraz wykorzystując  serwis github,
+        np dla przemiennika <strong>SR2GT</strong> mamy do dyspozycji takie linki:
+        <ul>
+          <li><code>https://github.com/Krusz-Beton/przemienniki-mapy73pl/blob/main/db/!dziedzictwo-narodowe/<strong>SR2GT</strong>.yaml</code></li>
+          <li><code>https://github.com/Krusz-Beton/przemienniki-mapy73pl/commits/main/db/!dziedzictwo-narodowe/<strong>SR2GT</strong>.yaml</code></li>
+          <li><code>https://github.com/Krusz-Beton/przemienniki-mapy73pl/blame/main/db/!dziedzictwo-narodowe/<strong>SR2GT</strong>.yaml</code></li>
+        </ul>
+      </ion-card-content>
+    </ion-card>   
+    
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          Inne
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Jeśli brakuje tobie jakieś funkcjonalności, która można szybko dodać i pomoże całej społeczności radio amatorskiej w Polsce, pisz śmiało na Discordzie. 
+        <br><br>
+        <h2>Jak to zrobić?</h2>
+        <div class="notice-instructions">
+          0. Dołącz do serwera Discord Krotkofalarstwo <a href="https://discord.com/invite/krotkofalarstwo-958356886896386088" target="_blank">https://discord.com/invite/krotkofalarstwo-958356886896386088</a><br>
+          1. Opisz problem na kanale. <ion-text color="medium" class="notice-more-info">
+            <a href="https://discord.com/channels/958356886896386088/1146070821526306890" target="_blank">h-f-t-e</a>
+          </ion-text>
+          <br>
+          <ion-text color="dark" class="notice-more-info">
+            dodając na końcu wiadomości tekst: <code class="notice-tag">[mapy73.pl] [feature] &#64;hotel_foxtrot_tango_echo</code>
+          </ion-text>    
+          
+        </div>
+      </ion-card-content>
+    </ion-card>    
+  </ion-grid>
+
+
+
+
+  <div class="end-page-margin">&nbsp;</div>
+</ion-content>
